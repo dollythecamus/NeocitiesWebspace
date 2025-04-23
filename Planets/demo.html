@@ -1,0 +1,88 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Pixelated Solar System</title>
+  <style>
+    body { margin: 0; }
+  </style>
+</head>
+<body>
+
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/three.js/r134/three.min.js"></script>
+
+  <script>
+    // Scene setup
+    const scene = new THREE.Scene();
+    const camera = new THREE.PerspectiveCamera( 75, window.innerWidth / window.innerHeight, 0.1, 1000 );
+    const renderer = new THREE.WebGLRenderer();
+    renderer.setSize( window.innerWidth, window.innerHeight );
+    document.body.appendChild( renderer.domElement );
+
+    // Create a sphere (our "planet")
+    const geometry = new THREE.SphereGeometry( 1, 16, 16 ); // Adjust radius and detail as needed
+    
+    const texture = new THREE.TextureLoader().load('munely.webp');
+    texture.minFilter = THREE.NearestFilter;
+    texture.magFilter = THREE.NearestFilter;
+    texture.generateMipmaps = false;
+    const material = new THREE.MeshBasicMaterial({ map: texture });
+    
+    const sphere = new THREE.Mesh( geometry, material );
+    scene.add( sphere );
+
+    camera.position.z = 5; // Move the camera back
+
+    // Set low resolution render target
+    const renderTarget = new THREE.WebGLRenderTarget(320, 180); // tiny res
+    renderTarget.texture.minFilter = THREE.NearestFilter; // Use nearest filter for sharp pixelated edges
+    renderTarget.texture.magFilter = THREE.NearestFilter; // Magnify pixels without smoothing
+    renderTarget.texture.generateMipmaps = false; // Disable mipmaps to avoid blurring
+
+    // Create a full-screen quad to draw render target
+    const finalMaterial = new THREE.MeshBasicMaterial({ map: renderTarget.texture }); // Use the low-res texture
+    const finalScene = new THREE.Scene();
+    const quad = new THREE.Mesh(
+      new THREE.PlaneGeometry(2, 2), // Full-screen quad
+      finalMaterial
+    );
+    finalScene.add(quad);
+    const finalCamera = new THREE.OrthographicCamera(-1, 1, 1, -1, 0, 1); // Orthographic camera for 2D rendering
+
+    function animate() {
+      requestAnimationFrame( animate );
+
+      // Rotate the sphere (optional)
+      sphere.rotation.x += 0.01;
+      sphere.rotation.y += 0.01; 
+
+      // Render the main scene to the low-resolution render target
+      renderer.setRenderTarget(renderTarget);
+      renderer.render(scene, camera);
+
+      // Render the low-resolution texture to the screen for a pixelated effect
+      renderer.setRenderTarget(null);
+      renderer.render(finalScene, finalCamera);
+
+    }
+    const raycaster = new THREE.Raycaster();
+    
+    const mouse = new THREE.Vector2();
+
+    function onClick(event) {
+      mouse.x = ( event.clientX / window.innerWidth ) * 2 - 1;
+      mouse.y = - ( event.clientY / window.innerHeight ) * 2 + 1;
+
+      raycaster.setFromCamera(mouse, camera);
+
+      const intersects = raycaster.intersectObject(sphere);
+      if (intersects.length > 0) {
+        alert("You clicked the planet! Project info goes here.");
+      }
+    }
+    window.addEventListener('click', onClick, false);
+
+    animate();
+  </script>
+
+</body>
+</html>
