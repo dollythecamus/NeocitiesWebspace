@@ -1,0 +1,61 @@
+{
+    "buttons": [
+        {
+            "icon": "🖥",
+            "color": "#f72585",
+            "window": "tech-window"
+        },
+        {
+            "icon": "📷",
+            "color": "#fee440",
+            "window": "stats-window"
+        },
+        {
+            "icon": "🎨",
+            "color": "#38b000",
+            "window": "colors-window"
+        },
+        {
+            "icon": "👅",
+            "color": "#a9a2fa",
+            "window": "personal-window"
+        },
+        {
+            "icon": "🌌",
+            "color": "#3a0ca3",
+            "window": "inventions-window"
+        },
+        {
+            "icon": "**",
+            "color": "#35cda3",
+            "window": "FRONT"
+        }
+    ],
+    "windows": {
+        "tech-window":{
+            "id": "tech-window",
+            "title": "Tech",
+            "contentUrl": "tech-window.html"
+        },
+        "stats-window":{
+            "id": "stats-window",
+            "title": "Stats",
+            "contentUrl": "stats-window.html"
+        },
+        "colors-window":{
+            "id": "colors-window",
+            "title": "Colors",
+            "contentUrl": "colors-window.html"
+        },
+        "personal-window":{
+            "id": "personal-window",
+            "title": "Personal",
+            "contentUrl": "personal-window.html"
+        },
+        "inventions-window":{
+            "id": "inventions-window",
+            "title": "Inventions",
+            "contentUrl": "inventions-window.html"
+        }
+    }
+}

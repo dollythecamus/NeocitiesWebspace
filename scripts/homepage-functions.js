@@ -1,17 +1,22 @@
-/// need to add this line to the html file to add the buttons :D
-///<!--webpage goes before the scripts :)-->
-///<script src="drag-button.js"></script>
+import { applyColors ,generateRandomColors} from './colors.js';
 
-const buttonConfig = [
-  { icon: '🖥', color: '#f72585', content: 'screen-window' },
-  { icon: '📷', color: '#fee440', content: 'stats-window'},
-  { icon: '👁👁', color: '#38b000', content: 'gif'},
-  { icon: '👅', color: '#a9a2fa', content: 'personal-window'},
-  { icon: '🌌', color: '#3a0ca3', content: 'inventions-window'},
-  { icon: '🎥', color: '#4cc9f0', content: 'video'},
-  { icon: 'Aa', color: '#f9c74f', content: 'text'},
-  { icon: '**', color: '#88292c', content: 'text2'}
-];
+let data = {};
+
+async function loadData(path) {
+  try {
+    const response = await fetch(path);
+    if (!response.ok) {
+      throw new Error(`Failed to load data: ${response.statusText}`);
+    }
+    data = await response.json();
+  } catch (error) {
+    console.error('Error fetching data:', error);
+  }
+}
+await loadData('../data/data.json');
+
+const buttonConfig = data.buttons;
+const windowsconfig = data.windows;
 
 const buttons = [];
 const currentPositions = [];
@@ -28,37 +33,46 @@ let isExpanded = false;
 let isDragging = false;
 const lastMouse = { x: startX, y: startY };
 
+// todo next: use the generated colors to get the button colors
+
 for (let i = 0; i < buttonConfig.length; i++) {
-    const { icon, color, content , width, height} = buttonConfig[i];
+    const { icon, color, window} = buttonConfig[i];
     const btn = document.createElement('div');
     btn.classList.add('button');
     if (i === buttonConfig.length - 1) btn.classList.add('front');
     btn.style.background = color;
     btn.innerText = icon;
-
+    
     const x = startX + i * offset;
     const y = startY + i * offset;
     btn.style.left = `${x}px`;
     btn.style.top = `${y}px`;
-
+    
     currentPositions.push({ x, y });
     originalPositions.push({ x, y });
-
+    
     buttons.push(btn);
     document.body.appendChild(btn);
-
-    btn.addEventListener('click', () => {
-        if (isExpanded && i !== buttonConfig.length - 1) {
-            spawnWindow(icon, `./content/${content}.html`);
+    
+    if (window != "FRONT")
+    {
+      btn.addEventListener('click', () => {
+        console.log(windowsconfig[window])
+        let dupe = Object.assign({}, windowsconfig[window]) 
+        on_buttonClick(dupe);
         }
-    });
+      );
+    }
+}
+
+async function on_buttonClick(window) {
+  await spawnWindow(window.title, `../content/${window.contentUrl}`);
 }
 
 const frontButton = buttons[buttons.length - 1];
 document.body.appendChild(frontButton); // Ensure top in DOM
 
 frontButton.addEventListener('mousedown', (e) => {
-    // if (isExpanded) return;
     isDragging = true;
     lastMouse.x = e.pageX;
     lastMouse.y = e.pageY;
@@ -100,8 +114,8 @@ function update() {
 if (isExpanded) {
     // Spread buttons vertically downward
     for (let i = 0; i < buttons.length; i++) {
-    currentPositions[i].x += (startX - currentPositions[i].x) * returnSpeed;
-    currentPositions[i].y += ((startY + i * 70) - currentPositions[i].y) * returnSpeed;
+    currentPositions[i].x += (originalPositions[i].x - currentPositions[i].x) * returnSpeed;
+    currentPositions[i].y += ((originalPositions[i].y + i * 70) - currentPositions[i].y) * returnSpeed;
     }
 } else if (isDragging) {
     // Drag front button
@@ -115,6 +129,24 @@ if (isExpanded) {
     curr.y += (target.y - curr.y) * followSpeed;
     }
 } else {
+
+    // Adjust button positions for responsiveness
+    const titleHeight = 300; // Adjust this value based on your title height
+    const mobileThreshold = 768; // Screen width threshold for mobile
+
+    if (window.innerWidth < mobileThreshold) {
+      for (let i = 0; i < originalPositions.length; i++) {
+        originalPositions[i].x = startX; + i * offset; // Adjust Y positions to stay below the title
+        originalPositions[i].y = titleHeight; + i * offset; // Adjust Y positions to stay below the title
+      
+      }
+    } else {
+      for (let i = 0; i < originalPositions.length; i++) {
+        originalPositions[i].x = startX + i * offset; // Reset to original positions for larger screens
+        originalPositions[i].y = startY + i * offset; // Reset to original positions for larger screens
+      }
+    }
+
     // Return to stack position
     for (let i = 0; i < buttons.length; i++) {
     currentPositions[i].x += (originalPositions[i].x - currentPositions[i].x) * returnSpeed;
@@ -177,7 +209,7 @@ frontButton.addEventListener('touchend', (e) => {
 let z = 1001;
 const openWindows = {};
 
-function spawnWindow(title, contentUrl, width, height) {
+async function spawnWindow(title, contentUrl) {
   // If window already exists, bring it to front
   if (openWindows[title]) {
     const existingWin = openWindows[title];
@@ -190,8 +222,6 @@ function spawnWindow(title, contentUrl, width, height) {
   win.style.top = Math.random() * window.innerHeight*0.8 + "px";
   win.style.left = Math.random() * window.innerWidth*0.8 + "px";
   win.style.zIndex = z++;
-  win.style.width = width;
-  win.style.height = height;
 
   win.innerHTML = `
     <div class="window-header">${title}
@@ -201,33 +231,43 @@ function spawnWindow(title, contentUrl, width, height) {
       <p>Loading...</p>
     </div>
   `;
-
-  // Close button logic
-  win.querySelector(".close-btn").addEventListener("click", () => {
-    document.body.removeChild(win);
-    delete openWindows[title];
-  });
-
+  
   makeDraggable(win);
   //makeResizable(win);
   document.body.appendChild(win);
   openWindows[title] = win;
+  
+  let html = await loadContent(contentUrl);
+  win.querySelector(".window-content").innerHTML = html;
+  
+  // Dispatch a custom "windowOpened" event
+    const windowOpenedEvent = new CustomEvent("windowOpened", { detail: { title, win, contentUrl} });
+    document.dispatchEvent(windowOpenedEvent);
+  
+    // Close button logic
+    win.querySelector(".close-btn").addEventListener("click", () => {
+      document.body.removeChild(win);
+      delete openWindows[title];
+  
+      // Dispatch a custom "windowClosed" event
+      const windowClosedEvent = new CustomEvent("windowClosed", { detail: { title, contentUrl} });
+      document.dispatchEvent(windowClosedEvent);
+    });
+  applyColors();
+}
 
+async function loadContent(contentUrl) {
   // Load content from the provided URL
   if (contentUrl) {
-    fetch(contentUrl)
-      .then((response) => {
-        if (!response.ok) {
-          throw new Error(`Failed to load content: ${response.statusText}`);
-        }
-        return response.text();
-      })
-      .then((html) => {
-        win.querySelector(".window-content").innerHTML = html;
-      })
-      .catch((error) => {
-        win.querySelector(".window-content").innerHTML = `<p>Error loading content: ${error.message}</p>`;
-      });
+    try {
+      const response = await fetch(contentUrl);
+      if (!response.ok) {
+        throw new Error(`Failed to load content: ${response.statusText}`);
+      }
+      return await response.text();
+    } catch (error) {
+      return `<p>Error loading content: ${error.message}</p><p>${contentUrl}</p>`;
+    }
   }
 }
 
@@ -272,3 +312,55 @@ function makeDraggable(el) {
     el.style.top = touch.clientY - offsetY + "px";
   });
 }
+
+export function UpdateWindowColors(colors)
+{
+  const windows = document.querySelectorAll('.window');
+  windows.forEach(win => {
+    win.style.backgroundColor = colors.darks[1]; // Change window background color
+  });
+
+  const headers = document.querySelectorAll('.window-header');
+  headers.forEach(header => {
+    header.style.backgroundColor = colors.lights[2]; // Change header background color
+    header.style.color = colors.darks[2]; // Change header text color
+  });
+
+  const closeButtons = document.querySelectorAll('.close-btn');
+  closeButtons.forEach(btn => {
+    btn.style.backgroundColor = colors.lights[3]; // Change close button background color
+    btn.style.color = colors.darks[3]; // Change close button text color
+  });
+}
+
+// Example: Listening for the "windowOpened" event
+document.addEventListener("windowOpened", (e) => {
+  const { title, win, contentUrl } = e.detail;
+
+  //console.log(`Window opened: ${title}`);
+
+  // Specify different functions for different windows
+  if (title === "Colors") {
+    document.getElementById("generate-color").addEventListener("click", () => {
+      generateRandomColors();
+      applyColors();
+    });
+
+  } else if (title === "Help") {
+    //initializeHelpWindow(win);
+  } else if (contentUrl && contentUrl.includes("dashboard")) {
+    //initializeDashboardWindow(win);
+  } else {
+    //console.log(`No specific function for window: ${title}`);
+  }
+
+});
+
+// Example: Listening for the "windowClosed" event
+document.addEventListener("windowClosed", (e) => {
+  console.log(`Window closed: ${e.detail.title}`);
+  // Run your custom logic here
+});
+
+generateRandomColors();
+applyColors();

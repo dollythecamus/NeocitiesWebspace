@@ -16,14 +16,30 @@ background-repeat: repeat;
 */
 }
 
-button {
-margin: 5px;
-padding: 10px;
-background: #333;
-color: #fff;
-border: none;
-cursor: pointer;
+header {
+    margin-top: 30px;
+    width: 100%;
+    text-align: center;
 }
+
+header #title-container {
+    padding: 15px;
+    display: inline-block;
+    border-style: solid;
+    background-color: rgb(56, 84, 116);
+    border-color: rgb(59, 89, 133);
+    border-width: 16px;
+    border-radius: 40px;
+}
+
+header #title-container h1{
+    display: inline-block;
+    margin: 0 15px;
+    font-size: 44px;
+}
+
+
+/* Floating Windows */
 
 .window {
 z-index: 3;
@@ -90,12 +106,9 @@ transition: background 0.2s ease;
 .close-btn:hover {
 background: #ff1c1c;
 }
+/* Floating Windows End */
 
-h1{
-    margin-left: 16px;
-}
-
-/* --- wiggle --- */
+/* -~- wiggle -~- */
 
 @keyframes wiggle {
 0%, 100% {
@@ -115,35 +128,8 @@ h1{
 .wiggly-letter {
 display: inline-block;
 animation: wiggle 1s infinite;
+text-shadow: 2px 2px 4px rgba(0,0,0,0.5);
 
-}
-
-.title-container
-{
-    position: absolute;
-    top: 50px;
-    width: 100%;
-}
-
-.title-container div
-{
-    text-align: center;
-    z-index: 1;
-    font-size: 24px;
-    font-weight: bold;
-    text-shadow: 2px 2px 4px rgba(0,0,0,0.5);
-}
-
-.title-container div h1 
-{
-    display: inline-block;
-    padding: 10px 20px;
-    border: 2px solid rgb(43, 52, 77);
-    border-radius: 16px;
-    background-color: rgb(51, 79, 122);
-    margin: 0;
-  
-  user-select: none;
 }
 
 /* --- Draggable Button Style --- */
