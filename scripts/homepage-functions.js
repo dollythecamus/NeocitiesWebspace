@@ -329,6 +329,12 @@ export function UpdateWindowColors(colors)
     header.style.color = colors.darks[2]; // Change header text color
   });
 
+  const windowContents = document.querySelectorAll('.window-content');
+  windowContents.forEach(content => {
+    content.style.backgroundColor = colors.darks[4]; // Change content background color
+    content.style.color = colors.lights[4]; // Change content text color
+  });
+
   const closeButtons = document.querySelectorAll('.close-btn');
   closeButtons.forEach(btn => {
     btn.style.backgroundColor = colors.lights[3]; // Change close button background color
