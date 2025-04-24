@@ -40,7 +40,10 @@ for (let i = 0; i < buttonConfig.length; i++) {
     const btn = document.createElement('div');
     btn.classList.add('button');
     if (i === buttonConfig.length - 1) btn.classList.add('front');
-    btn.style.background = color;
+
+    // button colors is now in applyColors from colors.js
+    // btn.style.background = color;
+
     btn.innerText = icon;
     
     const x = startX + i * offset;
@@ -333,6 +336,13 @@ export function UpdateWindowColors(colors)
   });
 }
 
+export function UpdateButtonColors(colors) {
+  buttons.forEach((btn, i) => {
+    btn.style.backgroundColor = colors.lights[i % colors.lights.length]; // Cycle through light colors
+    btn.style.color = colors.darks[i % colors.darks.length]; // Cycle through dark colors
+  });
+}
+
 // Example: Listening for the "windowOpened" event
 document.addEventListener("windowOpened", (e) => {
   const { title, win, contentUrl } = e.detail;
@@ -362,5 +372,4 @@ document.addEventListener("windowClosed", (e) => {
   // Run your custom logic here
 });
 
-generateRandomColors();
 applyColors();

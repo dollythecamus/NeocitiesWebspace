@@ -1,5 +1,5 @@
 import {UpdateWigglyText} from "./wiggle-letters.js";
-import {UpdateWindowColors} from "./homepage-functions.js"; 
+import {UpdateWindowColors, UpdateButtonColors} from "./homepage-functions.js"; 
 
 let generatedSiteColors = {'lights': [], 'darks': []};
 let number_of_colors = 16; // Number of colors to generate
@@ -28,16 +28,28 @@ export function generateRandomColors(count) {
     // Store the generated colors in the global array, to make use later (TODO)
     generatedSiteColors.lights = lights;
     generatedSiteColors.darks = darks;
+
+    // Save the colors to local storage
+    localStorage.setItem('siteColors', JSON.stringify(generatedSiteColors));
+
     return generatedSiteColors;
 }
   
 
 export function getSiteGeneratedColors(count = number_of_colors) {
+    const storedColors = localStorage.getItem('siteColors');
+    if (storedColors) {
+        generatedSiteColors = JSON.parse(storedColors);
+    }
+    
     if (generatedSiteColors.lights.length === 0 && generatedSiteColors.darks.length === 0) {
         // If no colors have been generated yet, generate them
         generatedSiteColors = generateRandomColors(count);
     }
-    return {lights: generatedSiteColors.lights.slice(0, count), darks: generatedSiteColors.darks.slice(0, count)};
+    return {
+        lights: generatedSiteColors.lights.slice(0, count), 
+        darks: generatedSiteColors.darks.slice(0, count)
+    };
 }
 
 export function applyColors()
@@ -45,5 +57,6 @@ export function applyColors()
     // generateRandomColors(number_of_colors);
     UpdateWigglyText(getSiteGeneratedColors());
     UpdateWindowColors(getSiteGeneratedColors());
+    UpdateButtonColors(getSiteGeneratedColors());
 }
 
