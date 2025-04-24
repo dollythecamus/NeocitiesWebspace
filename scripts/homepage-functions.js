@@ -57,7 +57,7 @@ for (let i = 0; i < buttonConfig.length; i++) {
     buttons.push(btn);
     document.body.appendChild(btn);
     
-    if (window != "FRONT")
+    if (window != "null")
     {
       btn.addEventListener('click', () => {
         console.log(windowsconfig[window])

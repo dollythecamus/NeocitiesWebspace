@@ -19,7 +19,7 @@
     document.body.appendChild( renderer.domElement );
 
     // Create a sphere (our "planet")
-    const geometry = new THREE.SphereGeometry( 1, 16, 16 ); // Adjust radius and detail as needed
+    const geometry = new THREE.SphereGeometry( 3, 16, 16 ); // Adjust radius and detail as needed
     
     const texture = new THREE.TextureLoader().load('munely.webp');
     texture.minFilter = THREE.NearestFilter;
