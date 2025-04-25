@@ -1,6 +1,6 @@
 import * as THREE from 'https://cdn.skypack.dev/three@0.134.0';
 import { createRenderer, renderLoop } from './Renderer.js';
-import { createPlanet, updatePlanet, enablePlanetRaycast, createOrbitLine , addProjectToPlanet, setPlanetOrbits, setSimulationSpeeds} from './Planet.js';
+import { planetsData, createPlanet, updatePlanet, enablePlanetRaycast, createOrbitLine , addProjectToPlanet, setPlanetOrbits, setSimulationSpeeds} from './Planet.js';
 
 const state = {
   scene: null,
@@ -16,7 +16,7 @@ const state = {
 Object.assign(state, createRenderer());
 
 let projectsData = [];
-let planetsData = []
+//let planetsData = []
 
 async function loadData(path) {
   try {
@@ -31,7 +31,7 @@ async function loadData(path) {
 }
 
 projectsData = await loadData('./data/projects.json');
-planetsData = await loadData('./data/planets.json');
+// planetsData = await loadData('./data/planets.json');
 
 // Create planets and add them to the scene
 state.planets = planetsData.planets.map((config) => {
@@ -57,8 +57,17 @@ window.addEventListener('keydown', (e) => {
     if (e.key === 'Tab') {
       e.preventDefault(); // stop browser from switching elements
       state.focusedPlanetIndex = (state.focusedPlanetIndex + 1) % state.planets.length;
+      if (! state.planets[state.focusedPlanetIndex].camera_focus) // if it is specified to not focus on the planet, sum again
+        {state.focusedPlanetIndex = (state.focusedPlanetIndex + 1) % state.planets.length;}
     }
   });
+
+// Add event listener for simulation speed slider
+const speedSlider = document.getElementById('simulation-speed');
+speedSlider.addEventListener('input', (e) => {
+  const speed = parseFloat(e.target.value);
+  setSimulationSpeeds(speed, 1.0);
+});
 
 // Patch in update logic
 state.update = function(deltaTime) {
@@ -68,7 +77,7 @@ state.update = function(deltaTime) {
 
   // Add offset to OrbitControls camera position based on the focused planet's orbit
   const targetPlanet = state.planets[state.focusedPlanetIndex];
-  if (targetPlanet) {
+  if (targetPlanet && targetPlanet.camera_focus) {
     
     let maxDistance = targetPlanet.radius * 4;
     
