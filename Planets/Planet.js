@@ -1,12 +1,14 @@
 import * as THREE from 'https://cdn.skypack.dev/three@0.134.0';
 
-let simulationSpeed = 1; // Default simulation speed multiplier
+let translationSimulationSpeed = 1; // Default simulation speed multiplier
+let rotationSimulationSpeed = 1; // Default simulation speed multiplier
 
-export function setSimulationSpeed(speed) {
-  simulationSpeed = speed;
+export function setSimulationSpeeds(translationSpeed, rotationSpeed) {
+  translationSimulationSpeed = translationSpeed;
+  rotationSimulationSpeed = rotationSpeed;
 }
 
-export function createPlanet(config, scene, projects_list) {
+export function createPlanet(config, scene) {
   const texture = new THREE.TextureLoader().load(config.texture_path);
   texture.minFilter = THREE.NearestFilter;
   texture.magFilter = THREE.NearestFilter;
@@ -16,53 +18,55 @@ export function createPlanet(config, scene, projects_list) {
   const material = new THREE.MeshBasicMaterial({ map: texture });
 
   const mesh = new THREE.Mesh(geometry, material);
-  scene.add(mesh);
-
-  const tilt = config.tilt || 0; // tilt in radians
-  const rotationSpeed = config.rotationSpeed || 0.01; // radians/sec
-  const inclination = config.inclination || 0; // inclination in radians
-
-  mesh.rotation.z = tilt; // Apply tilt to the planet
-
-  // Add structures for projects
-  config.projects.forEach((projectName) => {
-      const project = projects_list.find(p => p.title === projectName);
-      if (project) {
-          const structureGeometry = new THREE.BoxGeometry(0.5, 0.5, 0.5);
-          const structureMaterial = new THREE.MeshBasicMaterial({ color: 0xffffff });
-          const structure = new THREE.Mesh(structureGeometry, structureMaterial);
-
-          // Convert latitude and longitude to spherical coordinates
-          const phi = (90 - project.position.lat) * (Math.PI / 180); // latitude to polar angle
-          const theta = (project.position.lon + 180) * (Math.PI / 18); // longitude to azimuthal angle
-
-          // Calculate position on the planet's surface
-          const x = config.radius * Math.sin(phi) * Math.cos(theta);
-          const y = config.radius * Math.cos(phi);
-          const z = config.radius * Math.sin(phi) * Math.sin(theta);
-
-          structure.position.set(x, y, z);
-
-          mesh.add(structure); // Attach structure to the planet
-          //structure.userData = { title: project.title, description: project.description }; // Store project data
-      }
-    });
-
+  
+  mesh.rotation.z = config.orbit.tilt; // Apply tilt to the planet
+  
+  const point = new THREE.BufferGeometry().setFromPoints([new THREE.Vector3(0, 0, 0)]);
+  const center = new THREE.Line(point, new THREE.LineBasicMaterial({ color: 0x0000ff }));
+  
+  center.add(mesh);
+  scene.add(center);
+  
   return {
     mesh,
+    center,
     name: config.name || "Planet",
     color: config.color || 0xffffff,
     texture_path: config.color || "munely.png",
     radius: config.radius || 1,
-    orbitCenter: config.orbitCenter || new THREE.Vector3(0, 0, 0),
-    semiMajorAxis: config.semiMajorAxis || 2,
-    semiMinorAxis: config.semiMinorAxis || 1.5,
-    orbitSpeed: config.orbitSpeed || 0.5, // radians/sec
-    orbitAngle: config.initialAngle || 0,
-    tilt,
-    rotationSpeed,
-    inclination,
+    orbit: config.orbit || {} 
   };
+}
+
+export function setPlanetOrbits(planets, planet)
+{
+  if (planet.orbit.orbits != null) {
+    const parent = planets.find(p => p.name === planet.orbit.orbits);
+    planet.orbit.orbitCenter = parent.center.position;
+  } else {
+    planet.orbit.orbitCenter = new THREE.Vector3(0, 0, 0); // Default to origin if no parent specified
+  }
+}
+
+export function addProjectToPlanet(planet, project) {
+
+  // Add structures for projects
+  const structureGeometry = new THREE.BoxGeometry(0.5, 0.5, 0.5);
+  const structureMaterial = new THREE.MeshBasicMaterial({ color: 0xffffff });
+  const structure = new THREE.Mesh(structureGeometry, structureMaterial);
+
+  // Convert latitude and longitude to spherical coordinates
+  const phi = (90 - project.position.lat) * (Math.PI / 180); // latitude to polar angle
+  const theta = (project.position.lon + 180) * (Math.PI / 18); // longitude to azimuthal angle
+
+  // Calculate position on the planet's surface
+  const x = planet.radius * Math.sin(phi) * Math.cos(theta);
+  const y = planet.radius * Math.cos(phi);
+  const z = planet.radius * Math.sin(phi) * Math.sin(theta);
+
+  structure.position.set(x, y, z);
+
+  planet.mesh.add(structure); // Attach structure to the planet
 }
 
 export function enablePlanetRaycast(planet, camera, domElement) {
@@ -82,34 +86,44 @@ export function enablePlanetRaycast(planet, camera, domElement) {
 }
 
 export function updatePlanet(planet, deltaTime) {
-  const adjustedDeltaTime = deltaTime * simulationSpeed;
+  const adjustedDeltaTime0 = deltaTime * translationSimulationSpeed;
+  const adjustedDeltaTime1 = deltaTime * rotationSimulationSpeed;
 
-  planet.orbitAngle += planet.orbitSpeed * adjustedDeltaTime;
+  planet.orbit.orbitAngle += planet.orbit.orbitSpeed * adjustedDeltaTime0;
 
-  const x = planet.orbitCenter.x + planet.semiMajorAxis * Math.cos(planet.orbitAngle);
-  const z = planet.orbitCenter.z + planet.semiMinorAxis * Math.sin(planet.orbitAngle);
-  const y = Math.sin(planet.inclination) * (planet.semiMajorAxis * Math.sin(planet.orbitAngle)); // Apply inclination
+  const x = planet.orbit.orbitCenter.x + planet.orbit.semiMajorAxis * Math.cos(planet.orbit.orbitAngle);
+  const z = planet.orbit.orbitCenter.z + planet.orbit.semiMinorAxis * Math.sin(planet.orbit.orbitAngle);
+  const y = Math.sin(planet.orbit.inclination) * (planet.orbit.semiMajorAxis * Math.sin(planet.orbit.orbitAngle)); // Apply inclination
 
-  planet.mesh.position.set(x, y, z);
+  planet.center.position.set(x, y, z);
 
   // Update planet's rotation around its axis
-  planet.mesh.rotation.y += planet.rotationSpeed * adjustedDeltaTime;
+  planet.mesh.rotation.y += planet.orbit.rotationSpeed * adjustedDeltaTime1;
 }
 
-export function createOrbitLine(config, scene) {
+export function createOrbitLine(planets, planet, scene) {
+  if (planet.orbit.orbits == null) 
+    return
+
   const segments = 100;
   const points = [];
 
   for (let i = 0; i <= segments; i++) {
     const angle = (i / segments) * Math.PI * 2;
-    const x = config.semiMajorAxis * Math.cos(angle);
-    const z = config.semiMinorAxis * Math.sin(angle);
-    const y = Math.sin(config.inclination || 0) * (config.semiMajorAxis * Math.sin(angle)); // Apply inclination
+    const x = planet.orbit.semiMajorAxis * Math.cos(angle);
+    const z = planet.orbit.semiMinorAxis * Math.sin(angle);
+    const y = Math.sin(planet.orbit.inclination || 0) * (planet.orbit.semiMajorAxis * Math.sin(angle)); // Apply inclination
     points.push(new THREE.Vector3(x, y, z));
   }
 
   const geometry = new THREE.BufferGeometry().setFromPoints(points);
   const material = new THREE.LineBasicMaterial({ color: 0x888888 });
   const line = new THREE.LineLoop(geometry, material);
-  scene.add(line);
+  if (planet.orbit.orbits == "Star") {
+    scene.add(line);
+  }
+  else {
+    const parentPlanet = planets.find(p => p.name === planet.orbit.orbits);
+    parentPlanet.center.add(line);
+  }
 }

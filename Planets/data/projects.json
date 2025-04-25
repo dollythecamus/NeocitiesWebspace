@@ -1,0 +1,31 @@
+{
+    "projects": [
+        {
+            "title": "Project A",
+            "planet": "Terrestrial",
+            "description": "Description A",
+            "position": {
+                "lat": 45,
+                "lon": -30
+            }
+        },
+        {
+            "title": "Project B",
+            "planet": "Venusian",
+            "description": "Description B",
+            "position": {
+                "lat": 45,
+                "lon": -30
+            }
+        },
+        {
+            "title": "Project C",
+            "planet": "Martian",
+            "description": "Description C",
+            "position": {
+                "lat": 45,
+                "lon": -30
+            }
+        }
+    ]
+}

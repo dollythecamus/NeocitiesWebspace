@@ -1,0 +1,89 @@
+{
+    "planets": [
+        {
+            "name": "Star",
+            "radius": 3,
+            "texture_path": "TMP_Planets/Venusian.png",
+            "color": "#FFFF00",
+            "orbit": {
+                "orbits": null,
+                "orbitCenter": 0,
+                "semiMajorAxis": 0,
+                "semiMinorAxis": 0,
+                "orbitSpeed": 0,
+                "tilt": 0,
+                "rotationSpeed": 0,
+                "inclination": 0,
+                "orbitAngle": 0
+            }
+        },
+        {
+            "name": "Martian",
+            "texture_path": "TMP_Planets/Martian.png",
+            "color":"#FF0000",
+            "radius": 0.5,
+            "orbit":{
+                "orbits": "Star",
+                "orbitCenter": 0,
+                "semiMajorAxis": 4,
+                "semiMinorAxis": 3.5,
+                "orbitSpeed": 1.8,
+                "tilt": 0.0005934119456780721,
+                "rotationSpeed": 1.0,
+                "inclination": 0.00322,
+                "orbitAngle": 0
+            }
+        },
+        {
+            "name": "Venusian",
+            "texture_path": "TMP_Planets/Venusian.png",
+            "color": "#FF00FF",
+            "radius": 1.1,
+            "orbit":{
+                "orbits": "Star",
+                "orbitCenter": 0,
+                "semiMajorAxis": 8,
+                "semiMinorAxis": 7.5,
+                "orbitSpeed": 1.4,
+                "tilt": 0.0005934119456780721,
+                "rotationSpeed": 1.0,
+                "inclination": 0.12217304763960307,
+                "orbitAngle": 0
+            }
+        },
+        {
+            "name": "Terrestrial",
+            "texture_path": "TMP_Planets/Terrestrial.png",
+            "color": "#FFFFFF",
+            "radius": 1,
+            "orbit":{
+                "orbits": "Star",
+                "orbitCenter": 0,
+                "semiMajorAxis": 14,
+                "semiMinorAxis": 13.5,
+                "orbitSpeed": 1.2,
+                "tilt": 0.0005934119456780721,
+                "rotationSpeed": 1.0,
+                "inclination": 0,
+                "orbitAngle": 0
+            }
+        },
+        {
+            "name": "Moon",
+            "radius": 0.3,
+            "texture_path":"TMP_Planets/Martian.png",
+            "color": "#FFFFFF",
+            "orbit": {
+                "orbits": "Terrestrial",
+                "orbitCenter": 0,
+                "semiMajorAxis": 1.5,
+                "semiMinorAxis": 1.4,
+                "orbitSpeed": 3.0,
+                "tilt": 0.11693705988928732,
+                "rotationSpeed": 0.5,
+                "inclination": 0.8979719001510825,
+                "orbitAngle": 0
+            }
+        }
+    ]
+}

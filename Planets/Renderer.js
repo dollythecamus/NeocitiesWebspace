@@ -49,7 +49,6 @@ export function createRenderer() {
 
 export function renderLoop(state) {
     let lastTime = performance.now();
-    const fixedDistance = 5; // Fixed distance from the focused target
 
     function animate() {
       requestAnimationFrame(animate);
