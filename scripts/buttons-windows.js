@@ -1,5 +1,5 @@
 import { applyColors ,generateRandomColors} from './colors.js';
-import { setSimulationSpeeds , setOrbitLinesVisible} from '../Planets/space.js';
+import { setSimulationSpeeds , setOrbitLinesVisible} from '../Planets/solar-controls.js';
 
 
 let data = {};

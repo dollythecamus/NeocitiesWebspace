@@ -1,33 +1,6 @@
-import * as THREE from 'https://cdn.skypack.dev/three@0.134.0';
 import { createRenderer, renderLoop } from './Renderer.js';
 import { planetsData, createPlanet, updatePlanet, enablePlanetRaycast, createOrbitLine , addProjectToPlanet, setPlanetOrbits} from './Planet.js';
-
-const state = {
-  scene: null,
-  camera: null,
-  renderer: null,
-  planets: [],
-  projects: [],
-  lines: [],
-  focusedPlanetIndex: 3,
-  controls: null, 
-};
-
-let translationSimulationSpeed = 1; // Default simulation speed multiplier
-let rotationSimulationSpeed = 1; // Default simulation speed multiplier
-
-export function setSimulationSpeeds(trans, rot)
-{
-  translationSimulationSpeed = trans
-  rotationSimulationSpeed = rot
-}
-
-export function setOrbitLinesVisible(vis)
-{
-      state.lines.forEach((line) => {
-        line.visible = vis;
-  });
-}
+import {state, translationSimulationSpeed, rotationSimulationSpeed} from './solar-controls.js'
 
 // Init renderer
 Object.assign(state, createRenderer());
@@ -106,7 +79,7 @@ state.update = function(deltaTime) {
 
 console.log(state.lines)
 
-setSimulationSpeeds(10.0, 1.0)
+//setSimulationSpeeds(10.0, 1.0)
 // Render loop
 renderLoop(state);
 
