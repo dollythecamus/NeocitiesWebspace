@@ -1,8 +1,8 @@
 import * as THREE from 'https://cdn.skypack.dev/three@0.134.0';
 import { OrbitControls } from 'https://cdn.skypack.dev/three@0.134.0/examples/jsm/controls/OrbitControls.js';
 
-const LOW_RES_WIDTH = 320;
-const LOW_RES_HEIGHT = 180;
+const LOW_RES_WIDTH = 320 * 1.2;
+const LOW_RES_HEIGHT = 180 * 1.2;
 
 export function createRenderer() {
   const scene = new THREE.Scene();
@@ -12,6 +12,18 @@ export function createRenderer() {
   const renderer = new THREE.WebGLRenderer({ antialias: false });
   renderer.setSize(window.innerWidth, window.innerHeight);
   document.body.appendChild(renderer.domElement);
+
+  // Add a starry skybox
+  const loader = new THREE.CubeTextureLoader();
+  const starrySkybox = loader.load([
+    './stars/stars3.jpg', // Left
+    './stars/stars3.jpg', // Right
+    './stars/stars3.jpg', // Top
+    './stars/stars3.jpg', // Bottom
+    './stars/stars3.jpg', // Front
+    './stars/stars3.jpg', // Back
+  ]);
+  scene.background = starrySkybox;
 
   // Low-res render target (the pixelated one)
   const renderTarget = new THREE.WebGLRenderTarget(LOW_RES_WIDTH, LOW_RES_HEIGHT);

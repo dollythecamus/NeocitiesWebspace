@@ -135,19 +135,19 @@ export const planetsData = {
       radius: 0.001,
       orbit: {
         orbits: 'Star',
-        Apoapsis: 20,
+        Apoapsis: 22,
         Periapsis: 20,
         Period: 655,
         mass: 0.6,
         tilt: 0,
         rotationSpeed: 0.0,
-        inclination: Math.PI / 4,
+        inclination: Math.PI / 8,
         orbitFocus: 0,
         orbitAngle: 0,
         eccentricity: 0,
         meanAnomaly: 0,
-        argumentOfPeriapsis: 0,
-        longitudeOfAscendingNode: 0,
+        argumentOfPeriapsis: 0.01,
+        longitudeOfAscendingNode: Math.PI / 1,
         parentOrbit: {},
         precomputedPoints: []
       }
