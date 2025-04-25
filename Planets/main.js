@@ -83,7 +83,7 @@ state.update = function(deltaTime) {
   }
 };
 
-setSimulationSpeeds(0.01, 1.0)
+setSimulationSpeeds(10.0, 1.0)
 // Render loop
 renderLoop(state);
 

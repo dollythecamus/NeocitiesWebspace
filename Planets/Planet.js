@@ -99,17 +99,18 @@ export function updatePlanet(planet, deltaTime) {
   const adjustedDeltaTime1 = deltaTime * rotationSimulationSpeed;
 
   if (planet.orbit.orbits != null) {
-    //interpolate between precomputed points
-      const t = (Date.now() - START_TIME) * adjustedDeltaTime0 / planet.orbit.Period;
-      const index = Math.floor(t * PRECOMPUTE) % PRECOMPUTE;
-      const nextIndex = (index + 1) % PRECOMPUTE;
+    // Update the mean anomaly incrementally
+    const n = 2 * Math.PI / planet.orbit.Period; // Mean motion
+    planet.orbit.currentMeanAnomaly = (planet.orbit.currentMeanAnomaly || 0) + n * adjustedDeltaTime0;
 
-      const alpha = (t * PRECOMPUTE) % 1; // Fractional part for interpolation
-      const currentPoint = planet.orbit.precomputedPoints[index];
-      const nextPoint = planet.orbit.precomputedPoints[nextIndex];
+    // Keep the mean anomaly within [0, 2π]
+    planet.orbit.currentMeanAnomaly %= 2 * Math.PI;
 
-      // Linear interpolation between the two points
-      planet.center.position.lerpVectors(currentPoint, nextPoint, alpha);
+    // Solve for the new position
+    const newPosition = calculateOrbitPositionFromMeanAnomaly(planet.orbit, planet.orbit.currentMeanAnomaly);
+
+    // Update the planet's position
+    planet.center.position.copy(newPosition.add(planet.orbit.orbitFocus));
   }
 
   // Update planet's rotation around its axis
@@ -141,63 +142,51 @@ export function precomputeOrbitPoints(planet, segments = 100) {
   let prev = start;
   for (let i = 0; i <= segments; i++) {
     const deltaTime = 0.016;
-    points.push(calculateNextOrbitPosition(planet.orbit, prev, deltaTime));
-    prev = points[i];
+    const meanAnomaly = (2 * Math.PI * i) / segments;
+    const position = calculateOrbitPositionFromMeanAnomaly(planet.orbit, meanAnomaly);
+    points.push(position);
   }
   return points;
 }
 
-export function calculateNextOrbitPosition(orbit, currentPosition, deltaTime) {
-  // Calculate the semi-major axis and eccentricity
-  const semiMajorAxis = (orbit.Periapsis + orbit.Apoapsis) / 2;
-  const e = orbit.eccentricity || (orbit.Apoapsis - orbit.Periapsis) / (orbit.Apoapsis + orbit.Periapsis);
+export function calculateOrbitPositionFromMeanAnomaly(orbit, meanAnomaly) {
+  // Solve Kepler's equation for Eccentric Anomaly (E) using Newton's method
+  let E = meanAnomaly; // Initial guess
+  
+  const a = (orbit.Periapsis + orbit.Apoapsis) / 2; // Semi-major axis
+  const c = a - orbit.Periapsis; // Distance from center to focus
+  orbit.eccentricity = c / a; // Eccentricity
 
-  // Calculate the mean motion (n)
-  const n = 2 * Math.PI / orbit.Period;
-
-  // Calculate the current true anomaly from the current position
-  const currentRadius = currentPosition.length();
-  const currentTrueAnomaly = Math.atan2(currentPosition.z, currentPosition.x);
-
-  // Calculate the mean anomaly (M) from the true anomaly
-  const E = 2 * Math.atan(Math.sqrt((1 - e) / (1 + e)) * Math.tan(currentTrueAnomaly / 2));
-  const M = E - e * Math.sin(E);
-
-  // Update the mean anomaly with the time delta
-  const newM = M + n * deltaTime;
-
-  // Solve Kepler's equation for the new eccentric anomaly (E) using Newton's method
-  let newE = newM; // Initial guess
-  for (let i = 0; i < 10; i++) {
-    newE = newE - (newE - e * Math.sin(newE) - newM) / (1 - e * Math.cos(newE));
+  const e = orbit.eccentricity;
+  for (let i = 0; i < 5; i++) { // Iterate to refine E
+    E = E - (E - e * Math.sin(E) - meanAnomaly) / (1 - e * Math.cos(E));
   }
 
-  // Calculate the new true anomaly
-  const newTrueAnomaly = 2 * Math.atan2(
-    Math.sqrt(1 + e) * Math.sin(newE / 2),
-    Math.sqrt(1 - e) * Math.cos(newE / 2)
+  // True anomaly (ν)
+  const trueAnomaly = 2 * Math.atan2(
+    Math.sqrt(1 + e) * Math.sin(E / 2),
+    Math.sqrt(1 - e) * Math.cos(E / 2)
   );
 
-  // Calculate the new orbital radius
-  const newRadius = semiMajorAxis * (1 - e * e) / (1 + e * Math.cos(newTrueAnomaly));
+  // Orbital radius (r)
+  const semiMajorAxis = (orbit.Periapsis + orbit.Apoapsis) / 2;
+  const radius = semiMajorAxis * (1 - e * e) / (1 + e * Math.cos(trueAnomaly));
 
   // Convert polar coordinates to Cartesian coordinates
-  const x = newRadius * Math.cos(newTrueAnomaly);
-  const z = newRadius * Math.sin(newTrueAnomaly);
+  const x = radius * Math.cos(trueAnomaly);
+  const y = 0; // Assuming no inclination for now
+  const z = radius * Math.sin(trueAnomaly);
 
   // Apply inclination (if any)
   const inclination = orbit.inclination || 0;
   const cosInclination = Math.cos(inclination);
   const sinInclination = Math.sin(inclination);
   const finalX = x;
-  const finalY = z * cosInclination - z * sinInclination;
-  const finalZ = z * sinInclination + z * cosInclination;
+  const finalY = y * cosInclination - z * sinInclination;
+  const finalZ = y * sinInclination + z * cosInclination;
 
-  let newPosition = new THREE.Vector3(finalX, finalY, finalZ);
-  let center = orbit.orbitFocus || new THREE.Vector3(0, 0, 0);
-
-  // Return the new position as a THREE.Vector3
-  return newPosition.add(center);
+  // Return the position as a THREE.Vector3
+  return new THREE.Vector3(finalX, finalY, finalZ);
 }
 
 function getParent(planets, planet)
