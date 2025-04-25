@@ -1,0 +1,46 @@
+{
+    "buttons": [
+        {
+            "icon": "🖥",
+            "window": "inventions-tech-window"
+        },
+        {
+            "icon": "📷",
+            "window": "inventions-stats-window"
+        },
+        {
+            "icon": "🎨",
+            "window": "colors-window"
+        },
+        {
+            "icon": "🌌",
+            "window": "solar-controls"
+        },
+        {
+            "icon": "**",
+            "window": "null"
+        }
+    ],
+    "windows": {
+        "inventions-tech-window":{
+            "id": "tech-window",
+            "title": "Tech",
+            "contentUrl": "inventions-tech-window.html"
+        },
+        "inventions-stats-window":{
+            "id": "inventions-stats-window",
+            "title": "Stats",
+            "contentUrl": "stats-window.html"
+        },
+        "colors-window":{
+            "id": "colors-window",
+            "title": "Colors",
+            "contentUrl": "colors-window.html"
+        },
+        "solar-controls":{
+            "id": "solar-controls",
+            "title": "Solar System Controls",
+            "contentUrl": "solar-controls.html"
+        }
+    }
+}

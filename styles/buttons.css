@@ -1,0 +1,26 @@
+
+/* --- Draggable Button Style --- */
+
+.button {
+    position: absolute;
+    width: 60px;
+    height: 60px;
+    border-radius: 50%;
+    z-index: 1000;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-size: 24px;
+    font-weight: bold;
+    color: white;
+    pointer-events: auto;
+    cursor: grab;
+    transition: transform 0.1s linear;
+
+    user-select: none;
+}
+
+.button.front {
+    pointer-events: auto;
+    cursor: grab;
+}

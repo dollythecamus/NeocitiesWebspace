@@ -1,6 +1,6 @@
 import * as THREE from 'https://cdn.skypack.dev/three@0.134.0';
 import { createRenderer, renderLoop } from './Renderer.js';
-import { planetsData, createPlanet, updatePlanet, enablePlanetRaycast, createOrbitLine , addProjectToPlanet, setPlanetOrbits, setSimulationSpeeds} from './Planet.js';
+import { planetsData, createPlanet, updatePlanet, enablePlanetRaycast, createOrbitLine , addProjectToPlanet, setPlanetOrbits} from './Planet.js';
 
 const state = {
   scene: null,
@@ -12,6 +12,22 @@ const state = {
   focusedPlanetIndex: 3,
   controls: null, 
 };
+
+let translationSimulationSpeed = 1; // Default simulation speed multiplier
+let rotationSimulationSpeed = 1; // Default simulation speed multiplier
+
+export function setSimulationSpeeds(trans, rot)
+{
+  translationSimulationSpeed = trans
+  rotationSimulationSpeed = rot
+}
+
+export function setOrbitLinesVisible(vis)
+{
+      state.lines.forEach((line) => {
+        line.visible = vis;
+  });
+}
 
 // Init renderer
 Object.assign(state, createRenderer());
@@ -63,27 +79,12 @@ window.addEventListener('keydown', (e) => {
       if (! state.planets[state.focusedPlanetIndex].camera_focus) // if it is specified to not focus on the planet, sum again
         {state.focusedPlanetIndex = (state.focusedPlanetIndex + 1) % state.planets.length;}
     }
-  });
-
-// Add event listener for simulation speed slider
-const speedSlider = document.getElementById('simulation-speed');
-speedSlider.addEventListener('input', (e) => {
-  const speed = parseFloat(e.target.value);
-  setSimulationSpeeds(speed, 1.0);
-});
-
-const orbitLinesCheckbox = document.getElementById('orbit-lines');
-orbitLinesCheckbox.addEventListener('change', (e) => {
-  const visible = e.target.checked;
-  state.lines.forEach((line) => {
-    line.visible = visible;
-  });
 });
 
 // Patch in update logic
 state.update = function(deltaTime) {
   for (const planet of state.planets) {
-    updatePlanet(planet, deltaTime);
+    updatePlanet(planet, deltaTime, {translation: translationSimulationSpeed, rotation: rotationSimulationSpeed});
   }
 
   // Add offset to OrbitControls camera position based on the focused planet's orbit

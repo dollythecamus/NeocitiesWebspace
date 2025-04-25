@@ -1,4 +1,6 @@
 import { applyColors ,generateRandomColors} from './colors.js';
+import { setSimulationSpeeds , setOrbitLinesVisible} from '../Planets/space.js';
+
 
 let data = {};
 
@@ -13,7 +15,10 @@ async function loadData(path) {
     console.error('Error fetching data:', error);
   }
 }
-await loadData('../data/data.json');
+
+// Dynamically set the data path
+// data_path MUST be set in the main script tag of the page. 
+await loadData(data_path);
 
 const buttonConfig = data.buttons;
 const windowsconfig = data.windows;
@@ -60,16 +65,16 @@ for (let i = 0; i < buttonConfig.length; i++) {
     if (window != "null")
     {
       btn.addEventListener('click', () => {
-        console.log(windowsconfig[window])
+        //console.log(windowsconfig[window])
         let dupe = Object.assign({}, windowsconfig[window]) 
-        on_buttonClick(dupe);
+        on_buttonClick(dupe); // duplicate window data, this works
         }
       );
     }
 }
 
 async function on_buttonClick(window) {
-  await spawnWindow(window.title, `../content/${window.contentUrl}`);
+  await spawnWindow(window);
 }
 
 const frontButton = buttons[buttons.length - 1];
@@ -212,7 +217,10 @@ frontButton.addEventListener('touchend', (e) => {
 let z = 1001;
 const openWindows = {};
 
-async function spawnWindow(title, contentUrl) {
+async function spawnWindow(data) {
+  const contentUrl = `../content/${data.contentUrl}`
+  const title = data.title
+  const id = data.id
   // If window already exists, bring it to front
   if (openWindows[title]) {
     const existingWin = openWindows[title];
@@ -244,7 +252,7 @@ async function spawnWindow(title, contentUrl) {
   win.querySelector(".window-content").innerHTML = html;
   
   // Dispatch a custom "windowOpened" event
-    const windowOpenedEvent = new CustomEvent("windowOpened", { detail: { title, win, contentUrl} });
+    const windowOpenedEvent = new CustomEvent("windowOpened", { detail: { id, win, contentUrl} });
     document.dispatchEvent(windowOpenedEvent);
   
     // Close button logic
@@ -253,7 +261,7 @@ async function spawnWindow(title, contentUrl) {
       delete openWindows[title];
   
       // Dispatch a custom "windowClosed" event
-      const windowClosedEvent = new CustomEvent("windowClosed", { detail: { title, contentUrl} });
+      const windowClosedEvent = new CustomEvent("windowClosed", { detail: { id} });
       document.dispatchEvent(windowClosedEvent);
     });
   applyColors();
@@ -351,21 +359,34 @@ export function UpdateButtonColors(colors) {
 
 // Example: Listening for the "windowOpened" event
 document.addEventListener("windowOpened", (e) => {
-  const { title, win, contentUrl } = e.detail;
+  const { id, win, contentUrl } = e.detail;
+
+  // I gotta be careful using this.
 
   //console.log(`Window opened: ${title}`);
 
   // Specify different functions for different windows
-  if (title === "Colors") {
+  if (id === "colors-window") {
     document.getElementById("generate-color").addEventListener("click", () => {
       generateRandomColors();
       applyColors();
     });
 
-  } else if (title === "Help") {
-    //initializeHelpWindow(win);
-  } else if (contentUrl && contentUrl.includes("dashboard")) {
-    //initializeDashboardWindow(win);
+  } else if (id === "solar-controls") {
+    
+    // Add event listener for simulation speed slider
+    const speedSlider = document.getElementById('simulation-speed');
+    speedSlider.addEventListener('input', (e) => {
+      const speed = parseFloat(e.target.value);
+      setSimulationSpeeds(speed, 1.0);
+    });
+    
+    const orbitLinesCheckbox = document.getElementById('orbit-lines');
+    orbitLinesCheckbox.addEventListener('change', (e) => {
+      const visible = e.target.checked;
+      setOrbitLinesVisible(visible)
+    });
+
   } else {
     //console.log(`No specific function for window: ${title}`);
   }

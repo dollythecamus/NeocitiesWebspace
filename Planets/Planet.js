@@ -207,18 +207,6 @@ export const planetsData = {
   ]
 };
 
-let translationSimulationSpeed = 1; // Default simulation speed multiplier
-let rotationSimulationSpeed = 1; // Default simulation speed multiplier
-
-const GRAVITATION = 0.1; // Gravitational constant (arbitrary units)
-const START_TIME = Date.now(); // Start time for the simulation
-const PRECOMPUTE = 100;
-
-export function setSimulationSpeeds(translationSpeed, rotationSpeed) {
-  translationSimulationSpeed = translationSpeed;
-  rotationSimulationSpeed = rotationSpeed;
-}
-
 export function createPlanet(config, scene) {
 
   let material;
@@ -314,14 +302,14 @@ export function enablePlanetRaycast(planet, camera, domElement) {
   });
 }
 
-export function updatePlanet(planet, deltaTime) {
-  const adjustedDeltaTime0 = deltaTime * translationSimulationSpeed;
-  const adjustedDeltaTime1 = deltaTime * rotationSimulationSpeed;
+export function updatePlanet(planet, deltaTime, simSpeeds) {
+  const adjDeltaTimeTrans = deltaTime * simSpeeds.translation;
+  const adjDeltaTimeRot = deltaTime * simSpeeds.rotation;
 
   if (planet.orbit.orbits != null) {
     // Update the mean anomaly incrementally
     const n = 2 * Math.PI / planet.orbit.Period; // Mean motion
-    planet.orbit.currentMeanAnomaly = (planet.orbit.currentMeanAnomaly || 0) + n * adjustedDeltaTime0;
+    planet.orbit.currentMeanAnomaly = (planet.orbit.currentMeanAnomaly || 0) + n * adjDeltaTimeTrans;
 
     // Keep the mean anomaly within [0, 2π]
     planet.orbit.currentMeanAnomaly %= 2 * Math.PI;
@@ -334,7 +322,7 @@ export function updatePlanet(planet, deltaTime) {
   }
 
   // Update planet's rotation around its axis
-  planet.mesh.rotation.y += planet.orbit.rotationSpeed * adjustedDeltaTime1;
+  planet.mesh.rotation.y += planet.orbit.rotationSpeed * adjDeltaTimeRot;
 }
 
 export function createOrbitLine(planets, planet, scene) {

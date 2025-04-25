@@ -1,0 +1,67 @@
+
+/* Floating Windows */
+
+.window {
+    z-index: 3;
+    position: absolute;
+    /*width: 300px;
+    height: 200px;*/
+    background: #777;
+    color: white;
+    border: 2px solid #ddd;
+    box-shadow: 5px 5px 10px rgba(0,0,0,0.5);
+}
+
+.window-content{
+    overflow: auto;
+    height: 90%;
+}
+
+.window-header {
+    background: #ddd;
+    color: #333;
+    padding: 5px;
+    cursor: grab;
+    font-weight: bold;
+
+    user-select: none;
+}
+
+.resize-handle {
+    position: absolute;
+    width: 16px;
+    height: 16px;
+    right: 0;
+    bottom: 0;
+    cursor: se-resize;
+    background: #555;
+}
+
+
+.close-btn {
+    position: absolute;
+    margin: 0;
+    top: 2px;
+    right: 5px;
+    width: 20px;
+    height: 20px;
+    background: #ff5c5c;
+    border: none;
+    border-radius: 50%;
+    cursor: pointer;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    color: white;
+    font-size: 14px;
+    font-weight: bold;
+    line-height: 1;
+    text-align: center;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.2);
+    transition: background 0.2s ease;
+}
+
+.close-btn:hover {
+    background: #ff1c1c;
+}
+    

@@ -4,6 +4,9 @@ export function UpdateWigglyText(colors){
   const textElements = document.querySelectorAll(".wiggly-text"); // Select all elements with the class "wiggly-text"
   const titleContainer = document.getElementById("title-container");
 
+  if (titleContainer == null)
+    {return;}
+
   titleContainer.style.borderColor = colors.darks[0]; // Set border color using the first dark color
   titleContainer.style.backgroundColor = colors.darks[1]; // Set background color using the first light color
   

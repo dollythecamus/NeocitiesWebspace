@@ -3,43 +3,22 @@
 <head>
   <meta charset="UTF-8">
   <title>Invention Planets</title>
-  <style>
-  body { margin: 0; }
-  
-  .space-ui {
-    position: fixed;
-    background-image: url(../images/cubism-jwst-ascii.png);
-    font-family: Arial, sans-serif;
-    color: #2ddb2d;
-    text-align: center;
-    margin: 0;
-    width: 12cm;
-    height: 6cm;
-  }
+  <link rel="stylesheet" href="../styles/wiggly.css" />
+  <link rel="stylesheet" href="../styles/buttons.css" />
+  <link rel="stylesheet" href="../styles/windows.css" />
 
-  </style>
+  <link rel="stylesheet" href="../styles/space-ui.css" />
+
 </head>
 <body>
-  <div class="space-ui">
-    <p>Hello!!!</p>
-    <p>left click to look around, right click to pan, scroll to zoom</p>
-    
-    <div>
-      <label for="simulation-speed">Simulation Speed:</label>
-      <input id="simulation-speed" type="range" min="0.1" max="100" step="0.1" value="10">
-    </div>
-
-    <div>
-      <label for="orbit-lines">Show Orbit Lines:</label>
-      <input id="orbit-lines" type="checkbox" checked>
-    </div>
-    
-    <div> 
-      <a href="../index.html">← Back to homepage</a>
-    </div>
-   
-  </div>
-  <script type="module" src="./main.js"></script>
+  
+  <script>
+    data_path = '../data/inventions.json'; // Set the data path dynamically
+  </script>
+  
+  <script type="module" src="../scripts/buttons-windows.js"></script>
+  
+  <script type="module" src="./space.js"></script>
 </body>
 </html>
 

@@ -1,0 +1,52 @@
+body, html, * {
+margin: 0;
+padding: 0;
+overflow: hidden;
+font-family: monospace;
+}
+
+#background {
+    z-index: -5;
+position: fixed;
+width: 100%;
+height: 100%;
+background-image: url(../images/stars3.gif);
+background-repeat: repeat;
+/*background: repeating-linear-gradient(45deg, rgb(44, 33, 42), rgb(51, 38, 48) 20px, #751b57 20px, #751b57 40px);
+*/
+}
+
+header {
+    margin-top: 30px;
+    width: 100%;
+    text-align: center;
+}
+
+header #title-container {
+    padding: 15px;
+    display: inline-block;
+    border-style: solid;
+    background-color: rgb(56, 84, 116);
+    border-color: rgb(59, 89, 133);
+    border-width: 16px;
+    border-radius: 40px;
+}
+
+header #title-container h1{
+    display: inline-block;
+    margin: 0 15px;
+    font-size: 44px;
+}
+
+
+#background p {
+    position: fixed;
+    top: 30%;
+    left: -10%; /* start off-screen */
+    font-size: 5rem;
+    white-space: nowrap;
+    color: rgb(255, 255, 255);
+    pointer-events: none;
+    transform: rotate(-20deg); /* adjust the angle */
+    z-index: -1;
+  }

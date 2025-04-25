@@ -1,0 +1,23 @@
+
+/* -~- wiggle -~- */
+
+@keyframes wiggle {
+    0%, 100% {
+        transform: translateY(0);
+    }
+    25% {
+        transform: translateY(-3px);
+    }
+    50% {
+        transform: translateY(3px);
+    }
+    75% {
+        transform: translateY(-1px);
+    }
+}
+    
+.wiggly-letter {
+    display: inline-block;
+    animation: wiggle 1s infinite;
+    text-shadow: 2px 2px 4px rgba(0,0,0,0.5);
+}

@@ -4,7 +4,10 @@
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>Chloe's Webspace</title>
-  <link rel="stylesheet" href="homepage.css" />
+  <link rel="stylesheet" href="styles/homepage.css" />
+  <link rel="stylesheet" href="styles/wiggly.css" />
+  <link rel="stylesheet" href="styles/buttons.css" />
+  <link rel="stylesheet" href="styles/windows.css" />
 
   <link rel="icon" href="images/CHL.png" type="image"/>
 </head>
@@ -27,12 +30,11 @@
   </footer>
 
   <div id="decorations"></div>
-
-  <!--
-  <script src="https://counterapi.com/c.js" async ></script>
-  -->
-
-  <script type='module' src="/scripts/homepage-functions.js"></script>
+  
+  <script>
+    data_path = '../data/homepage.json'; // Set the data path dynamically
+  </script>
+  <script type="module" src="scripts/buttons-windows.js"></script>
   <script type="module" src="/scripts/wiggle-letters.js"></script>
   
 </body>
