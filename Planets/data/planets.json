@@ -7,14 +7,19 @@
             "color": "#FFFF00",
             "orbit": {
                 "orbits": null,
-                "orbitCenter": 0,
-                "semiMajorAxis": 0,
-                "semiMinorAxis": 0,
-                "orbitSpeed": 0,
-                "tilt": 0,
+                "Apoapsis": 0,
+                "Periapsis": 0,
+                "Period": 0,
+                "mass":10.0,
                 "rotationSpeed": 0,
                 "inclination": 0,
-                "orbitAngle": 0
+                "tilt": 0,
+                "eccentricity": 0,
+                "orbitFocus": 0,
+                "orbitAngle": 0,
+                "meanAnomaly" : 0,
+                "parentOrbit": {},
+                "precomputedPoints" : []
             }
         },
         {
@@ -24,14 +29,19 @@
             "radius": 0.5,
             "orbit":{
                 "orbits": "Star",
-                "orbitCenter": 0,
-                "semiMajorAxis": 4,
-                "semiMinorAxis": 3.5,
-                "orbitSpeed": 1.8,
+                "Apoapsis": 4,
+                "Periapsis": 3.5,
+                "Period": 1.8,
+                "mass":0.6,
                 "tilt": 0.0005934119456780721,
                 "rotationSpeed": 1.0,
                 "inclination": 0.00322,
-                "orbitAngle": 0
+                "orbitFocus": 0,
+                "orbitAngle": 0,
+                "eccentricity": 0,
+                "meanAnomaly" : 0,
+                "parentOrbit": {},
+                "precomputedPoints" : []
             }
         },
         {
@@ -41,14 +51,19 @@
             "radius": 1.1,
             "orbit":{
                 "orbits": "Star",
-                "orbitCenter": 0,
-                "semiMajorAxis": 8,
-                "semiMinorAxis": 7.5,
-                "orbitSpeed": 1.4,
+                "Apoapsis": 8,
+                "Periapsis": 7.5,
+                "Period": 1.4,
+                "mass":1.1,
                 "tilt": 0.0005934119456780721,
                 "rotationSpeed": 1.0,
                 "inclination": 0.12217304763960307,
-                "orbitAngle": 0
+                "orbitFocus": 0,
+                "orbitAngle": 0,
+                "eccentricity": 0,
+                "meanAnomaly" : 0,
+                "parentOrbit": {},
+                "precomputedPoints" : []
             }
         },
         {
@@ -58,14 +73,19 @@
             "radius": 1,
             "orbit":{
                 "orbits": "Star",
-                "orbitCenter": 0,
-                "semiMajorAxis": 14,
-                "semiMinorAxis": 13.5,
-                "orbitSpeed": 1.2,
-                "tilt": 0.0005934119456780721,
+                "Apoapsis": 14,
+                "Periapsis": 13.5,
+                "Period": 1.2,
+                "mass":1.0,
                 "rotationSpeed": 1.0,
+                "tilt": 0.0005934119456780721,
                 "inclination": 0,
-                "orbitAngle": 0
+                "orbitFocus": 0,
+                "eccentricity": 0,
+                "orbitAngle": 0,
+                "meanAnomaly" : 0,
+                "parentOrbit": {},
+                "precomputedPoints" : []
             }
         },
         {
@@ -75,14 +95,19 @@
             "color": "#FFFFFF",
             "orbit": {
                 "orbits": "Terrestrial",
-                "orbitCenter": 0,
-                "semiMajorAxis": 1.5,
-                "semiMinorAxis": 1.4,
-                "orbitSpeed": 3.0,
-                "tilt": 0.11693705988928732,
+                "mass":0.16,
+                "Apoapsis": 1.5,
+                "Periapsis": 5.0,
+                "Period": 3.0,
                 "rotationSpeed": 0.5,
+                "tilt": 0.11693705988928732,
                 "inclination": 0.8979719001510825,
-                "orbitAngle": 0
+                "orbitFocus": 0,
+                "orbitAngle": 0,
+                "eccentricity": 0,
+                "meanAnomaly" : 0,
+                "parentOrbit": {},
+                "precomputedPoints" : []
             }
         }
     ]
