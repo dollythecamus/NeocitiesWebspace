@@ -8,6 +8,7 @@ const state = {
   renderer: null,
   planets: [],
   projects: [],
+  lines: [],
   focusedPlanetIndex: 3,
   controls: null, 
 };
@@ -42,7 +43,9 @@ state.planets = planetsData.planets.map((config) => {
   
 state.planets.forEach((planet) => {
   setPlanetOrbits(state.planets, planet);
-  createOrbitLine(state.planets, planet, state.scene);
+  const line = createOrbitLine(state.planets, planet, state.scene);
+  if (line)
+    state.lines.push(line)
 });
 
 state.projects = projectsData.projects.map((project) => {
@@ -69,6 +72,14 @@ speedSlider.addEventListener('input', (e) => {
   setSimulationSpeeds(speed, 1.0);
 });
 
+const orbitLinesCheckbox = document.getElementById('orbit-lines');
+orbitLinesCheckbox.addEventListener('change', (e) => {
+  const visible = e.target.checked;
+  state.lines.forEach((line) => {
+    line.visible = visible;
+  });
+});
+
 // Patch in update logic
 state.update = function(deltaTime) {
   for (const planet of state.planets) {
@@ -91,6 +102,8 @@ state.update = function(deltaTime) {
     state.controls.update();
   }
 };
+
+console.log(state.lines)
 
 setSimulationSpeeds(10.0, 1.0)
 // Render loop

@@ -199,7 +199,9 @@ export const planetsData = {
         argumentOfPeriapsis: 0,
         longitudeOfAscendingNode: 0,
         parentOrbit: {},
-        precomputedPoints: []
+        precomputedPoints: [],
+        
+
       }
     }
   ]
@@ -270,7 +272,7 @@ export function setPlanetOrbits(planets, planet) {
       planet.orbit.orbitFocus.z + periapsisZ
     );
 
-    planet.orbit.precomputedPoints = precomputeOrbitPoints(planet, PRECOMPUTE);
+    //planet.orbit.precomputedPoints = precomputeOrbitPoints(planet, PRECOMPUTE);
   } else {
     planet.orbit.orbitFocus = new THREE.Vector3(0, 0, 0); // Default to origin if no parent specified
   }
@@ -350,6 +352,7 @@ export function createOrbitLine(planets, planet, scene) {
     const parentPlanet = planets.find((p) => p.name === planet.orbit.orbits);
     parentPlanet.center.add(line);
   }
+  return line;
 }
 
 export function precomputeOrbitPoints(planet, segments = 100) {
