@@ -218,7 +218,7 @@ let z = 1001;
 const openWindows = {};
 
 async function spawnWindow(data) {
-  const contentUrl = `../content/${data.contentUrl}`
+  const contentUrl = `../windows/${data.contentUrl}`
   const title = data.title
   const id = data.id
   // If window already exists, bring it to front

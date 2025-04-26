@@ -6,7 +6,7 @@ export const state = {
   planets: [],
   projects: [],
   lines: [],
-  focusedPlanetIndex: 3,
+  focusedPlanetIndex: 0,
   controls: null, 
 };
 
