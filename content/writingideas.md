@@ -13,9 +13,12 @@
 - being space pirates with her robot gf
 
 ## the superpower that solves all problems
-it's [[shapeshifting]]
+it's shapeshifting
+
 it's the type of fantasy i think about when i need to sleep at night
+
 don't write a narrative about it. write an encyclopedia or an atlas of the world with shapeshifting. 
+
 that would be more coherent and i don't have ideas for characters or anything
 
 ## Noachia

@@ -263,9 +263,9 @@ async function spawnWindow(data) {
       script.src = scriptUrl;
       script.async = true;
       script.type = "module"
-      script.onload = () => console.log(`Script loaded: ${scriptUrl}`);
+      //script.onload = () => console.log(`Script loaded: ${scriptUrl}`);
       script.onerror = () => console.error(`Failed to load script: ${scriptUrl}`);
-      document.body.appendChild(script);
+      win.appendChild(script);
     } catch (error) {
       console.error(`Error loading script: ${error.message}`);
     }

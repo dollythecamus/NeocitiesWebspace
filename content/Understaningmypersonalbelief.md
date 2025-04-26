@@ -2,6 +2,7 @@
 # Understanding my personal belief —
 
 I think about religions as their set of beliefs, rituals, places, communities etc
+
 I could say within a belief system of, say, a monotheistic religion, there is a god, and that god means a lot of things but mainly it is what puts nature into action. what makes things happen is god. and i could also say that within that religion this god is treated as something real, universal and appart from subjective understading, it exists outside our minds in the world we live in.
 about polytheistic religions, many gods could take different aspects or powers within different actions of nature. but in the same way, they are treated as if they were real and appart from a subjective understanding, they exist.
 
@@ -10,14 +11,17 @@ about polytheistic religions, many gods could take different aspects or powers w
 i could say that the real part is wrong, as an atheist/agnostic understanding that there is no god that puts action into nature, or at least, this god if it exists, cannot ever be known to actually exist and it makes little sense to take a leap of faith into a belief that will never be proven
 
 but at the same time.
+
 I can use the concept of deities inside of my own subjective experience of having a mind- and have all the spiritual/existential benefits that is believed to come from a belief system. but crutially- not impose on anyone this belief, not claim that it acts in the material world, not claim to be able to change any material circumstance by this belief.
 
 now why would this matter at all? kinda sounds pointless...
 
 and, yea, if a material world is all that exists
+
 but we can talk in a psychological sense, not a spiritual one: that the mind is real. we all have the experience of the mind as something real and subjective and hard to describe, but it's there.
 
 About wicca, it's a religion that assumes a polytheistic view and that it's gods are real etc
+
 and uses of witchcraft rituals and practices as lifestyle and wellness improvement, all relating to a mystic view of nature drawn from various cultures in european folklore. like prayer does to catholics, like breath focus does to buddhists.
 
 so finally as a hipothetical example to illustrate this sort of thinking:
