@@ -55,8 +55,14 @@ export function getSiteGeneratedColors(count = number_of_colors) {
 export function applyColors()
 {
     // generateRandomColors(number_of_colors);
-    UpdateWigglyText(getSiteGeneratedColors());
-    UpdateWindowColors(getSiteGeneratedColors());
-    UpdateButtonColors(getSiteGeneratedColors());
+    const colors = getSiteGeneratedColors();
+    UpdateWigglyText(colors);
+    UpdateWindowColors(colors);
+    UpdateButtonColors(colors);
+    updateFloatingTextColors(colors);
 }
 
+function updateFloatingTextColors()
+{
+
+}

@@ -6,18 +6,23 @@
         transform: translateY(0);
     }
     25% {
-        transform: translateY(-3px);
+        transform: translateY(-4px);
     }
     50% {
-        transform: translateY(3px);
+        transform: translateY(4px);
     }
     75% {
-        transform: translateY(-1px);
+        transform: translateY(-2px);
     }
 }
-    
+
+.wiggly-text {
+    display: inline-block;
+    width: 75%;
+}
+
 .wiggly-letter {
     display: inline-block;
-    animation: wiggle 1s infinite;
+    animation: wiggle 2s infinite;
     text-shadow: 2px 2px 4px rgba(0,0,0,0.5);
 }

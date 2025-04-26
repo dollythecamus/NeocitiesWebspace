@@ -20,11 +20,13 @@ header {
     margin-top: 30px;
     width: 100%;
     text-align: center;
+    display: flex;
+    align-items: center;
+    justify-content: center;
 }
 
 header #title-container {
     padding: 15px;
-    display: inline-block;
     border-style: solid;
     background-color: rgb(56, 84, 116);
     border-color: rgb(59, 89, 133);
@@ -34,7 +36,6 @@ header #title-container {
 
 header #title-container h1{
     display: inline-block;
-    margin: 0 15px;
     font-size: 44px;
 }
 

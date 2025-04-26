@@ -11,16 +11,24 @@ export function UpdateWigglyText(colors){
   titleContainer.style.backgroundColor = colors.darks[1]; // Set background color using the first light color
   
   textElements.forEach(textElement => {
-        const text = textElement.textContent;
-        textElement.innerHTML = ""; // Clear the original text
+    const text = textElement.textContent;
+    textElement.innerHTML = ""; // Clear the original text
 
-        text.split("").forEach((letter, index) => {
-            const span = document.createElement("span");
-            span.textContent = letter;
-            span.className = "wiggly-letter";
-            span.style.animationDelay = `${index * 0.1}s`; // Add delay for each letter
-            span.style.color = colors.lights[index % colors.lights.length]; // Cycle through colors
-            textElement.appendChild(span);
-        });
+    text.split(" ").forEach((word, wordIndex) => {
+      const wordSpan = document.createElement("span");
+      wordSpan.style.display = "inline-block"; // Ensure words stay together
+      wordSpan.style.margin = "0 0.5em"; // Add spacing between words
+
+      word.split("").forEach((letter, letterIndex) => {
+        const span = document.createElement("span");
+        span.textContent = letter;
+        span.className = "wiggly-letter";
+        span.style.animationDelay = `${(wordIndex * 0.5) + (letterIndex * 0.1)}s`; // Add delay for each letter
+        span.style.color = colors.lights[letterIndex % colors.lights.length]; // Cycle through colors
+        wordSpan.appendChild(span);
+      });
+
+      textElement.appendChild(wordSpan);
     });
+  });
 }
