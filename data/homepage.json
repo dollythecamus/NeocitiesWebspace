@@ -49,7 +49,8 @@
         "colors-window":{
             "id": "colors-window",
             "title": "Colors",
-            "contentUrl": "colors-window.html"
+            "contentUrl": "colors-window.html",
+            "scriptUrl": "colors.js"
         },
         "personal-window":{
             "id": "personal-window",

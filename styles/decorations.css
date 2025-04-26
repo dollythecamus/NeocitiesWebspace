@@ -1,16 +1,22 @@
+
+#arrow {
+  width: auto;
+  position: absolute;
+  font-size: 30px;
+  user-select: none;
+}
+
 .float-text {
   width: auto;
-    position: absolute;
-    font-size: 30px;
-    color: white;
-    opacity: 0.6;
-    animation: drift 10s infinite alternate ease-in-out;
+  position: absolute;
+  font-size: 30px;
+  opacity: 0.6;
+  animation: drift 10s infinite alternate ease-in-out;
 }
 
 .rotate-text {
   position: absolute;
   font-size: 30px;
-  color: white;
   opacity: 0.6;
   animation: rotate 10s infinite alternate ease-in-out;
 }
@@ -18,7 +24,6 @@
 .spinning-text {
   position: absolute;
   font-size: 30px;
-  color: white;
   opacity: 0.6;
   animation: spin 10s infinite alternate ease-in-out;
 }
@@ -26,21 +31,18 @@
 .float-text:hover {
     opacity: 1;
     animation-play-state: paused;
-    color: #FFD700; /* or whatever highlight color you want */
     user-select: none;
 }
   
 .rotate-text:hover {
   opacity: 1;
   animation-play-state: paused;
-  color: #FFD700; /* or whatever highlight color you want */
   user-select: none;
 }
 
 .spinning-text:hover {
   opacity: 1;
   animation-play-state: paused;
-  color: #FFD700; /* or whatever highlight color you want */
   user-select: none;
 }
 
@@ -55,10 +57,10 @@
 
 @keyframes rotate {
     0% {
-      transform: translate(0px, 0px) rotate(0deg);
+      transform: translate(0px, 0px) rotate(-42deg);
     }
     100% {
-      transform: translate(0px, 0px) rotate(360deg);
+      transform: translate(0px, 0px) rotate(42deg);
     }
 }
 

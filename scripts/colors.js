@@ -1,5 +1,6 @@
 import {UpdateWigglyText} from "./wiggle-letters.js";
-import {UpdateWindowColors, UpdateButtonColors} from "./buttons-windows.js"; 
+import {UpdateButtonColors} from "./buttons.js"; 
+import { UpdateWindowColors } from "./windows.js";
 
 let generatedSiteColors = {'lights': [], 'darks': []};
 let number_of_colors = 16; // Number of colors to generate
@@ -59,10 +60,4 @@ export function applyColors()
     UpdateWigglyText(colors);
     UpdateWindowColors(colors);
     UpdateButtonColors(colors);
-    updateFloatingTextColors(colors);
-}
-
-function updateFloatingTextColors()
-{
-
 }

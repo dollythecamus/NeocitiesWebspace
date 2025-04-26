@@ -24,7 +24,6 @@ async function fetchMarkdownFiles() {
     }
 }
 
-
 // Shuffle the markdown files array
 function shuffleArray(array) {
     for (let i = array.length - 1; i > 0; i--) {
@@ -51,6 +50,8 @@ function prevMarkdown() {
     loadMarkdown(currentIndex);
 }
 
+await fetchMarkdownFiles()
+
 // Create navigation buttons
 const prevButton = document.createElement('button');
 prevButton.textContent = 'Previous';
@@ -62,11 +63,9 @@ nextButton.onclick = nextMarkdown;
 
 let currentIndex = 0
 
-await fetchMarkdownFiles()
 shuffleArray(mdFiles)
 loadMarkdown(currentIndex)
 
 content = document.getElementById('content-window')
 content.appendChild(prevButton);
 content.appendChild(nextButton);
-
