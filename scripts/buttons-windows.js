@@ -219,6 +219,7 @@ const openWindows = {};
 
 async function spawnWindow(data) {
   const contentUrl = `../windows/${data.contentUrl}`
+  const scriptUrl = data.scriptUrl ? `../scripts/windows/${data.scriptUrl}` : null;
   const title = data.title
   const id = data.id
   // If window already exists, bring it to front
@@ -255,15 +256,30 @@ async function spawnWindow(data) {
     const windowOpenedEvent = new CustomEvent("windowOpened", { detail: { id, win, contentUrl} });
     document.dispatchEvent(windowOpenedEvent);
   
-    // Close button logic
-    win.querySelector(".close-btn").addEventListener("click", () => {
-      document.body.removeChild(win);
-      delete openWindows[title];
-  
-      // Dispatch a custom "windowClosed" event
-      const windowClosedEvent = new CustomEvent("windowClosed", { detail: { id} });
-      document.dispatchEvent(windowClosedEvent);
-    });
+  // Load and execute the script if specified in window data
+  if (scriptUrl) {
+    try {
+      const script = document.createElement("script");
+      script.src = scriptUrl;
+      script.async = true;
+      script.type = "module"
+      script.onload = () => console.log(`Script loaded: ${scriptUrl}`);
+      script.onerror = () => console.error(`Failed to load script: ${scriptUrl}`);
+      document.body.appendChild(script);
+    } catch (error) {
+      console.error(`Error loading script: ${error.message}`);
+    }
+  }
+
+  // Close button logic
+  win.querySelector(".close-btn").addEventListener("click", () => {
+    document.body.removeChild(win);
+    delete openWindows[title];
+
+    // Dispatch a custom "windowClosed" event
+    const windowClosedEvent = new CustomEvent("windowClosed", { detail: { id} });
+    document.dispatchEvent(windowClosedEvent);
+  });
   applyColors();
 }
 

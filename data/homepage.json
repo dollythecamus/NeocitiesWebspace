@@ -21,11 +21,21 @@
             "window": "inventions-window"
         },
         {
+            "icon": "🗒️",
+            "window": "content-window"
+        },
+        {
             "icon": "**",
             "window": "null"
         }
     ],
     "windows": {
+        "content-window":{
+            "id": "content-window",
+            "title": "stuff i want to tell you",
+            "contentUrl": "content-window.html",
+            "scriptUrl": "content.js"
+        },
         "tech-window":{
             "id": "tech-window",
             "title": "Tech",
