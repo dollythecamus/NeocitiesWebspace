@@ -65,7 +65,8 @@ for (let i = 0; i < buttonConfig.length; i++) {
     if (window != "null")
     {
       btn.addEventListener('click', () => {
-        //console.log(windowsconfig[window])
+        if (document.getElementById(window))
+          return;
         on_buttonClick(window); // duplicate window data, this works
         }
       );

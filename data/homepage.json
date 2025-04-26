@@ -31,34 +31,28 @@
     ],
     "windows": {
         "content-window":{
-            "id": "content-window",
             "title": "stuff i want to tell you",
             "contentUrl": "content-window.html",
             "scriptUrl": "content.js"
         },
         "tech-window":{
-            "id": "tech-window",
             "title": "Tech",
             "contentUrl": "tech-window.html"
         },
         "stats-window":{
-            "id": "stats-window",
             "title": "Stats",
             "contentUrl": "stats-window.html"
         },
         "colors-window":{
-            "id": "colors-window",
             "title": "Colors",
             "contentUrl": "colors-window.html",
             "scriptUrl": "colors.js"
         },
         "personal-window":{
-            "id": "personal-window",
             "title": "Personal",
             "contentUrl": "personal-window.html"
         },
         "inventions-window":{
-            "id": "inventions-window",
             "title": "Inventions",
             "contentUrl": "inventions-window.html"
         }

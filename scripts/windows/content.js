@@ -5,6 +5,7 @@ import 'https://cdn.jsdelivr.net/npm/marked/marked.min.js';
 
 // get all markdown files in content folder
 const mdFiles = [];
+let currentIndex = 0
 
 async function fetchMarkdownFiles() {
     try {
@@ -50,22 +51,37 @@ function prevMarkdown() {
     loadMarkdown(currentIndex);
 }
 
-await fetchMarkdownFiles()
+const id = "content-window";
 
-// Create navigation buttons
-const prevButton = document.createElement('button');
-prevButton.textContent = 'Previous';
-prevButton.onclick = prevMarkdown;
+document.addEventListener("windowOpened", (event) => {
 
-const nextButton = document.createElement('button');
-nextButton.textContent = 'Next';
-nextButton.onclick = nextMarkdown;
+    if (event.detail.id != id)
+        return;
 
-let currentIndex = 0
+    onWindowOpen();
+});
 
-shuffleArray(mdFiles)
-loadMarkdown(currentIndex)
+async function onWindowOpen()
+{
+    // Create navigation buttons
+    const prevButton = document.createElement('button');
+    prevButton.textContent = 'Previous';
+    prevButton.onclick = prevMarkdown;
 
-content = document.getElementById('content-window')
-content.appendChild(prevButton);
-content.appendChild(nextButton);
+    const nextButton = document.createElement('button');
+    nextButton.textContent = 'Next';
+    nextButton.onclick = nextMarkdown;
+
+    await fetchMarkdownFiles()
+    shuffleArray(mdFiles)
+    loadMarkdown(currentIndex)
+
+    content = document.getElementById('content-window')
+    content.appendChild(prevButton);
+    content.appendChild(nextButton);
+}
+
+
+document.addEventListener("windowClosed", (event) => {
+    // something on windowClosed.
+});
