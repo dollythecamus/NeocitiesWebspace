@@ -53,6 +53,14 @@ export function getSiteGeneratedColors(count = number_of_colors) {
     };
 }
 
+export function oppositeColor(type)
+{
+    if (type == 'lights')
+        return 'darks'
+    else if (type == 'darks')
+        return 'lights'
+}
+
 export function applyColors()
 {
     // generateRandomColors(number_of_colors);

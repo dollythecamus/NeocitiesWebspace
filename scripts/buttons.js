@@ -1,4 +1,4 @@
-import { applyColors } from './colors.js';
+import { applyColors, oppositeColor } from './colors.js';
 import { spawnWindow } from './windows.js';
 
 let data = {};
@@ -41,9 +41,12 @@ const layerConfig = [2, 8, 32]; // Max buttons per layer (like electron shells)
 const layerSpacing = 85; // Distance between layers
 
 for (let i = 0; i < buttonConfig.length; i++) {
-  const { icon, func } = buttonConfig[i];
+  const { icon, func} = buttonConfig[i];
   const btn = document.createElement('div');
+  btn.dataset.config = JSON.stringify(buttonConfig[i])
+
   btn.classList.add('button');
+  
   if (i === buttonConfig.length - 1) btn.classList.add('front');
 
   btn.innerText = icon;
@@ -68,14 +71,13 @@ for (let i = 0; i < buttonConfig.length; i++) {
     const func_type = func.split(':')[0]
 
     if (func_type == "window") {
-      const window_id = func.split(':')[1] 
+      const window_id = func.split(':')[1]
       spawnWindowFunction(window_id); // duplicate window data, this works
-    }else if (func_type == "function")
-    {
+    } else if (func_type == "function") {
       // don't confuse window with my floating windows...
       const functionName = func.split(':')[1];
       if (typeof window[functionName] === "function") {
-          window[functionName]();
+        window[functionName]();
       }
     }
   }
@@ -250,8 +252,13 @@ frontButton.addEventListener('touchend', (e) => {
 
 export function UpdateButtonColors(colors) {
   buttons.forEach((btn, i) => {
-    btn.style.backgroundColor = colors.lights[i % colors.lights.length]; // Cycle through light colors
-    btn.style.color = colors.darks[i % colors.darks.length]; // Cycle through dark colors
+    
+    const data = JSON.parse(btn.dataset.config) // color just specifies if it's from the 'lights' or 'darks' set
+    const color = data.color
+    const opp = oppositeColor(color)
+    
+    btn.style.backgroundColor = colors[color][i % colors[color].length]; // Cycle through colors
+    btn.style.color = colors[opp][i % colors[opp].length]; // Cycle through opposite colors
   });
 }
 

@@ -2,39 +2,48 @@
     "buttons": [
         {
             "icon": "🖥",
-            "func": "window:tech-window"
+            "func": "window:tech-window",
+            "color": "lights"
         },
         {
             "icon": "📷",
-            "func": "window:stats-window"
+            "func": "window:stats-window",
+            "color": "lights"
         },
         {
             "icon": "🎨",
-            "func": "window:colors-window"
+            "func": "window:colors-window",
+            "color": "darks"
         },
         {
             "icon": "✨",
-            "func": "function:randomColors"
+            "func": "function:randomColors",
+            "color": "darks"
         },
         {
             "icon": "👅",
-            "func": "window:personal-window"
+            "func": "window:personal-window",
+            "color": "lights"
         },
         {
             "icon": "🌌",
-            "func": "window:inventions-window"
+            "func": "window:inventions-window",
+            "color": "lights"
         },
         {
             "icon": "🗒️",
-            "func": "window:content-window"
+            "func": "window:content-window",
+            "color": "darks"
         },
         {
             "icon": "🏳️‍⚧️",
-            "func": "window:queer"
+            "func": "window:queer",
+            "color": "darks"
         },
         {
             "icon": "**",
-            "func": null
+            "func": null,
+            "color":"lights"
         }
     ],
     "windows": {
