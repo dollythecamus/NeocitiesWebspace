@@ -48,11 +48,10 @@ state.projects = projectsData.projects.map((project) => {
 window.addEventListener('keydown', (e) => {
     if (e.key === 'Tab') {
       e.preventDefault(); // stop browser from switching elements
-      state.focusedPlanetIndex = (state.focusedPlanetIndex + 1) % state.planets.length;
-      if (! state.planets[state.focusedPlanetIndex].camera_focus) // if it is specified to not focus on the planet, sum again
-        {state.focusedPlanetIndex = (state.focusedPlanetIndex + 1) % state.planets.length;}
+      cyclePlanetFocus()
     }
 });
+
 
 // Patch in update logic
 state.update = function(deltaTime) {
@@ -60,7 +59,6 @@ state.update = function(deltaTime) {
     updatePlanet(planet, deltaTime, {translation: translationSimulationSpeed, rotation: rotationSimulationSpeed});
   }
 
-  // Add offset to OrbitControls camera position based on the focused planet's orbit
   const targetPlanet = state.planets[state.focusedPlanetIndex];
   if (targetPlanet && targetPlanet.camera_focus) {
     
@@ -76,8 +74,6 @@ state.update = function(deltaTime) {
     state.controls.update();
   }
 };
-
-console.log(state.lines)
 
 //setSimulationSpeeds(10.0, 1.0)
 // Render loop

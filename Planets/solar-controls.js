@@ -25,3 +25,9 @@ export function setOrbitLinesVisible(vis)
         line.visible = vis;
   });
 }
+
+export function cyclePlanetFocus() {
+  state.focusedPlanetIndex = (state.focusedPlanetIndex + 1) % state.planets.length;
+  if (! state.planets[state.focusedPlanetIndex].camera_focus) // if it is specified to not focus on the planet, sum again
+    cyclePlanetFocus()
+} 

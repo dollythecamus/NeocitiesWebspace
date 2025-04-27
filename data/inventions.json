@@ -2,23 +2,27 @@
     "buttons": [
         {
             "icon": "🖥",
-            "window": "inventions-tech-window"
+            "func": "window:inventions-tech-window"
         },
         {
             "icon": "📷",
-            "window": "inventions-stats-window"
+            "func": "window:stats-window"
         },
         {
             "icon": "🎨",
-            "window": "colors-window"
+            "func": "window:colors-window"
         },
         {
             "icon": "🌌",
-            "window": "solar-controls"
+            "func": "window:solar-controls"
+        },
+        {
+            "icon": "🪐",
+            "func": "function:cyclePlanetFocus"
         },
         {
             "icon": "**",
-            "window": "null"
+            "func": null
         }
     ],
     "windows": {
@@ -26,7 +30,7 @@
             "title": "Tech",
             "contentUrl": "inventions-tech-window.html"
         },
-        "inventions-stats-window":{
+        "stats-window":{
             "title": "Stats",
             "contentUrl": "stats-window.html"
         },

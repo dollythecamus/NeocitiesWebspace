@@ -1,1 +1,2 @@
 function randomColors() {};
+function cyclePlanetFocus() {};

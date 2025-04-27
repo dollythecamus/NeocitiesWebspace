@@ -72,6 +72,7 @@ for (let i = 0; i < buttonConfig.length; i++) {
       spawnWindowFunction(window_id); // duplicate window data, this works
     }else if (func_type == "function")
     {
+      // don't confuse window with my floating windows...
       const functionName = func.split(':')[1];
       if (typeof window[functionName] === "function") {
           window[functionName]();

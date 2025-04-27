@@ -18,14 +18,13 @@ async function loadData(path) {
 // data_path MUST be set in the main script tag of the page. 
 await loadData(data_path);
 
-const windowsconfig = data.windows;
+const windowsConfig = data.windows;
 
 let z = 1001;
 const openWindows = {};
 
-
 export async function spawnWindow(id) {
-    const windowData = windowsconfig[id]
+    const windowData = windowsConfig[id]
     const contentUrl = `../windows/${windowData.contentUrl}`
     const scriptUrl = windowData.scriptUrl ? `../scripts/windows/${windowData.scriptUrl}` : null;
     const title = windowData.title
