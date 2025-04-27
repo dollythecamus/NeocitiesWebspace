@@ -43,7 +43,7 @@ export function getSiteGeneratedColors(count = number_of_colors) {
         generatedSiteColors = JSON.parse(storedColors);
     }
     
-    if (generatedSiteColors.lights.length === 0 && generatedSiteColors.darks.length === 0) {
+    if (generatedSiteColors.lights.length === 0 && generatedSiteColors.darks.length === 0 || count > generatedSiteColors.lights.length) {
         // If no colors have been generated yet, generate them
         generatedSiteColors = generateRandomColors(count);
     }
