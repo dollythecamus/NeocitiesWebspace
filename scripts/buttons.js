@@ -110,7 +110,6 @@ window.addEventListener('mousemove', (e) => {
 frontButton.addEventListener('mouseup', (e) => {
   isDragging = false;
   let timeNow = Date.now() - startTime
-  console.log(timeNow - timeSinceClick)
   if ((timeNow - timeSinceClick) < clickTimeThreshold) {
     isExpanded = !isExpanded;
   }
