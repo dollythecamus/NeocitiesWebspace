@@ -29,6 +29,10 @@
             "func": "window:content-window"
         },
         {
+            "icon": "🏳️‍⚧️",
+            "func": "window:queer"
+        },
+        {
             "icon": "**",
             "func": null
         }
@@ -59,6 +63,10 @@
         "inventions-window":{
             "title": "Inventions",
             "contentUrl": "inventions-window.html"
+        },
+        "queer":{
+            "title": "Queer",
+            "contentUrl": "queer.html"
         }
     }
 }
