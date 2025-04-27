@@ -1,5 +1,5 @@
-import { applyColors} from './colors.js';
-import {spawnWindow} from './windows.js';
+import { applyColors } from './colors.js';
+import { spawnWindow } from './windows.js';
 
 let data = {};
 
@@ -41,40 +41,48 @@ const layerConfig = [2, 8, 32]; // Max buttons per layer (like electron shells)
 const layerSpacing = 85; // Distance between layers
 
 for (let i = 0; i < buttonConfig.length; i++) {
-    const { icon, color, window} = buttonConfig[i];
-    const btn = document.createElement('div');
-    btn.classList.add('button');
-    if (i === buttonConfig.length - 1) btn.classList.add('front');
+  const { icon, func } = buttonConfig[i];
+  const btn = document.createElement('div');
+  btn.classList.add('button');
+  if (i === buttonConfig.length - 1) btn.classList.add('front');
 
-    // button colors is now in applyColors from colors.js
-    // btn.style.background = color;
+  btn.innerText = icon;
 
-    btn.innerText = icon;
-    
-    const x = startX;
-    const y = startY;
-    btn.style.left = `${x}px`;
-    btn.style.top = `${y}px`;
-    
-    currentPositions.push({ x, y });
-    originalPositions.push({ x, y });
-    
-    buttons.push(btn);
-    document.body.appendChild(btn);
-    
-    if (window != "null")
+  const x = startX;
+  const y = startY;
+  btn.style.left = `${x}px`;
+  btn.style.top = `${y}px`;
+
+  currentPositions.push({ x, y });
+  originalPositions.push({ x, y });
+
+  buttons.push(btn);
+  document.body.querySelector('nav').appendChild(btn);
+
+  // if there is no function to the button, end the button generation here
+  if (func == null)
+    continue
+
+  btn.addEventListener('click', () => {
+
+    const func_type = func.split(':')[0]
+
+    if (func_type == "window") {
+      const window_id = func.split(':')[1] 
+      spawnWindowFunction(window_id); // duplicate window data, this works
+    }else if (func_type == "function")
     {
-      btn.addEventListener('click', () => {
-        if (document.getElementById(window))
-          return;
-        on_buttonClick(window); // duplicate window data, this works
-        }
-      );
+      const functionName = func.split(':')[1];
+      if (typeof window[functionName] === "function") {
+          window[functionName]();
+      }
     }
+  }
+  );
 }
 
-async function on_buttonClick(window) {
-  await spawnWindow(window);
+async function spawnWindowFunction(window_id) {
+  await spawnWindow(window_id); // spawn window already handles if the window exists or not
 }
 
 const frontButton = buttons[buttons.length - 1];
@@ -90,27 +98,27 @@ frontButton.addEventListener('mousedown', (e) => {
 });
 
 window.addEventListener('mousemove', (e) => {
-    if (!isDragging) return;
-    if (isExpanded) isExpanded = false;
-    lastMouse.x = e.pageX;
-    lastMouse.y = e.pageY;
+  if (!isDragging) return;
+  if (isExpanded) isExpanded = false;
+  lastMouse.x = e.pageX;
+  lastMouse.y = e.pageY;
 });
 
 frontButton.addEventListener('mouseup', (e) => {
   isDragging = false;
   let timeNow = Date.now() - startTime
   console.log(timeNow - timeSinceClick)
-  if ((timeNow - timeSinceClick) < clickTimeThreshold ) {
+  if ((timeNow - timeSinceClick) < clickTimeThreshold) {
     isExpanded = !isExpanded;
   }
 });
-  
+
 const followSpeed = 0.1;
 const returnSpeed = 0.1;
 
 function update() {
-if (isExpanded) {
-     // Arrange buttons in concentric circles around the front button
+  if (isExpanded) {
+    // Arrange buttons in concentric circles around the front button
     const centerX = currentPositions[buttons.length - 1].x;
     const centerY = currentPositions[buttons.length - 1].y;
 
@@ -145,19 +153,19 @@ if (isExpanded) {
 
       buttonsInLayer++;
     }
-} else if (isDragging) {
+  } else if (isDragging) {
     // Drag front button
     currentPositions[buttons.length - 1].x = lastMouse.x;
     currentPositions[buttons.length - 1].y = lastMouse.y;
 
     // And the rest follow
     for (let i = buttons.length - 2; i >= 0; i--) {
-    const target = currentPositions[i + 1];
-    const curr = currentPositions[i];
-    curr.x += (target.x - curr.x) * followSpeed;
-    curr.y += (target.y - curr.y) * followSpeed;
+      const target = currentPositions[i + 1];
+      const curr = currentPositions[i];
+      curr.x += (target.x - curr.x) * followSpeed;
+      curr.y += (target.y - curr.y) * followSpeed;
     }
-} else {
+  } else {
 
     // Adjust button positions for responsiveness
     const titleHeight = 300; // Adjust this value based on your title height
@@ -167,7 +175,7 @@ if (isExpanded) {
       for (let i = 0; i < originalPositions.length; i++) {
         originalPositions[i].x = startX; // Adjust Y positions to stay below the title
         originalPositions[i].y = titleHeight; // Adjust Y positions to stay below the title
-      
+
       }
     } else {
       for (let i = 0; i < originalPositions.length; i++) {
@@ -177,7 +185,7 @@ if (isExpanded) {
     }
 
     // i've decided to leave the buttons in the place the user left them.
-    
+
     // Send front button to return position
     //currentPositions[buttons.length - 1].x += (originalPositions[buttons.length - 1].x - currentPositions[buttons.length - 1].x) * returnSpeed;
     //currentPositions[buttons.length - 1].y += (originalPositions[buttons.length - 1].y - currentPositions[buttons.length - 1].y) * returnSpeed;
@@ -185,16 +193,16 @@ if (isExpanded) {
     // Front button stays where the user left it 
     // And the rest follow
     for (let i = buttons.length - 2; i >= 0; i--) {
-    const target = currentPositions[i + 1];
-    const curr = currentPositions[i];
-    curr.x += (target.x - curr.x) * followSpeed;
-    curr.y += (target.y - curr.y) * followSpeed;
+      const target = currentPositions[i + 1];
+      const curr = currentPositions[i];
+      curr.x += (target.x - curr.x) * followSpeed;
+      curr.y += (target.y - curr.y) * followSpeed;
     }
-    }
+  }
   // Apply positions to DOM
   buttons.forEach((btn, i) => {
-      btn.style.left = `${currentPositions[i].x - 30}px`;
-      btn.style.top = `${currentPositions[i].y - 30}px`;
+    btn.style.left = `${currentPositions[i].x - 30}px`;
+    btn.style.top = `${currentPositions[i].y - 30}px`;
   });
 
   // update loop
@@ -206,7 +214,7 @@ let touchStartTime = 0; // Track the time when touch starts
 const touchThreshold = 750; // Time threshold in milliseconds
 
 frontButton.addEventListener('touchstart', (e) => {
-  
+
   const touch = e.touches[0];
   lastMouse.x = touch.pageX;
   lastMouse.y = touch.pageY;
@@ -215,7 +223,7 @@ frontButton.addEventListener('touchstart', (e) => {
   touchStartTime = Date.now(); // Record the touch start time
 
   isDragging = true;
-  
+
   requestAnimationFrame(update);
 });
 

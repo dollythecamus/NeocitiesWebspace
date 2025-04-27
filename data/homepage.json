@@ -2,31 +2,35 @@
     "buttons": [
         {
             "icon": "🖥",
-            "window": "tech-window"
+            "func": "window:tech-window"
         },
         {
             "icon": "📷",
-            "window": "stats-window"
+            "func": "window:stats-window"
         },
         {
             "icon": "🎨",
-            "window": "colors-window"
+            "func": "window:colors-window"
+        },
+        {
+            "icon": "✨",
+            "func": "function:randomColors"
         },
         {
             "icon": "👅",
-            "window": "personal-window"
+            "func": "window:personal-window"
         },
         {
             "icon": "🌌",
-            "window": "inventions-window"
+            "func": "window:inventions-window"
         },
         {
             "icon": "🗒️",
-            "window": "content-window"
+            "func": "window:content-window"
         },
         {
             "icon": "**",
-            "window": "null"
+            "func": null
         }
     ],
     "windows": {

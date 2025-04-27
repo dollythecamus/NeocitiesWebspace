@@ -54,7 +54,7 @@ export async function spawnWindow(id) {
 
     makeDraggable(win);
     //makeResizable(win);
-    document.body.appendChild(win);
+    document.body.querySelector('main').appendChild(win);
     openWindows[id] = win;
 
     let html = await loadContent(contentUrl);
@@ -92,7 +92,7 @@ export async function spawnWindow(id) {
 
         document.dispatchEvent(new CustomEvent("windowClosed", { detail: {id: id} }));
 
-        document.body.removeChild(win);
+        document.body.querySelector('main').removeChild(win);
         delete openWindows[id];
     });
 
