@@ -7,7 +7,8 @@ const LOW_RES_HEIGHT = 180 * 1.2;
 export function createRenderer() {
   const scene = new THREE.Scene();
   const camera = new THREE.PerspectiveCamera(75, window.innerWidth / window.innerHeight, 0.1, 1000);
-  camera.position.z = 5;
+  camera.position.z = 30;
+  camera.position.y = 15;
 
   const renderer = new THREE.WebGLRenderer({ antialias: false });
   renderer.setSize(window.innerWidth, window.innerHeight);
@@ -38,25 +39,25 @@ export function createRenderer() {
   const quad = new THREE.Mesh(new THREE.PlaneGeometry(2, 2), finalMaterial);
   finalScene.add(quad);
 
-    // Orbit controls for the camera
-    const controls = new OrbitControls(camera, renderer.domElement);
-    controls.enableDamping = true;
-    controls.dampingFactor = 0.1;
-    controls.enablePan = true;
-    controls.enableZoom = true;
-    controls.target.set(0, 0, 0);
-    controls.update();
+  // Orbit controls for the camera
+  const controls = new OrbitControls(camera, renderer.domElement);
+  controls.enableDamping = true;
+  controls.dampingFactor = 0.1;
+  controls.enablePan = true;
+  controls.enableZoom = true;
+  controls.target.set(0, 0, 0);
+  controls.update();
 
 
-    return {
-        scene,
-        camera,
-        renderer,
-        controls,
-        renderTarget,
-        finalScene,
-        finalCamera,
-      };
+  return {
+      scene,
+      camera,
+      renderer,
+      controls,
+      renderTarget,
+      finalScene,
+      finalCamera,
+    };
 }
 
 export function renderLoop(state) {
