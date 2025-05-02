@@ -26,6 +26,11 @@
             "color": "lights"
         },
         {
+            "icon": "🎛️",
+            "func": "function:LogStateToConsole",
+            "color": "lights"
+        },
+        {
             "icon": "**",
             "func": null,
             "color": "lights"

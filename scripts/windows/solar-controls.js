@@ -1,4 +1,4 @@
-import {setOrbitLinesVisible, setSimulationSpeeds} from "../../Planets/solar-controls.js"
+import {setOrbitLinesVisible, setSimulationSpeeds} from "../../Space/solar-controls.js"
 
 const id = "solar-controls" 
 

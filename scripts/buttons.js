@@ -210,43 +210,32 @@ function update() {
   // update loop
   requestAnimationFrame(update);
 }
-update();
-
-let touchStartTime = 0; // Track the time when touch starts
-const touchThreshold = 750; // Time threshold in milliseconds
 
 frontButton.addEventListener('touchstart', (e) => {
-
-  const touch = e.touches[0];
-  lastMouse.x = touch.pageX;
-  lastMouse.y = touch.pageY;
-
-  // Uses a time dealy to determine if the touch is a long press, it's a weird solution but i hope it works
-  touchStartTime = Date.now(); // Record the touch start time
-
   isDragging = true;
-
-  requestAnimationFrame(update);
+  let touch = e.touches[0]
+  lastMouse.x = touch.screenX;
+  lastMouse.y = touch.screenY;
+  clickStartPos.x = touch.screenX;
+  clickStartPos.y = touch.screenY;
+  timeSinceClick = Date.now() - startTime
 });
 
 window.addEventListener('touchmove', (e) => {
-  if (!isDragging) return;
-
-  const touch = e.touches[0];
-  lastMouse.x = touch.pageX;
-  lastMouse.y = touch.pageY;
+  if (!isDragging) return; 
+  e.preventDefault(); // Prevent scroll
+  if (isExpanded) isExpanded = false;
+  let touch = e.touches[0];
+  lastMouse.x = touch.screenX;
+  lastMouse.y = touch.screenY;
 });
 
 frontButton.addEventListener('touchend', (e) => {
   isDragging = false;
-
-  const touchDuration = Date.now() - touchStartTime; // Calculate touch duration
-
-  if (touchDuration < touchThreshold) {
-    // If touch duration is below the threshold, toggle expansion
-    isExpanded = false;
+  let timeNow = Date.now() - startTime
+  if ((timeNow - timeSinceClick) < clickTimeThreshold) {
+    isExpanded = !isExpanded;
   }
-
 });
 
 export function UpdateButtonColors(colors) {
@@ -261,4 +250,5 @@ export function UpdateButtonColors(colors) {
   });
 }
 
+update();
 applyColors();

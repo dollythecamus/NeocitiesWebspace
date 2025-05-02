@@ -1,28 +1,26 @@
 
 #arrow {
-  width: auto;
-  position: absolute;
+  position: fixed;
   font-size: 30px;
   user-select: none;
 }
 
 .float-text {
-  width: auto;
-  position: absolute;
+  position: fixed;
   font-size: 30px;
   opacity: 0.6;
   animation: drift 10s infinite alternate ease-in-out;
 }
 
 .rotate-text {
-  position: absolute;
+  position: fixed;
   font-size: 30px;
   opacity: 0.6;
   animation: rotate 10s infinite alternate ease-in-out;
 }
 
 .spinning-text {
-  position: absolute;
+  position: fixed;
   font-size: 30px;
   opacity: 0.6;
   animation: spin 10s infinite alternate ease-in-out;

@@ -15,6 +15,7 @@
 .window-content{
     padding: 5px;
     height: 90%;
+    overflow: auto;
 }
 
 .window-header {

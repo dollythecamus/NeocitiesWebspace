@@ -13,12 +13,12 @@
         {
             "icon": "🎨",
             "func": "window:colors-window",
-            "color": "darks"
+            "color": "lights"
         },
         {
             "icon": "✨",
             "func": "function:randomColors",
-            "color": "darks"
+            "color": "lights"
         },
         {
             "icon": "👅",
@@ -33,12 +33,12 @@
         {
             "icon": "🗒️",
             "func": "window:content-window",
-            "color": "darks"
+            "color": "lights"
         },
         {
             "icon": "🏳️‍⚧️",
             "func": "window:queer",
-            "color": "darks"
+            "color": "lights"
         },
         {
             "icon": "**",
