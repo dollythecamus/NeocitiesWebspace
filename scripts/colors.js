@@ -10,6 +10,33 @@ function generateRandomLightColor() {
     const saturation = Math.floor(Math.random() * 30) + 70; // 70-100%
     const lightness = Math.floor(Math.random() * 20) + 65; // 75-95%
     return `hsl(${hue}, ${saturation}%, ${lightness}%)`;
+}
+
+export function getSimilarColor(hslString, hueRange = 15, satRange = 10, lightRange = 10) {
+    // Extract H, S, and L using a regular expression
+    const match = hslString.match(/hsl\((\d+),\s*(\d+)%?,\s*(\d+)%?\)/);
+    if (!match) throw new Error("Invalid HSL format");
+  
+    let [h, s, l] = match.slice(1).map(Number);
+  
+    // Generate similar values within the specified ranges
+    h = (h + getRandomOffset(hueRange)) % 360;
+    if (h < 0) h += 360;
+  
+    s = clamp(s + getRandomOffset(satRange), 0, 100);
+    l = clamp(l + getRandomOffset(lightRange), 0, 100);
+  
+    return `hsl(${h}, ${s}%, ${l}%)`;
+  }
+  
+  // Helper to get a random offset within ±range
+  function getRandomOffset(range) {
+    return Math.floor(Math.random() * (2 * range + 1)) - range;
+  }
+  
+  // Clamp value between min and max
+  function clamp(value, min, max) {
+    return Math.max(min, Math.min(max, value));
   }
   
 function generateRandomDarkColor() {
