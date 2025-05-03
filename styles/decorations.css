@@ -23,7 +23,7 @@
 
 .spinning-text {
   position: fixed;
-  font-size: 30px;
+  font-size: 20px;
   opacity: 0.6;
   animation: spin 10s infinite alternate ease-in-out;
 }
@@ -46,6 +46,10 @@
   user-select: none;
 }
 
+#versions {
+  color: pink;
+}
+
 @keyframes drift {
     0% {
       transform: translate(800px, 0px) rotate(0deg);
@@ -62,13 +66,4 @@
     100% {
       transform: translate(0px, 0px) rotate(42deg);
     }
-}
-
-@keyframes spin {
-  0% {
-    transform: translate(0px, 0px) rotate(0deg);
-  }
-  100% {
-    transform: translate(500px, 0px) rotate(0deg);
-  }
 }
