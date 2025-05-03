@@ -17,3 +17,18 @@ window.LogStateToConsole = function _logStateToConsole()
 {
     console.log(state)
 }
+
+window.ShowTutorial = function _showTutorial()
+{
+    if (!localStorage.getItem('hasVisited')) {
+        
+        const tutorials = document.querySelectorAll('.tutorial');
+        tutorials.forEach(e =>{
+            e.style.display = 'inline'
+        });
+        
+        localStorage.setItem('hasVisited', 'true');
+    }
+}
+
+window.ShowTutorial();

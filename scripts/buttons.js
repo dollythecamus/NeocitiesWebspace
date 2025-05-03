@@ -25,8 +25,8 @@ const buttons = [];
 const currentPositions = [];
 const originalPositions = [];
 
-const startX = 100;
-const startY = 100;
+const startX = window.innerWidth/2;
+const startY = window.innerHeight/2;
 
 let clickStartPos = { x: 0, y: 0 };
 let startTime = Date.now()

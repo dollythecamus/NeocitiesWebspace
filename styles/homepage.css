@@ -27,15 +27,19 @@ header {
 }
 
 header #title-container {
-    padding: 15px;
+    padding: 1vw;
     border-style: solid;
     background-color: rgb(56, 84, 116);
     border-color: rgb(59, 89, 133);
-    border-width: 16px;
-    border-radius: 40px;
+    border-width: 1vh;
+    border-radius: 2vh;
 }
 
 header #title-container h1{
     display: inline-block;
-    font-size: 44px;
+    font-size: 3vw;
+}
+
+.tutorial {
+    display: none;
 }
