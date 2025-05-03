@@ -40,6 +40,13 @@ header #title-container h1{
     font-size: 3vw;
 }
 
+@media (max-width: 768px) {
+    header #title-container h1{
+        display: inline-block;
+        font-size: 6vw;
+    }
+}
+
 .tutorial {
     display: none;
 }

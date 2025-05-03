@@ -115,8 +115,8 @@ frontButton.addEventListener('mouseup', (e) => {
   }
 });
 
-const followSpeed = 0.1;
-const returnSpeed = 0.1;
+const followSpeed = 0.2;
+const returnSpeed = 0.2;
 
 function update() {
   if (isExpanded) {

@@ -7,6 +7,8 @@
 
 .float-text {
   position: fixed;
+  text-align: justify;
+  justify-self: left;
   font-size: 30px;
   opacity: 0.6;
   animation: drift 10s infinite alternate ease-in-out;
