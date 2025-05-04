@@ -69,3 +69,30 @@
       transform: translate(0px, 0px) rotate(42deg);
     }
 }
+
+/* -~- wiggle -~- */
+
+@keyframes wiggle {
+  0%, 100% {
+      transform: translateY(0);
+  }
+  25% {
+      transform: translateY(-4px);
+  }
+  50% {
+      transform: translateY(4px);
+  }
+  75% {
+      transform: translateY(-2px);
+  }
+}
+
+.decorated-text {
+  display: inline-block;
+}
+
+.wiggly-letter {
+  display: inline-block;
+  animation: wiggle 2s infinite;
+  text-shadow: 2px 2px 4px rgba(0,0,0,0.5);
+}

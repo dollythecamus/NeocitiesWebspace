@@ -1,0 +1,9 @@
+:root{
+    /*these are edited by the script colors.js, don't worry about it*/
+    --color0:ffffff;
+    --color1:ffffff;
+}
+
+.colorful {
+    color:var(--color1)
+}

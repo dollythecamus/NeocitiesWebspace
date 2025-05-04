@@ -1,4 +1,8 @@
 ---
+### changelog window implemented all good :)
+Date: 2025-05-03
+
+---
 ### adding a changelog window because i am LIKE THAT
 Date: 2025-05-03
 

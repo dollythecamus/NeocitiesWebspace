@@ -1,4 +1,4 @@
-import { applyColors } from "./colors.js";
+import { getSiteGeneratedColors } from "./colors.js";
 
 let data = {};
 
@@ -95,7 +95,7 @@ export async function spawnWindow(id) {
         delete openWindows[id];
     });
 
-    applyColors();
+    UpdateWindowColors(getSiteGeneratedColors());
 }
 
 async function loadContent(contentUrl) {

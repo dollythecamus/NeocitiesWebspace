@@ -37,7 +37,7 @@ footer {
     bottom:0;
 }
 
-header #title-container {
+header .text-container {
     padding: 1vw;
     border-style: solid;
     background-color: rgb(56, 84, 116);
@@ -46,7 +46,8 @@ header #title-container {
     border-radius: 2vh;
 }
 
-header #title-container h1{
+/* Title */
+header .text-container h1{
     display: inline-block;
     font-size: 3vw;
 }

@@ -1,4 +1,4 @@
-import {UpdateWigglyText} from "./wiggle-letters.js";
+import {composeTextElements} from "./text-decoration.js";
 import {UpdateButtonColors} from "./buttons.js"; 
 import { UpdateWindowColors } from "./windows.js";
 
@@ -35,7 +35,7 @@ export function getSimilarColor(hslString, hueRange = 15, satRange = 10, lightRa
   }
   
   // Clamp value between min and max
-  function clamp(value, min, max) {
+function clamp(value, min, max) {
     return Math.max(min, Math.min(max, value));
   }
   
@@ -88,11 +88,25 @@ export function oppositeColor(type)
         return 'lights'
 }
 
+export function BackgroundColors(colors){
+    const titleContainers = document.querySelectorAll(".text-container");
+
+    titleContainers.forEach( (titleContainer) => {
+
+        titleContainer.style.borderColor = colors.darks[0]; // Set border color using the first dark color
+        titleContainer.style.backgroundColor = getSimilarColor(colors.darks[0]); // Set background color using the first light color
+    });
+}  
+
 export function applyColors()
 {
     // generateRandomColors(number_of_colors);
     const colors = getSiteGeneratedColors();
-    UpdateWigglyText(colors);
+    composeTextElements();
+    BackgroundColors(colors);
     UpdateWindowColors(colors);
     UpdateButtonColors(colors);
+
+    document.documentElement.style.setProperty('--color0', colors.lights[0]);
+    document.documentElement.style.setProperty('--color1', colors.lights[1]);
 }
