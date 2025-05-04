@@ -47,7 +47,9 @@
 }
 
 #versions {
+  opacity: 0.8;
   color: pink;
+  font-size: 2vh;
 }
 
 @keyframes drift {
