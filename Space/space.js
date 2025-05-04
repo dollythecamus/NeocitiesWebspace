@@ -62,7 +62,7 @@ state.update = function(deltaTime) {
   const targetPlanet = state.planets[state.focusedPlanetIndex];
   if (targetPlanet && targetPlanet.camera_focus) {
     
-    let maxDistance = targetPlanet.radius * 4;
+    let maxDistance = targetPlanet.radius * 40;
     
     if (targetPlanet.name == "Star") {
       maxDistance = targetPlanet.radius * 100;  

@@ -4,7 +4,7 @@ export const planetsData = {
   planets: [
     {
       name: 'Star',
-      radius: 3,
+      radius: 20,
       texture_path: '',
       color: '#FFFF00',
       camera_focus: true,
@@ -13,7 +13,7 @@ export const planetsData = {
         Apoapsis: 0,
         Periapsis: 0,
         Period: 0,
-        mass: 10.0,
+        mass: 300.0,
         rotationSpeed: 0,
         inclination: 0,
         tilt: 0,
@@ -35,8 +35,8 @@ export const planetsData = {
       camera_focus: true,
       orbit: {
         orbits: 'Star',
-        Apoapsis: 4,
-        Periapsis: 3.5,
+        Apoapsis: 40,
+        Periapsis: 35,
         Period: 104,
         mass: 0.6,
         tilt: 0.0005934119456780721,
@@ -60,8 +60,8 @@ export const planetsData = {
       camera_focus: true,
       orbit: {
         orbits: 'Star',
-        Apoapsis: 8,
-        Periapsis: 7.5,
+        Apoapsis: 80,
+        Periapsis: 75,
         Period: 280,
         mass: 1.1,
         tilt: 0.0005934119456780721,
@@ -85,8 +85,8 @@ export const planetsData = {
       camera_focus: true,
       orbit: {
         orbits: 'Star',
-        Apoapsis: 14,
-        Periapsis: 13.5,
+        Apoapsis: 140,
+        Periapsis: 135,
         Period: 365,
         mass: 1.0,
         rotationSpeed: 1.0,
@@ -135,19 +135,19 @@ export const planetsData = {
       radius: 0.001,
       orbit: {
         orbits: 'Star',
-        Apoapsis: 22,
-        Periapsis: 20,
+        Apoapsis: 220,
+        Periapsis: 200,
         Period: 655,
         mass: 0.6,
         tilt: 0,
         rotationSpeed: 0.0,
-        inclination: Math.PI / 8,
+        inclination: Math.PI / 1,
         orbitFocus: 0,
         orbitAngle: 0,
         eccentricity: 0,
         meanAnomaly: 0,
         argumentOfPeriapsis: 0.01,
-        longitudeOfAscendingNode: Math.PI / 1,
+        longitudeOfAscendingNode: -Math.PI / 1,
         parentOrbit: {},
         precomputedPoints: []
       }
@@ -202,6 +202,56 @@ export const planetsData = {
         precomputedPoints: [],
         
 
+      }
+    },
+    {
+      name: 'Giant',
+      texture_path: '',
+      color: '#FF0000',
+      radius: 6.0,
+      camera_focus: true,
+      orbit: {
+        orbits: 'Star',
+        Apoapsis: 300,
+        Periapsis: 320,
+        Period: 2050,
+        mass: 18.0,
+        tilt: 0.0005934119456780721,
+        rotationSpeed: 1.0,
+        inclination: -Math.PI / 4,
+        orbitFocus: 0,
+        orbitAngle: 0,
+        eccentricity: 0,
+        meanAnomaly: 0,
+        argumentOfPeriapsis: 0,
+        longitudeOfAscendingNode: 0,
+        parentOrbit: {},
+        precomputedPoints: [],
+      }
+    },
+    {
+      name: 'Io',
+      texture_path: '',
+      color: '#FFFF00',
+      radius: 0.6,
+      camera_focus: true,
+      orbit: {
+        orbits: 'Giant',
+        Apoapsis: 10,
+        Periapsis: 9,
+        Period: 86,
+        mass: 0.7,
+        tilt: 0.0005934119456780721,
+        rotationSpeed: 1.0,
+        inclination: -Math.PI / 4,
+        orbitFocus: 0,
+        orbitAngle: 0,
+        eccentricity: 0,
+        meanAnomaly: 0,
+        argumentOfPeriapsis: 0,
+        longitudeOfAscendingNode: 0,
+        parentOrbit: {},
+        precomputedPoints: [],
       }
     }
   ]
