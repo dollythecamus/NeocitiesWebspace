@@ -12,7 +12,10 @@ export function composeTextElements(){
     if (existingLetters.length > 0) {
       // Update existing wiggly letters
       existingLetters.forEach((letter, index) => {
-        letter.style.color = colors.lights[index % colors.lights.length]; // Cycle through colors
+        if (classes.contains("rainbow"))
+          {
+            letter.style.color = colors.lights[index % colors.lights.length];
+          }
       });
     } else {
       // Create new decorated letters
@@ -27,6 +30,8 @@ export function composeTextElements(){
         word.split("").forEach((letter, letterIndex) => {
           const span = document.createElement("span");
 
+          span.classList.add("decorated-text-letter");
+
           if (classes.contains("wiggly"))
           {
             span.classList.add("wiggly-letter");
@@ -37,15 +42,8 @@ export function composeTextElements(){
             span.style.color = colors.lights[letterIndex % colors.lights.length];
             span.classList.add("rainbow-letter");
           }
-          if (classes.contains("colorful"))
-          {
-            span.style.color = colors.lights[3];
-            span.classList.add("rainbow-letter");
-          }
             
           span.textContent = letter;
-          span.classList.add("decorated-text-letter");
-
           wordSpan.appendChild(span);
         });
 

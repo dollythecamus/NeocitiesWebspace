@@ -1,11 +1,6 @@
 {
     "buttons": [
         {
-            "icon": "🖥",
-            "func": "function:openSubButtons",
-            "color": "lights"
-        },
-        {
             "icon": "📷",
             "func": "window:stats-window",
             "color": "darks"
@@ -17,7 +12,7 @@
         },
         {
             "icon": "📺",
-            "func": "window:window:tech-window",
+            "func": "window:tech-window",
             "color": "darks"
         },
         {
