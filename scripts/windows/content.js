@@ -57,6 +57,7 @@ function shuffleArray(array) {
         [array[i], array[j]] = [array[j], array[i]];
     }
 }
+
 function loadMarkdown(index) {
     fetch(`${mdFiles[index]}`)
         .then(response => response.text())

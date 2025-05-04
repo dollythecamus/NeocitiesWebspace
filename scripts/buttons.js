@@ -41,13 +41,18 @@ const layerConfig = [2, 8, 32]; // Max buttons per layer (like electron shells)
 const layerSpacing = 85; // Distance between layers
 
 for (let i = 0; i < buttonConfig.length; i++) {
-  const { icon, func} = buttonConfig[i];
+  createButton(buttonConfig[i], i === buttonConfig.length - 1)
+}
+
+function createButton(config, is_front) {
+  const icon = config.icon;
+  const func = config.func
   const btn = document.createElement('div');
-  btn.dataset.config = JSON.stringify(buttonConfig[i])
+  btn.dataset.config = JSON.stringify(config)
 
   btn.classList.add('button');
   
-  if (i === buttonConfig.length - 1) btn.classList.add('front');
+  if (is_front) btn.classList.add('front');
 
   btn.innerText = icon;
 
@@ -64,7 +69,7 @@ for (let i = 0; i < buttonConfig.length; i++) {
 
   // if there is no function to the button, end the button generation here
   if (func == null)
-    continue
+    return
 
   btn.addEventListener('click', () => {
 

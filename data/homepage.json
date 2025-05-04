@@ -2,13 +2,23 @@
     "buttons": [
         {
             "icon": "🖥",
-            "func": "window:tech-window",
+            "func": "function:openSubButtons",
             "color": "lights"
         },
         {
             "icon": "📷",
             "func": "window:stats-window",
-            "color": "lights"
+            "color": "darks"
+        },
+        {
+            "icon": "🎛️",
+            "func": "window:changelog",
+            "color": "darks"
+        },
+        {
+            "icon": "📺",
+            "func": "window:window:tech-window",
+            "color": "darks"
         },
         {
             "icon": "🎨",
@@ -51,6 +61,10 @@
             "title": "stuff i want to tell you",
             "contentUrl": "content-window.html",
             "scriptUrl": "content.js"
+        },"changelog":{
+            "title": "Website Changelog",
+            "contentUrl": "changelog.html",
+            "scriptUrl":"changelog.js"
         },
         "tech-window":{
             "title": "Tech",
