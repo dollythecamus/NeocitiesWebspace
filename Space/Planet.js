@@ -316,25 +316,6 @@ export function setPlanetOrbits(planets, planet) {
   }
 }
 
-export function addProjectToPlanet(planet, project) {
-  // Add structures for projects
-  const structureGeometry = new THREE.BoxGeometry(0.5, 0.5, 0.5);
-  const structureMaterial = new THREE.MeshBasicMaterial({ color: 0xffffff });
-  const structure = new THREE.Mesh(structureGeometry, structureMaterial);
-
-  // Convert latitude and longitude to spherical coordinates
-  const phi = (90 - project.position.lat) * (Math.PI / 180); // latitude to polar angle
-  const theta = (project.position.lon + 180) * (Math.PI / 18); // longitude to azimuthal angle
-
-  // Calculate position on the planet's surface
-  const x = planet.radius * Math.sin(phi) * Math.cos(theta);
-  const y = planet.radius * Math.cos(phi);
-  const z = planet.radius * Math.sin(phi) * Math.sin(theta);
-
-  structure.position.set(x, y, z);
-
-  planet.mesh.add(structure); // Attach structure to the planet
-}
 
 export function enablePlanetRaycast(planet, camera, domElement) {
   const raycaster = new THREE.Raycaster();
