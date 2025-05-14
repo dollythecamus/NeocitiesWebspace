@@ -54,7 +54,7 @@ state.update = function(deltaTime) {
     }
 
     state.controls.maxDistance = maxDistance;
-    state.controls.minDistance = targetPlanet.radius*0.8;
+    state.controls.minDistance = targetPlanet.radius*1.1;
     state.controls.target.copy(targetPlanet.center.position);
     state.controls.update();
   }

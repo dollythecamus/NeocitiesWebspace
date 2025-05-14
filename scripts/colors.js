@@ -94,7 +94,7 @@ export function BackgroundColors(colors){
     titleContainers.forEach( (titleContainer) => {
 
         titleContainer.style.borderColor = colors.darks[0]; // Set border color using the first dark color
-        titleContainer.style.backgroundColor = getSimilarColor(colors.darks[0]); // Set background color using the first light color
+        titleContainer.style.backgroundColor = getSimilarColor(colors.darks[0]); // Set background color using the first light color, with similarity
     });
 }  
 

@@ -1,6 +1,36 @@
 ---
+### added Invention.js -- now the plan for inventions is for them to be artificial objects by some intelligent species that lives in that solar system, and they make little space projects
+Date: 2025-05-04
+
+---
+### tweaking planet files
+Date: 2025-05-04
+
+---
+### tweaking solar system
+Date: 2025-05-04
+
+---
+### changing around to add background changes later
+Date: 2025-05-04
+
+---
+### hmmm
+Date: 2025-05-04
+
+---
+### fixed colors
+Date: 2025-05-04
+
+---
+### a bunch of changes to the color management
+Date: 2025-05-04
+
+---
 ### changelog window implemented all good :)
 Date: 2025-05-03
+git log --pretty=format:"---%n### %s%nDate: %ad%n" --date=short > changelog.md
+
 
 ---
 ### adding a changelog window because i am LIKE THAT

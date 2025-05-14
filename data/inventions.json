@@ -31,6 +31,11 @@
             "color": "lights"
         },
         {
+            "icon": "",
+            "func": "window:nonsense-window",
+            "color": "lights"
+        },
+        {
             "icon": "**",
             "func": null,
             "color": "lights"
@@ -40,6 +45,11 @@
         "inventions-tech-window":{
             "title": "Tech",
             "contentUrl": "inventions-tech-window.html"
+        },
+        "nonsense-window":{
+            "title": "Nonsense",
+            "contentUrl": "nonsense.html",
+            "scriptUrl": "nonsense.js"
         },
         "stats-window":{
             "title": "Stats",
