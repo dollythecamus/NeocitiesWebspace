@@ -16,16 +16,8 @@ document.addEventListener("windowOpened", (event) => {
 
 function onWindowOpen()
 {
-    const generateButton = document.getElementById('generate-nonsense');
     const outputContainer = document.getElementById('nonsense-container');
-
-    generateButton.addEventListener('click', () => {
-        const nonsenseText = generateNonsense();
-        outputContainer.innerHTML = marked.parse(nonsenseText);
-    });
-
-    // Trigger the button click to generate initial nonsense
-    generateButton.click();
+    outputContainer.innerHTML = marked.parse(generateNonsense());
 }
 
 

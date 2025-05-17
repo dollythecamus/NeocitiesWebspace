@@ -1,4 +1,8 @@
 ---
+### added nonsense
+Date: 2025-05-14
+
+---
 ### added Invention.js -- now the plan for inventions is for them to be artificial objects by some intelligent species that lives in that solar system, and they make little space projects
 Date: 2025-05-04
 
@@ -30,7 +34,6 @@ Date: 2025-05-04
 ### changelog window implemented all good :)
 Date: 2025-05-03
 git log --pretty=format:"---%n### %s%nDate: %ad%n" --date=short > changelog.md
-
 
 ---
 ### adding a changelog window because i am LIKE THAT
