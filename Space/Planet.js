@@ -10,21 +10,9 @@ export const planetsData = {
       camera_focus: true,
       orbit: {
         orbits: null,
-        Apoapsis: 0,
-        Periapsis: 0,
-        Period: 0,
         mass: 300.0,
-        rotationSpeed: 0,
-        inclination: 0,
-        tilt: 0,
-        eccentricity: 0,
-        orbitFocus: 0,
-        orbitAngle: 0,
-        meanAnomaly: 0,
-        argumentOfPeriapsis: 0,
-        longitudeOfAscendingNode: 0,
-        parentOrbit: {},
-        precomputedPoints: []
+        rotationSpeed: 0.01,
+        tilt: 0.00322
       }
     },
     {
@@ -41,15 +29,7 @@ export const planetsData = {
         mass: 0.6,
         tilt: 0.0005934119456780721,
         rotationSpeed: 1.0,
-        inclination: 0.00322,
-        orbitFocus: 0,
-        orbitAngle: 0,
-        eccentricity: 0,
-        meanAnomaly: 0,
-        argumentOfPeriapsis: 0,
-        longitudeOfAscendingNode: 0,
-        parentOrbit: {},
-        precomputedPoints: []
+        inclination: 0.00322
       }
     },
     {
@@ -67,14 +47,6 @@ export const planetsData = {
         tilt: 0.0005934119456780721,
         rotationSpeed: 1.0,
         inclination: 0.12217304763960307,
-        orbitFocus: 0,
-        orbitAngle: 0,
-        eccentricity: 0,
-        meanAnomaly: 0,
-        argumentOfPeriapsis: 0,
-        longitudeOfAscendingNode: 0,
-        parentOrbit: {},
-        precomputedPoints: []
       }
     },
     {
@@ -91,15 +63,6 @@ export const planetsData = {
         mass: 1.0,
         rotationSpeed: 1.0,
         tilt: 0.0005934119456780721,
-        inclination: 0,
-        orbitFocus: 0,
-        eccentricity: 0,
-        orbitAngle: 0,
-        meanAnomaly: 0,
-        argumentOfPeriapsis: 0,
-        longitudeOfAscendingNode: 0,
-        parentOrbit: {},
-        precomputedPoints: []
       }
     },
     {
@@ -117,14 +80,6 @@ export const planetsData = {
         rotationSpeed: 0.5,
         tilt: Math.PI / 2,
         inclination: Math.PI / 2,
-        orbitFocus: 0,
-        orbitAngle: 0,
-        eccentricity: 0,
-        meanAnomaly: 0,
-        argumentOfPeriapsis: Math.PI / 2,
-        longitudeOfAscendingNode: Math.PI/2,
-        parentOrbit: {},
-        precomputedPoints: []
       }
     },
     {
@@ -142,14 +97,8 @@ export const planetsData = {
         tilt: 0,
         rotationSpeed: 0.0,
         inclination: Math.PI / 1,
-        orbitFocus: 0,
-        orbitAngle: 0,
-        eccentricity: 0,
-        meanAnomaly: 0,
         argumentOfPeriapsis: 0.01,
         longitudeOfAscendingNode: -Math.PI / 1,
-        parentOrbit: {},
-        precomputedPoints: []
       }
     },
     {
@@ -162,19 +111,13 @@ export const planetsData = {
         orbits: 'BINARYCenter',
         Apoapsis: 4,
         Periapsis: 1,
-        argumentOfPeriapsis: Math.PI ,
+        argumentOfPeriapsis: Math.PI,
         longitudeOfAscendingNode: 0,
         Period: 65,
         mass: 0.6,
         tilt: 0.0005934119456780721,
         rotationSpeed: 1.0,
         inclination: -Math.PI / 4,
-        orbitFocus: 0,
-        orbitAngle: 0,
-        eccentricity: 0,
-        meanAnomaly: 0,
-        parentOrbit: {},
-        precomputedPoints: []
       }
     },
     {
@@ -192,16 +135,8 @@ export const planetsData = {
         tilt: 0.0005934119456780721,
         rotationSpeed: 1.0,
         inclination: -Math.PI / 4,
-        orbitFocus: 0,
-        orbitAngle: 0,
-        eccentricity: 0,
-        meanAnomaly: 0,
         argumentOfPeriapsis: 0,
         longitudeOfAscendingNode: 0,
-        parentOrbit: {},
-        precomputedPoints: [],
-        
-
       }
     },
     {
@@ -219,14 +154,8 @@ export const planetsData = {
         tilt: 0.0005934119456780721,
         rotationSpeed: 1.0,
         inclination: -Math.PI / 4,
-        orbitFocus: 0,
-        orbitAngle: 0,
-        eccentricity: 0,
-        meanAnomaly: 0,
         argumentOfPeriapsis: 0,
         longitudeOfAscendingNode: 0,
-        parentOrbit: {},
-        precomputedPoints: [],
       }
     },
     {
@@ -244,14 +173,9 @@ export const planetsData = {
         tilt: 0.0005934119456780721,
         rotationSpeed: 1.0,
         inclination: -Math.PI / 4,
-        orbitFocus: 0,
-        orbitAngle: 0,
-        eccentricity: 0,
-        meanAnomaly: 0,
         argumentOfPeriapsis: 0,
         longitudeOfAscendingNode: 0,
         parentOrbit: {},
-        precomputedPoints: [],
       }
     }
   ]
@@ -282,6 +206,24 @@ export function createPlanet(config, scene) {
   center.add(mesh);
   scene.add(center);
 
+  const planet_orbit = {
+    orbits: config.orbit.orbits || null,
+    Apoapsis: config.orbit.Apoapsis || 0,
+    Periapsis: config.orbit.Periapsis || 0,
+    Period: config.orbit.Period || 0,
+    mass: config.orbit.mass || 0,
+    tilt: config.orbit.tilt || 0,
+    rotationSpeed: config.orbit.rotationSpeed || 0,
+    inclination: config.orbit.inclination || 0,
+    orbitFocus: 0,
+    orbitAngle: 0,
+    eccentricity: 0,
+    meanAnomaly: 0,
+    argumentOfPeriapsis: config.orbit.argumentOfPeriapsis || 0,
+    longitudeOfAscendingNode: config.orbit.longitudeOfAscendingNode || 0,
+    parentOrbit: {},
+  }
+
   return {
     mesh,
     center,
@@ -290,7 +232,7 @@ export function createPlanet(config, scene) {
     color: config.color || 0xffffff,
     texture_path: config.color || 'munely.png',
     radius: config.radius || 1,
-    orbit: config.orbit || {}
+    orbit: planet_orbit
   };
 }
 
