@@ -302,7 +302,7 @@ export function createOrbitLine(planets, planet, scene) {
   if (planet.orbit.orbits == null) return;
 
   const segments = 100;
-  const points = precomputeOrbitPoints(planet, segments);
+  const points = computeOrbitPoints(planet, segments);
 
   const geometry = new THREE.BufferGeometry().setFromPoints(points);
   const material = new THREE.LineBasicMaterial({ color: 0x888888 });
@@ -316,7 +316,7 @@ export function createOrbitLine(planets, planet, scene) {
   return line;
 }
 
-export function precomputeOrbitPoints(planet, segments = 100) {
+export function computeOrbitPoints(planet, segments = 100) {
   const points = [];
   const start = planet.center.position;
   let prev = start;

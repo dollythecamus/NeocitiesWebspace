@@ -33,7 +33,7 @@ Date: 2025-05-04
 ---
 ### changelog window implemented all good :)
 Date: 2025-05-03
-git log --pretty=format:"---%n### %s%nDate: %ad%n" --date=short > changelog.md
+git log --pretty=format:"---%n### %s%nTime: %ad%n" --date=short > changelog.md
 
 ---
 ### adding a changelog window because i am LIKE THAT
