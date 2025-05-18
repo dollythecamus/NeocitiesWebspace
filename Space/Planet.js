@@ -318,10 +318,7 @@ export function createOrbitLine(planets, planet, scene) {
 
 export function computeOrbitPoints(planet, segments = 100) {
   const points = [];
-  const start = planet.center.position;
-  let prev = start;
   for (let i = 0; i <= segments; i++) {
-    const deltaTime = 0.016;
     const meanAnomaly = (2 * Math.PI * i) / segments;
     const position = calculateOrbitPositionFromMeanAnomaly(planet.orbit, meanAnomaly);
     points.push(position);

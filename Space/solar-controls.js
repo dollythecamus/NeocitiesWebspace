@@ -10,13 +10,13 @@ export const state = {
   controls: null, 
 };
 
-export let translationSimulationSpeed = 1; // Default simulation speed multiplier
-export let rotationSimulationSpeed = 1; // Default simulation speed multiplier
+export let simSpeed = {translation: 1 , rotation: 1, points: 10} = 1; // Default simulation speed multiplier
 
-export function setSimulationSpeeds(trans, rot)
+export function setSimulationSpeeds(trans, rot, points = 10)
 {
-  translationSimulationSpeed = trans
-  rotationSimulationSpeed = rot
+  simSpeed.translation = trans
+  simSpeed.rotation = rot
+  simSpeed.points = points
 }
 
 export function setOrbitLinesVisible(vis)

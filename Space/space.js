@@ -33,7 +33,6 @@ window.addEventListener('keydown', (e) => {
     }
 });
 
-// Patch in update logic
 state.update = function(deltaTime) {
   for (const planet of state.planets) {
     updatePlanet(planet, deltaTime, {translation: translationSimulationSpeed, rotation: rotationSimulationSpeed});
