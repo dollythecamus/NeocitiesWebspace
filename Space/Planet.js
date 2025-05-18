@@ -1,4 +1,5 @@
 import * as THREE from 'https://cdn.skypack.dev/three@0.134.0';
+import { updateOrbitPosition, orbitalToNewtonian, computeOrbitPointsForward} from './orbiter.js';
 
 export const planetsData = {
   planets: [
@@ -74,33 +75,14 @@ export const planetsData = {
       orbit: {
         orbits: 'Terrestrial',
         mass: 0.16,
-        Apoapsis: 1.5,
+        Apoapsis: 5.0,
         Periapsis: 5.0,
         Period: 28.0,
         rotationSpeed: 0.5,
         tilt: Math.PI / 2,
         inclination: Math.PI / 2,
       }
-    },
-    {
-      name: 'BINARYCenter',
-      texture_path: 'TMP_Planets/Martian.png',
-      color: '#FF0000',
-      camera_focus: false,
-      radius: 0.001,
-      orbit: {
-        orbits: 'Star',
-        Apoapsis: 220,
-        Periapsis: 200,
-        Period: 655,
-        mass: 0.6,
-        tilt: 0,
-        rotationSpeed: 0.0,
-        inclination: Math.PI / 1,
-        argumentOfPeriapsis: 0.01,
-        longitudeOfAscendingNode: -Math.PI / 1,
-      }
-    },
+    }, 
     {
       name: 'Binary1',
       texture_path: '',
@@ -108,12 +90,11 @@ export const planetsData = {
       radius: 0.5,
       camera_focus: true,
       orbit: {
-        orbits: 'BINARYCenter',
-        Apoapsis: 4,
-        Periapsis: 1,
+        orbits: 'Star',
+        Apoapsis: 240,
+        Periapsis: 150,
         argumentOfPeriapsis: Math.PI,
         longitudeOfAscendingNode: 0,
-        Period: 65,
         mass: 0.6,
         tilt: 0.0005934119456780721,
         rotationSpeed: 1.0,
@@ -127,10 +108,9 @@ export const planetsData = {
       radius: 0.5,
       camera_focus: true,
       orbit: {
-        orbits: 'BINARYCenter',
-        Apoapsis: 4,
-        Periapsis: 1,
-        Period: 65,
+        orbits: 'Binary1',
+        Apoapsis: 5,
+        Periapsis: 5,
         mass: 0.6,
         tilt: 0.0005934119456780721,
         rotationSpeed: 1.0,
@@ -207,21 +187,20 @@ export function createPlanet(config, scene) {
   scene.add(center);
 
   const planet_orbit = {
-    orbits: config.orbit.orbits || null,
-    Apoapsis: config.orbit.Apoapsis || 0,
-    Periapsis: config.orbit.Periapsis || 0,
-    Period: config.orbit.Period || 0,
-    mass: config.orbit.mass || 0,
-    tilt: config.orbit.tilt || 0,
-    rotationSpeed: config.orbit.rotationSpeed || 0,
-    inclination: config.orbit.inclination || 0,
-    orbitFocus: 0,
-    orbitAngle: 0,
-    eccentricity: 0,
-    meanAnomaly: 0,
-    argumentOfPeriapsis: config.orbit.argumentOfPeriapsis || 0,
+    mass: config.orbit.mass, // Mass of the central body relative to Earth masses
+    // Orbital elements
+    orbits: config.orbit.orbits, // The name of the central body
+    Apoapsis: config.orbit.Apoapsis,
+    Periapsis: config.orbit.Periapsis,
+    imaginary: config.orbit.imaginary || false,
+    inclination: config.orbit.inclination || 0, // Inclination in radians
     longitudeOfAscendingNode: config.orbit.longitudeOfAscendingNode || 0,
-    parentOrbit: {},
+    argumentOfPeriapsis: config.orbit.argumentOfPeriapsis || 0,
+    longitudeOfPeriapsis: config.orbit.longitudeOfPeriapsis || 0,
+    /// Newtonian
+    position: new THREE.Vector3(0, 0, 0), // Initial position
+    velocity: new THREE.Vector3(0, 0, 0), // Initial velocity
+    acceleration: new THREE.Vector3(0, 0, 0), // Initial acceleration
   }
 
   return {
@@ -233,29 +212,36 @@ export function createPlanet(config, scene) {
     texture_path: config.color || 'munely.png',
     radius: config.radius || 1,
     orbit: planet_orbit
-  };
-}
+  }
+};
 
 export function setPlanetOrbits(planets, planet) {
+  // calculating orbit from a keplerian to a newtonian
+  let initial = {position: new THREE.Vector3(0, 0, 0), velocity: new THREE.Vector3(0, 0, 0)};
   if (planet.orbit.orbits != null) {
-    const parent = getParent(planets, planet);
-
-    planet.orbit.parentOrbit = parent.orbit;
-    planet.orbit.orbitFocus = parent.center.position;
-    // settle planets at periapsis
-    const longitudeOfPeriapsis = planet.orbit.longitudeOfPeriapsis || 0;
-    const periapsisX = planet.orbit.Periapsis * Math.cos(longitudeOfPeriapsis);
-    const periapsisZ = planet.orbit.Periapsis * Math.sin(longitudeOfPeriapsis);
-    planet.center.position.set(
-      planet.orbit.orbitFocus.x + periapsisX,
-      0,
-      planet.orbit.orbitFocus.z + periapsisZ
-    );
-
-    //planet.orbit.precomputedPoints = precomputeOrbitPoints(planet, PRECOMPUTE);
-  } else {
-    planet.orbit.orbitFocus = new THREE.Vector3(0, 0, 0); // Default to origin if no parent specified
+    initial = orbitalToNewtonian(planet.orbit, planets, planet.orbit.orbits);
   }
+
+  planet.center.position.copy(initial.position);
+
+  const planet_orbit = {
+    mass: planet.orbit.mass, // Mass of the central body relative to Earth masses
+    // Orbital elements
+    orbits: planet.orbit.orbits, // The name of the central body
+    Apoapsis: planet.orbit.Apoapsis,
+    Periapsis: planet.orbit.Periapsis,
+    imaginary: planet.orbit.imaginary || false,
+    inclination: planet.orbit.inclination, // Inclination in radians
+    longitudeOfAscendingNode: planet.orbit.longitudeOfAscendingNode,
+    argumentOfPeriapsis: planet.orbit.argumentOfPeriapsis,
+    longitudeOfPeriapsis: planet.orbit.longitudeOfPeriapsis,
+    /// Newtonian
+    position: initial.position, // Initial position
+    velocity: initial.velocity, // Initial velocity
+    acceleration: new THREE.Vector3(0, 0, 0), // Initial acceleration
+  }
+
+  planet.orbit = planet_orbit;
 }
 
 
@@ -275,44 +261,27 @@ export function enablePlanetRaycast(planet, camera, domElement) {
   });
 }
 
-export function updatePlanet(planet, deltaTime, simSpeeds) {
-  const adjDeltaTimeTrans = deltaTime * simSpeeds.translation;
-  const adjDeltaTimeRot = deltaTime * simSpeeds.rotation;
+export function updatePlanet(planet, planets, deltaTime, simSpeed) {
 
   if (planet.orbit.orbits != null) {
-    // Update the mean anomaly incrementally
-    const n = 2 * Math.PI / planet.orbit.Period; // Mean motion
-    planet.orbit.currentMeanAnomaly = (planet.orbit.currentMeanAnomaly || 0) + n * adjDeltaTimeTrans;
 
-    // Keep the mean anomaly within [0, 2π]
-    planet.orbit.currentMeanAnomaly %= 2 * Math.PI;
-
-    // Solve for the new position
-    const newPosition = calculateOrbitPositionFromMeanAnomaly(planet.orbit, planet.orbit.currentMeanAnomaly);
-
-    // Update the planet's position
-    planet.center.position.copy(newPosition.add(planet.orbit.orbitFocus));
+    updateOrbitPosition(planet.orbit, planets, deltaTime, simSpeed);
+    planet.center.position.copy(planet.orbit.position);
+    
   }
-
-  // Update planet's rotation around its axis
-  planet.mesh.rotation.y += planet.orbit.rotationSpeed * adjDeltaTimeRot;
+  //planet.mesh.rotation.y += planet.orbit.rotationSpeed * deltaTime * simSpeed.rotation;
 }
 
-export function createOrbitLine(planets, planet, scene) {
-  if (planet.orbit.orbits == null) return;
+export function createOrbitLine(planets, planet, scene, simSpeed) {
+  if (planet.orbit.orbits == null || planet.orbit.imaginary) return;
 
-  const segments = 100;
-  const points = computeOrbitPoints(planet, segments);
+  const segments = 512;
+  const points = computeOrbitPointsForward(planet.orbit, planets, simSpeed.points, segments);
 
   const geometry = new THREE.BufferGeometry().setFromPoints(points);
   const material = new THREE.LineBasicMaterial({ color: 0x888888 });
-  const line = new THREE.LineLoop(geometry, material);
-  if (planet.orbit.orbits == 'Star') {
-    scene.add(line);
-  } else {
-    const parentPlanet = planets.find((p) => p.name === planet.orbit.orbits);
-    parentPlanet.center.add(line);
-  }
+  const line = new THREE.Line(geometry, material);
+  scene.add(line);
   return line;
 }
 

@@ -6,7 +6,7 @@ const LOW_RES_HEIGHT = 180 * 1.2;
 
 export function createRenderer() {
   const scene = new THREE.Scene();
-  const camera = new THREE.PerspectiveCamera(75, window.innerWidth / window.innerHeight, 0.1, 1000);
+  const camera = new THREE.PerspectiveCamera(75, window.innerWidth / window.innerHeight, 0.1, 10000);
   camera.position.z = 200;
   camera.position.y = 150;
 

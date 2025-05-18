@@ -1,6 +1,6 @@
 import { createRenderer, renderLoop } from './Renderer.js';
 import { planetsData, createPlanet, updatePlanet, enablePlanetRaycast, createOrbitLine, setPlanetOrbits } from './Planet.js';
-import { state, translationSimulationSpeed, rotationSimulationSpeed } from './solar-controls.js'
+import { state, simSpeed, updateOrbitLines } from './solar-controls.js'
 import { inventionsData, updateInventionOrbits, enableInventionRaycast, CreateInvention } from './Invention.js';
 
 // Init renderer
@@ -15,7 +15,13 @@ state.planets = planetsData.planets.map((config) => {
   
 state.planets.forEach((planet) => {
   setPlanetOrbits(state.planets, planet);
-  const line = createOrbitLine(state.planets, planet, state.scene);
+  if (planet.orbit.imaginary) {
+    state.planets = state.planets.filter((p) => p !== planet);
+  }
+});
+
+state.planets.forEach((planet) => {
+  const line = createOrbitLine(state.planets, planet, state.scene, simSpeed);
   if (line)
     state.lines.push(line)
 });
@@ -35,12 +41,12 @@ window.addEventListener('keydown', (e) => {
 
 state.update = function(deltaTime) {
   for (const planet of state.planets) {
-    updatePlanet(planet, deltaTime, {translation: translationSimulationSpeed, rotation: rotationSimulationSpeed});
-  }
+    updatePlanet(planet, state.planets, deltaTime, simSpeed.translation);
+  };
 
   for (const invention of state.inventions)
   {
-    updateInventionOrbits(invention, deltaTime, {translation: translationSimulationSpeed, rotation: rotationSimulationSpeed})
+    updateInventionOrbits(invention, deltaTime, simSpeed);
   }
 
   const targetPlanet = state.planets[state.focusedPlanetIndex];
@@ -53,7 +59,7 @@ state.update = function(deltaTime) {
     }
 
     state.controls.maxDistance = maxDistance;
-    state.controls.minDistance = targetPlanet.radius*1.1;
+    state.controls.minDistance = targetPlanet.radius*0.8;
     state.controls.target.copy(targetPlanet.center.position);
     state.controls.update();
   }
