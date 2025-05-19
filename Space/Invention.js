@@ -1,4 +1,5 @@
 import * as THREE from 'https://cdn.skypack.dev/three@0.134.0';
+import { orbitalToNewtonian, updateOrbitPosition} from './orbiter.js';
 
 
 export const inventionsData = [
@@ -23,23 +24,21 @@ export const inventionsData = [
             state: "orbit",
             planet: "Venusian",
             orbit: {
-                orbits: 'Venusian',
-                Apoapsis: 2.6,
+                mass: 0.1, // Zero so that vessels don't attract
+                // Orbital elements
+                orbits: 'Venusian', // The name of the central body
+                imaginary: false, // If true, the orbit point is imaginary, think langrange points and bodies orbiting around eachother
+                Apoapsis: 2,
                 Periapsis: 2,
-                Period: 5,
-                mass: 0.7,
-                tilt: 0.0005934119456780721,
-                rotationSpeed: 1.0,
-                inclination: -Math.PI / 4,
-                orbitFocus: 0,
-                orbitAngle: 0,
-                eccentricity: 0,
-                meanAnomaly: 0,
-                argumentOfPeriapsis: 0,
+                inclination: Math.PI / 4, // Inclination in radians
                 longitudeOfAscendingNode: 0,
-                parentOrbit: {},
-                precomputedPoints: [],
-              }
+                argumentOfPeriapsis: 0,
+                longitudeOfPeriapsis: 0,
+                /// Newtonian
+                position: new THREE.Vector3(0, 0, 0), // Initial position
+                velocity: new THREE.Vector3(0, 0, 0), // Initial velocity
+                acceleration: new THREE.Vector3(0, 0, 0), // Initial acceleration
+            }
         }
     }
 ]
@@ -63,8 +62,18 @@ export function CreateInvention(inventionConfig, state) {
         const y = planet.radius * Math.cos(phi);
         const z = planet.radius * Math.sin(phi) * Math.sin(theta);
 
+        // Calculate the normal vector at the surface point
+        const normal = new THREE.Vector3(x, y, z).normalize();
+
+        // Create a quaternion to align the mesh's up direction with the normal
+        const quaternion = new THREE.Quaternion();
+        quaternion.setFromUnitVectors(new THREE.Vector3(0, 1, 0), normal);
+
+        // Apply the quaternion to the mesh's rotation
+        mesh.quaternion.copy(quaternion);
+
         mesh.position.set(x, y, z);
-        planet.mesh.add(mesh)
+        planet.mesh.add(mesh) // Attach structure to the planet
     }
     else if (inventionConfig.position.state == "orbit")
     {
@@ -75,7 +84,7 @@ export function CreateInvention(inventionConfig, state) {
         }
 
         setInventionOrbits(invention, state.planets)
-        state.scene.add(mesh); // Attach structure to the planet
+        state.scene.add(mesh);
     }
 
 
@@ -105,111 +114,24 @@ export function enableInventionRaycast(invention, camera, domElement) {
 }
 
 
-export function updateInventionOrbits(invention, deltaTime, simSpeeds) {
-    const adjDeltaTimeTrans = deltaTime * simSpeeds.translation;
-    const adjDeltaTimeRot = deltaTime * simSpeeds.rotation;
+export function updateInventionOrbits(invention, planets, deltaTime, simSpeed) {
   
     if (invention.position.state == "orbit") {
-      // Update the mean anomaly incrementally
-      const n = 2 * Math.PI / invention.position.orbit.Period; // Mean motion
-      invention.position.orbit.currentMeanAnomaly = (invention.position.orbit.currentMeanAnomaly || 0) + n * adjDeltaTimeTrans;
-  
-      // Keep the mean anomaly within [0, 2π]
-      invention.position.orbit.currentMeanAnomaly %= 2 * Math.PI;
-  
-      // Solve for the new position
-      const newPosition = calculateOrbitPositionFromMeanAnomaly(invention.position.orbit, invention.position.orbit.currentMeanAnomaly);
-  
-      // Update the invention's position
-      invention.mesh.position.copy(newPosition.add(invention.position.orbit.orbitFocus));
-      
-      // Update invention's rotation around its axis
-      invention.mesh.rotation.y += invention.position.orbit.rotationSpeed * adjDeltaTimeRot;
+
+      updateOrbitPosition(invention.position.orbit, planets, deltaTime, simSpeed.translation);
+      invention.mesh.position.copy(invention.position.orbit.position);
     }
-  
-  }
+}
 
 
 export function setInventionOrbits(invention, planets) {
     if (invention.position.state == "orbit") {
-      const planet = getPlanet(invention.position.planet, planets);
-  
-      invention.position.orbit.parentOrbit = planet.orbit;
-      invention.position.orbit.orbitFocus = planet.center.position;
-      // settle planets at periapsis
-      const longitudeOfPeriapsis = invention.position.orbit.longitudeOfPeriapsis || 0;
-      const periapsisX = invention.position.orbit.Periapsis * Math.cos(longitudeOfPeriapsis);
-      const periapsisZ = invention.position.orbit.Periapsis * Math.sin(longitudeOfPeriapsis);
-      planet.center.position.set(
-        invention.position.orbit.orbitFocus.x + periapsisX,
-        0,
-        invention.position.orbit.orbitFocus.z + periapsisZ
-      );
-  
-      //invention.position.orbit.precomputedPoints = precomputeOrbitPoints(planet, PRECOMPUTE);
+      const initial = orbitalToNewtonian(invention.position.orbit, planets, invention.position.planet);
+      invention.position.orbit.position.copy(initial.position);
+      invention.position.orbit.velocity.copy(initial.velocity);
     } 
 }
- 
 
-export function calculateOrbitPositionFromMeanAnomaly(orbit, meanAnomaly) {
-  // Solve Kepler's equation for Eccentric Anomaly (E) using Newton's method
-  let E = meanAnomaly; // Initial guess
-
-  const a = (orbit.Periapsis + orbit.Apoapsis) / 2; // Semi-major axis
-  const c = a - orbit.Periapsis; // Distance from center to focus
-  orbit.eccentricity = c / a; // Eccentricity
-
-  const e = orbit.eccentricity;
-  for (let i = 0; i < 5; i++) {
-    // Iterate to refine E
-    E = E - (E - e * Math.sin(E) - meanAnomaly) / (1 - e * Math.cos(E));
-  }
-
-  // True anomaly (ν)
-  const trueAnomaly = 2 * Math.atan2(
-    Math.sqrt(1 + e) * Math.sin(E / 2),
-    Math.sqrt(1 - e) * Math.cos(E / 2)
-  );
-
-  // Orbital radius (r)
-  const semiMajorAxis = (orbit.Periapsis + orbit.Apoapsis) / 2;
-  const radius = (semiMajorAxis * (1 - e * e)) / (1 + e * Math.cos(trueAnomaly));
-
-  // Convert polar coordinates to Cartesian coordinates in the orbital plane
-  const xOrbital = radius * Math.cos(trueAnomaly);
-  const zOrbital = radius * Math.sin(trueAnomaly);
-  //const yOrbital = 0; // Assuming no inclination in the orbital plane
-
-  // Apply rotations for Ω, i, and ω
-  const Ω = orbit.longitudeOfAscendingNode || 0; // Longitude of ascending node
-  const i = orbit.inclination || 0; // Inclination
-  const ω = orbit.argumentOfPeriapsis || 0; // Argument of periapsis
-
-  // Rotation matrices
-  const cosΩ = Math.cos(Ω),
-    sinΩ = Math.sin(Ω);
-  const cosi = Math.cos(i),
-    sini = Math.sin(i);
-  const cosω = Math.cos(ω),
-    sinω = Math.sin(ω);
-
-  // Rotate by ω (argument of periapsis)
-  const x1 = xOrbital * cosω - zOrbital * sinω;
-  const z1 = xOrbital * sinω + zOrbital * cosω;
-
-  // Rotate by i (inclination)
-  const x2 = x1;
-  const y2 = z1 * sini;
-  const z2 = z1 * cosi;
-
-  // Rotate by Ω (longitude of ascending node)
-  const finalX = x2 * cosΩ - y2 * sinΩ;
-  const finalY = x2 * sinΩ + y2 * cosΩ;
-  const finalZ = z2;
-
-  // Return the position as a THREE.Vector3
-  return new THREE.Vector3(finalX, finalY, finalZ);
-}
 
 function getPlanet(planet, planets) {
     return planets.find((p) => p.name === planet);

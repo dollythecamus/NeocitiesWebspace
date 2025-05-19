@@ -99,7 +99,7 @@ export function updateOrbitPosition(orbit, Bodies, deltaTime, simSpeed) {
 
     // Calculate net gravitational force from all other planets
     Bodies.forEach((body) => {
-    if (!isSameOrbit(orbit, body.orbit || body.imaginary)) {
+    if (!isSameOrbit(orbit, body.orbit) || body.orbit.imaginary) {
         const force = calculateGravitationalForce(orbit, body.orbit);
         const acceleration = force.divideScalar(orbit.mass);
         orbit.acceleration.add(acceleration);

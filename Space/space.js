@@ -46,7 +46,7 @@ state.update = function(deltaTime) {
 
   for (const invention of state.inventions)
   {
-    updateInventionOrbits(invention, deltaTime, simSpeed);
+    updateInventionOrbits(invention, state.planets, deltaTime, simSpeed);
   }
 
   const targetPlanet = state.planets[state.focusedPlanetIndex];

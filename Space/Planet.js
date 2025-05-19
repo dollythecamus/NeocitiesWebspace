@@ -244,7 +244,6 @@ export function setPlanetOrbits(planets, planet) {
   planet.orbit = planet_orbit;
 }
 
-
 export function enablePlanetRaycast(planet, camera, domElement) {
   const raycaster = new THREE.Raycaster();
   const mouse = new THREE.Vector2();
@@ -269,7 +268,6 @@ export function updatePlanet(planet, planets, deltaTime, simSpeed) {
     planet.center.position.copy(planet.orbit.position);
     
   }
-  //planet.mesh.rotation.y += planet.orbit.rotationSpeed * deltaTime * simSpeed.rotation;
 }
 
 export function createOrbitLine(planets, planet, scene, simSpeed) {
