@@ -14,9 +14,10 @@ function onWindowOpen()
 {
     // Add event listener for simulation speed slider
     const speedSlider = document.getElementById('simulation-speed');
-        speedSlider.addEventListener('input', (e) => {
+        speedSlider.addEventListener('change', (e) => {
         const speed = parseFloat(e.target.value);
-        setSimulationSpeeds(speed, speed, speed);
+        if (speed == 0 || speed < 0.1 || speed == null || speed == undefined || speed == NaN) {return;}
+        setSimulationSpeeds(speed);
     });
 
     const orbitLinesCheckbox = document.getElementById('orbit-lines');
