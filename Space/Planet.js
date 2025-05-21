@@ -146,8 +146,8 @@ export const planetsData = {
       camera_focus: true,
       orbit: {
         orbits: 'Giant',
-        Apoapsis: 10,
-        Periapsis: 9,
+        Apoapsis: 16,
+        Periapsis: 15,
         Period: 86,
         mass: 0.7,
         tilt: 0.0005934119456780721,

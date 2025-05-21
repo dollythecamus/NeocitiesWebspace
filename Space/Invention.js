@@ -24,7 +24,7 @@ export const inventionsData = [
             state: "orbit",
             planet: "Venusian",
             orbit: {
-                mass: 0.1, // Zero so that vessels don't attract
+                mass: 1, // in kilograms, i suppose. // the inventions won't actually attract eachother or anything in the simulation, the valid bodies are just the planets, should be fine.
                 // Orbital elements
                 orbits: 'Venusian', // The name of the central body
                 imaginary: false, // If true, the orbit point is imaginary, think langrange points and bodies orbiting around eachother
