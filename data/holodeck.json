@@ -1,0 +1,16 @@
+{
+    "buttons": [
+        {
+            "icon": "**",
+            "func": null,
+            "color":"lights"
+        }
+    ],
+    "windows": {
+        "holodeck": {
+            "title": "Holodeck Console",
+            "contentUrl": "holodeck.html",
+            "scriptUrl": "holodeck.js"
+        }
+    }
+}

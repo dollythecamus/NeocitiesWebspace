@@ -45,4 +45,7 @@ document.addEventListener("windowClosed", (event) => {
     const orbitLinesCheckbox = document.getElementById('orbit-lines');
     orbitLinesCheckbox.removeEventListener('change');
 
+    const orbitLinesUpdate = document.getElementById('update-orbit-lines');
+    orbitLinesUpdate.removeEventListener('click');
+
 });
