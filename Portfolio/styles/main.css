@@ -74,12 +74,14 @@ section p {
 
 /* Project List */
 ul {
-    list-style: none;
-    padding: 0;
+    font-size: 2rem;
+    list-style: disc outside;
 }
 
 li {
+    font-size: 1rem;
     margin-bottom: 15px;
+    margin-left: 15px;
 }
 
 li a {
@@ -93,8 +95,7 @@ li a:hover {
 }
 
 li p {
-    margin-top: 5px;
-    font-size: 0.9rem;
+    font-size: 0.8rem;
     color: #6c757d;
 }
 

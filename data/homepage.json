@@ -26,7 +26,7 @@
             "color": "lights"
         },
         {
-            "icon": "👅",
+            "icon": "👁️",
             "func": "window:personal-window",
             "color": "lights"
         },
@@ -36,13 +36,17 @@
             "color": "lights"
         },
         {
-            "icon": "🗒️",
+            "icon": "👄",
             "func": "window:content-window",
             "color": "lights"
         },
         {
             "icon": "🏳️‍⚧️",
             "func": "window:queer",
+            "color": "lights"
+        },{
+            "icon": "📃",
+            "func": "window:pages-window",
             "color": "lights"
         },
         {
@@ -56,6 +60,9 @@
             "title": "stuff i want to tell you",
             "contentUrl": "content-window.html",
             "scriptUrl": "content.js"
+        },"pages-window":{
+            "title": "Website Pages List",
+            "contentUrl": "pages-window.html"
         },"changelog":{
             "title": "Website Changelog",
             "contentUrl": "changelog.html",

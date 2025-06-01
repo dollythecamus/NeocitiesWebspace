@@ -25,8 +25,8 @@ const buttons = [];
 const currentPositions = [];
 const originalPositions = [];
 
-const startX = window.innerWidth/2;
-const startY = window.innerHeight/2;
+let startX = window.innerWidth/2;
+let startY = window.innerHeight/2;
 
 let clickStartPos = { x: 0, y: 0 };
 let startTime = Date.now()
@@ -52,7 +52,29 @@ function createButton(config, is_front) {
 
   btn.classList.add('button');
   
-  if (is_front) btn.classList.add('front');
+  if (is_front) 
+    {
+      btn.classList.add('front');
+      const offset = 120; // Offset in pixels
+      const positionMap = {
+        "top-left": { x: offset, y: offset },
+        "top-center": { x: window.innerWidth / 2, y: offset },
+        "top-right": { x: window.innerWidth - offset, y: offset },
+        "center-left": { x: offset, y: window.innerHeight / 2 },
+        "center-center": { x: window.innerWidth / 2, y: window.innerHeight / 2 },
+        "center-right": { x: window.innerWidth - offset, y: window.innerHeight / 2 },
+        "bottom-left": { x: offset, y: window.innerHeight - offset },
+        "bottom-center": { x: window.innerWidth / 2, y: window.innerHeight - offset },
+        "bottom-right": { x: window.innerWidth - offset, y: window.innerHeight - offset },
+      };
+
+      const position = config.position || "center-center";
+      const mappedPosition = positionMap[position] || positionMap["center-center"];
+      btn.style.left = `${mappedPosition.x}px`;
+      btn.style.top = `${mappedPosition.y}px`;
+      startX = mappedPosition.x;
+      startY = mappedPosition.y;
+    }
 
   btn.innerText = icon;
 

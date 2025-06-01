@@ -10,7 +10,7 @@ body, html, * {
     position: fixed;
     width: 100vw;
     height: 100vh;
-    background-image: url(../images/backgrounds/stars3.gif);
+    background-image: url(../assets/images/backgrounds/stars3.gif);
     background-repeat: repeat;
     /*background: repeating-linear-gradient(45deg, rgb(44, 33, 42), rgb(51, 38, 48) 20px, #751b57 20px, #751b57 40px);
     */

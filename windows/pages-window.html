@@ -1,6 +1,7 @@
 <style>
     #pages-window .window-content{
-        background-image: url(../images/cubism-jwst-ascii.png);
+        /* background-image: url(../assets/images/cubism-jwst-ascii.png);
+        */
         font-family: Arial, sans-serif;
         /* color: #2ddb2d; */
         text-align: center;
@@ -8,6 +9,36 @@
         width: 12cm;
         height: 16cm;
     }
+
+
+    /* List */
+    #pages-window ul {
+        text-align: left;
+        font-size: 2rem;
+        list-style: square outside none;
+    }
+
+    #pages-window li {
+        font-size: 1rem;
+        margin-bottom: 15px;
+        margin-left: 15px;
+    }
+
+    #pages-window li a {
+        font-weight: bold;
+        color: #007bff;
+        text-decoration: none;
+    }
+
+    #pages-window li a:hover {
+        text-decoration: underline;
+    }
+
+    #pages-window li p {
+        font-size: 0.8rem;
+        color: #6c757d;
+    }
+
 
 </style>
 <div class="content" id="pages-window">
@@ -17,6 +48,9 @@
     <p>i totally thought this through</p>
 
 <hr>
+    <ul> Home
+        <li><a href="../index.html">Home</a></li>
+        <li><a href="../contact.html">Contact</a></li>
     <ul> Portfolio
         <li><a href="../Portfolio/index.html">Portfolio Main</a></li>
         <li><a href="../Portfolio/pages/neocity.html">This here neocities</a></li>
