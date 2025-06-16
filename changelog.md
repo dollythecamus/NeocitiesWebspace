@@ -1,4 +1,40 @@
 ---
+### changes to scripts- idk
+Time: 2025-06-16
+
+---
+### work on the portfolio to easily parse from markdown to html- added a page for a hurdy gurdy
+Time: 2025-06-16
+
+---
+### started adding a holodeck- will be the home space for the simulation games
+Time: 2025-06-16
+
+---
+### editing a portfolio
+Time: 2025-06-01
+
+---
+### happy pride
+Time: 2025-06-01
+
+---
+### adjustments to pageswindow and portfolio and fixes
+Time: 2025-06-01
+
+---
+### window that lists all pages
+Time: 2025-06-01
+
+---
+### changed arround assets folder and adding a portfolio page
+Time: 2025-06-01
+
+---
+### adding a holodeck and some other stuff idr
+Time: 2025-06-01
+
+---
 ### changed input type of simulation speed
 Time: 2025-05-21
 
@@ -70,6 +106,7 @@ Time: 2025-05-04
 ### changelog window implemented all good :)
 Time: 2025-05-03
 git log --pretty=format:"---%n### %s%nTime: %ad%n" --date=short > changelog.md
+
 ---
 ### adding a changelog window because i am LIKE THAT
 Time: 2025-05-03
