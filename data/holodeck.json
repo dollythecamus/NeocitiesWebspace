@@ -10,7 +10,8 @@
         "holodeck": {
             "title": "Holodeck Console",
             "contentUrl": "holodeck.html",
-            "scriptUrl": "holodeck.js"
+            "scriptUrl": "holodeck.js",
+            "start": true
         }
     }
 }
