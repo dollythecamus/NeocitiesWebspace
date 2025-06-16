@@ -17,7 +17,7 @@ export function setSimulationSpeeds(speed)
 {
   simSpeed.translation = speed
   simSpeed.rotation = speed
-  simSpeed.points = speed * 10
+  simSpeed.points = speed * 50
 }
 
 export function setOrbitLinesVisible(vis)

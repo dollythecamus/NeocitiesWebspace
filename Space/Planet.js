@@ -5,15 +5,15 @@ export const planetsData = {
   planets: [
     {
       name: 'Star',
-      radius: 20,
+      radius: 50,
       texture_path: '',
       color: '#FFFF00',
       camera_focus: true,
       orbit: {
         orbits: null,
-        mass: 300.0,
+        mass: 1000.0,
         rotationSpeed: 0.01,
-        tilt: 0.00322
+        tilt: 0.000322
       }
     },
     {
@@ -24,9 +24,8 @@ export const planetsData = {
       camera_focus: true,
       orbit: {
         orbits: 'Star',
-        Apoapsis: 40,
-        Periapsis: 35,
-        Period: 104,
+        Apoapsis: 120,
+        Periapsis: 119,
         mass: 0.6,
         tilt: 0.0005934119456780721,
         rotationSpeed: 1.0,
@@ -41,9 +40,8 @@ export const planetsData = {
       camera_focus: true,
       orbit: {
         orbits: 'Star',
-        Apoapsis: 80,
-        Periapsis: 75,
-        Period: 280,
+        Apoapsis: 260,
+        Periapsis: 255,
         mass: 1.1,
         tilt: 0.0005934119456780721,
         rotationSpeed: 1.0,
@@ -58,9 +56,8 @@ export const planetsData = {
       camera_focus: true,
       orbit: {
         orbits: 'Star',
-        Apoapsis: 140,
-        Periapsis: 135,
-        Period: 365,
+        Apoapsis: 415,
+        Periapsis: 414,
         mass: 1.0,
         rotationSpeed: 1.0,
         tilt: 0.0005934119456780721,
@@ -75,12 +72,11 @@ export const planetsData = {
       orbit: {
         orbits: 'Terrestrial',
         mass: 0.16,
-        Apoapsis: 5.0,
-        Periapsis: 5.0,
-        Period: 28.0,
+        Apoapsis: 15.0,
+        Periapsis: 14.6,
         rotationSpeed: 0.5,
         tilt: Math.PI / 2,
-        inclination: Math.PI / 2,
+        inclination: Math.PI / 8,
       }
     }, 
     {
@@ -91,8 +87,8 @@ export const planetsData = {
       camera_focus: true,
       orbit: {
         orbits: 'Star',
-        Apoapsis: 240,
-        Periapsis: 150,
+        Apoapsis: 720,
+        Periapsis: 670,
         argumentOfPeriapsis: Math.PI,
         longitudeOfAscendingNode: 0,
         mass: 0.6,
@@ -109,14 +105,12 @@ export const planetsData = {
       camera_focus: true,
       orbit: {
         orbits: 'Binary1',
-        Apoapsis: 5,
-        Periapsis: 5,
+        Apoapsis: 15.0,
+        Periapsis: 7.5,
         mass: 0.6,
         tilt: 0.0005934119456780721,
         rotationSpeed: 1.0,
         inclination: -Math.PI / 4,
-        argumentOfPeriapsis: 0,
-        longitudeOfAscendingNode: 0,
       }
     },
     {
@@ -127,15 +121,12 @@ export const planetsData = {
       camera_focus: true,
       orbit: {
         orbits: 'Star',
-        Apoapsis: 300,
-        Periapsis: 320,
-        Period: 2050,
+        Apoapsis: 990,
+        Periapsis: 989,
         mass: 18.0,
         tilt: 0.0005934119456780721,
         rotationSpeed: 1.0,
-        inclination: -Math.PI / 4,
-        argumentOfPeriapsis: 0,
-        longitudeOfAscendingNode: 0,
+        inclination: Math.PI / 7,
       }
     },
     {
@@ -152,10 +143,7 @@ export const planetsData = {
         mass: 0.7,
         tilt: 0.0005934119456780721,
         rotationSpeed: 1.0,
-        inclination: -Math.PI / 4,
-        argumentOfPeriapsis: 0,
-        longitudeOfAscendingNode: 0,
-        parentOrbit: {},
+        inclination: Math.PI / 7,
       }
     }
   ]

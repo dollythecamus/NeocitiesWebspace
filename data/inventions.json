@@ -63,7 +63,8 @@
         "solar-controls":{
             "title": "Solar System Controls",
             "contentUrl": "solar-controls.html",
-            "scriptUrl": "solar-controls.js"
+            "scriptUrl": "solar-controls.js",
+            "start": true
         }
     }
 }

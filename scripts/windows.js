@@ -15,13 +15,20 @@ async function loadData(path) {
 }
 
 // Dynamically set the data path
-// data_path MUST be set in the main script tag of the page. 
+// data_path must be set in the main script tag of the page. 
 await loadData(data_path);
 
 const windowsConfig = data.windows;
 
 let z = 1001;
 const openWindows = {};
+
+// open windows at the start marked with start = true
+Object.keys(windowsConfig).forEach(id => {
+    if (windowsConfig[id].start) {
+        spawnWindow(id);
+    }
+});
 
 export async function spawnWindow(id) {
     const windowData = windowsConfig[id]

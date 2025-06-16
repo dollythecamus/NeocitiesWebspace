@@ -2,8 +2,6 @@ import {composeTextElements} from "./text-decoration.js";
 import {UpdateButtonColors} from "./buttons.js"; 
 import { UpdateWindowColors } from "./windows.js";
 
-let generatedSiteColors = {'lights': [], 'darks': []};
-let number_of_colors = 16; // Number of colors to generate
 
 function generateRandomLightColor() {
     const hue = Math.floor(Math.random() * 360); // full color wheel
@@ -47,6 +45,7 @@ function generateRandomDarkColor() {
 }
 
 export function generateRandomColors(count) {
+    let generatedSiteColors = {'lights': [], 'darks': []};
     const lights = [];
     const darks = [];
     for (let i = 0; i < count; i++) {
@@ -64,8 +63,9 @@ export function generateRandomColors(count) {
 }
   
 
-export function getSiteGeneratedColors(count = number_of_colors) {
+export function getSiteGeneratedColors(count = 16) {
     const storedColors = localStorage.getItem('siteColors');
+    let generatedSiteColors = {'lights': [], 'darks': []};
     if (storedColors) {
         generatedSiteColors = JSON.parse(storedColors);
     }
@@ -100,7 +100,6 @@ export function BackgroundColors(colors){
 
 export function applyColors()
 {
-    // generateRandomColors(number_of_colors);
     const colors = getSiteGeneratedColors();
     composeTextElements();
     BackgroundColors(colors);
