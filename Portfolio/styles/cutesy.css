@@ -1,0 +1,127 @@
+main {
+    display: flex;
+    justify-content: center;
+    align-items: flex-start;
+    margin: 20px;
+}
+
+.sidebar-left {
+    width: 25%;
+    background-color: #fff0f5;
+    border: 2px solid #ffb3d9;
+    border-radius: 15px;
+    padding: 20px;
+    box-shadow: 0 4px 8px rgba(255, 182, 193, 0.5);
+    margin-right: 20px;
+}
+
+
+.sidebar-right {
+    width: 25%;
+    background-color: #fff0f5;
+    border: 2px solid #ffb3d9;
+    border-radius: 15px;
+    padding: 20px;
+    box-shadow: 0 4px 8px rgba(255, 182, 193, 0.5);
+    margin-left: 20px;
+}
+
+.content {
+    flex: 1;
+    background-color: #ffe6f2;
+    border-radius: 15px;
+    padding: 20px;
+    box-shadow: 0 4px 8px rgba(255, 182, 193, 0.5);
+}
+
+.content img {
+    max-width: 20%;
+    border-radius: 15px;
+    box-shadow: 0 4px 8px rgba(255, 182, 193, 0.5);
+}
+
+.gallery img {
+    max-width: 30%;
+    border-radius: 15px;
+    box-shadow: 0 4px 8px rgba(255, 182, 193, 0.5);
+    margin: 2px;
+}
+
+body {
+    font-family: 'Comic Sans MS', cursive, sans-serif;
+    background-color: #ffe6f2;
+    color: #ff80bf;
+    margin: 0;
+    padding: 0;
+}
+
+h1, h2, h3, h4, h5, h6 {
+    color: #ff4da6;
+    text-align: center;
+    font-weight: bold;
+}
+
+a {
+    color: #ff66cc;
+    text-decoration: none;
+}
+
+a:hover {
+    color: #ff99cc;
+    text-decoration: underline;
+}
+
+button {
+    background-color: #ff99cc;
+    color: white;
+    border: none;
+    border-radius: 10px;
+    padding: 10px 20px;
+    font-size: 16px;
+    cursor: pointer;
+}
+
+button:hover {
+    background-color: #ff80bf;
+}
+
+.container {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 20px;
+}
+
+.card {
+    background-color: #fff0f5;
+    border: 2px solid #ffb3d9;
+    border-radius: 15px;
+    padding: 20px;
+    box-shadow: 0 4px 8px rgba(255, 182, 193, 0.5);
+    margin: 20px 0;
+}
+
+.card h3 {
+    color: #ff4da6;
+}
+
+.card p {
+    color: #ff80bf;
+}
+
+footer {
+    background-color: #ffb3d9;
+    color: white;
+    text-align: center;
+    padding: 10px 0;
+    position: fixed;
+    bottom: 0;
+    width: 100%;
+}
+
+footer a {
+    color: white;
+}
+
+footer a:hover {
+    color: #ffe6f2;
+}

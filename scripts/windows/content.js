@@ -1,7 +1,7 @@
 // content.js
 // :D
 
-import 'https://cdn.jsdelivr.net/npm/marked/marked.min.js';
+import { loadMarkdown } from '../markdown.js';
 
 // can't fetch them dinamically because neocities forbids it. i suppose it's a good call on them to prevent me from trying to make a giant stupid website idk
 const mdFiles = [];
@@ -39,6 +39,7 @@ async function TOOL_fetchMarkdownFiles() {
         console.error('Error writing markdown file list:', error);
     }
 }
+
 async function fetchMarkdownFiles()
 {
     try {
@@ -56,18 +57,6 @@ function shuffleArray(array) {
         const j = Math.floor(Math.random() * (i + 1));
         [array[i], array[j]] = [array[j], array[i]];
     }
-}
-
-function loadMarkdown(index) {
-    fetch(`${mdFiles[index]}`)
-        .then(response => response.text())
-        .then(data => {
-            const contentElement = document.getElementById(id).querySelector('#content-container');
-
-            contentElement.innerHTML = marked.parse(data);
-            //document.getElementById(id).innerHTML = marked.parse(data);
-        })
-        .catch(error => console.error('Error loading markdown file:', error));
 }
 
 function nextMarkdown() {
@@ -91,6 +80,7 @@ document.addEventListener("windowOpened", (event) => {
 async function onWindowOpen()
 {
     //TOOL_fetchMarkdownFiles()
+    const contentElement = document.getElementById(id).querySelector('#content-container');
 
     // Create navigation buttons
     const prevButton = document.createElement('button');
@@ -103,7 +93,7 @@ async function onWindowOpen()
 
     await fetchMarkdownFiles()
     shuffleArray(mdFiles)
-    loadMarkdown(currentIndex)
+    contentElement.innerHTML = await loadMarkdown(mdFiles[currentIndex]);
 
     let content = document.getElementById(id).querySelector('.window-content').querySelector('div')
     content.appendChild(prevButton);

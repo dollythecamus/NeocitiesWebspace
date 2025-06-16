@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Portfolio - Hurdy Gurdy</title>
+    <link rel="stylesheet" href="../styles/cutesy.css">
+    <link rel="stylesheet" href="../../styles/markdown.css">
+</head>
+<body>
+    <main>
+        <section class="sidebar-left">
+            <h1>Hurdy Gurdy</h1>
+            <ul>
+                <li><a href="../index.html">Portfolio</a></li>
+                <li><a href="../../index.html">Home</a></li>
+            </ul>
+
+            <p>does my website design suck? the sidebars are weird. complain about it!</p>
+
+        </section>
+
+        <section class="content markdown">
+            <script type="module">
+                import { loadMarkdown } from '../../scripts/markdown.js';
+
+                const contentElement = document.querySelector('.content');
+                contentElement.innerHTML = await loadMarkdown('../content/hurdygurdy.md');
+
+            </script>
+        </section>
+
+        <section class="sidebar-right">
+            <h2>Gallery</h2>
+            <div class="gallery">
+                <img src="../images/gurdy/0.jpg" alt="Hurdy Gurdy Image 0">
+                <img src="../images/gurdy/1.jpg" alt="Hurdy Gurdy Image 1">
+                <img src="../images/gurdy/2.jpg" alt="Hurdy Gurdy Image 2">
+                <img src="../images/gurdy/3.jpg" alt="Hurdy Gurdy Image 3">
+                <img src="../images/gurdy/4.jpg" alt="Hurdy Gurdy Image 4">
+                <img src="../images/gurdy/5.jpg" alt="Hurdy Gurdy Image 5">
+            </div>
+
+        </section>
+    </main>
+
+    <footer>
+        <p>2025.1 Chloe's Portfolio</p>
+        <p>I should probably protect my stuff under some license</p>
+    </footer>
+    <!-- silly spacers -->
+    <p>.
+       .
+       .
+    </p> 
+    <p>.
+        .
+        .
+     </p>
+
+</body>
+</html>
