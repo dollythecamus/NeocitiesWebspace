@@ -39,3 +39,32 @@ export function generateNonsense() {
     return paragraph.join("\n\n");
 }
 
+export function bark(syllables)
+{
+    const consonants = "rw";
+    const vowels = "ao";
+    const patterns = ["cvcc", "vcvv", "cvvvv", "cc", "cvvvvccvvvv", "vvcvcv", "cc", "ccccc"];
+    let word = "";
+  
+    for (let i = 0; i < syllables; i++) {
+
+        const pattern = patterns[Math.floor(Math.random() * patterns.length)];
+        for (const char of pattern) {
+            if (char === "c") {
+                word += consonants[Math.floor(Math.random() * consonants.length)];
+            } else if (char === "v") {
+                word += vowels[Math.floor(Math.random() * vowels.length)];
+            }
+        }
+    }
+    return word;
+}
+
+export function puppygirl(words)
+{
+    const phrase = [];
+    for (let i = 0; i < words; i++) {
+        phrase.push(bark(Math.floor(Math.random() * 6 + 1)));
+    }
+    return phrase.join(" ");
+}
