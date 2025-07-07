@@ -59,14 +59,14 @@ function shuffleArray(array) {
     }
 }
 
-function nextMarkdown() {
-    currentIndex = (currentIndex + 1) % mdFiles.length;
-    loadMarkdown(currentIndex);
+async function nextMarkdown() {
+    currentIndex = (currentIndex + 1) % mdFiles.length; 
+    getMarkdownContent(mdFiles[currentIndex]);
 }
 
-function prevMarkdown() {
+async function prevMarkdown() {
     currentIndex = (currentIndex - 1 + mdFiles.length) % mdFiles.length;
-    loadMarkdown(currentIndex);
+    getMarkdownContent(mdFiles[currentIndex]);
 }
 
 document.addEventListener("windowOpened", (event) => {
@@ -79,8 +79,6 @@ document.addEventListener("windowOpened", (event) => {
 
 async function onWindowOpen()
 {
-    //TOOL_fetchMarkdownFiles()
-    const contentElement = document.getElementById(id).querySelector('#content-container');
 
     // Create navigation buttons
     const prevButton = document.createElement('button');
@@ -93,7 +91,7 @@ async function onWindowOpen()
 
     await fetchMarkdownFiles()
     shuffleArray(mdFiles)
-    contentElement.innerHTML = await loadMarkdown(mdFiles[currentIndex]);
+    getMarkdownContent(mdFiles[currentIndex]);
 
     let content = document.getElementById(id).querySelector('.window-content').querySelector('div')
     content.appendChild(prevButton);
@@ -103,3 +101,8 @@ async function onWindowOpen()
 document.addEventListener("windowClosed", (event) => {
     // something on windowClosed.
 });
+
+async function getMarkdownContent(file) {
+    const contentElement = document.getElementById(id).querySelector('#content-container');
+    contentElement.innerHTML = await loadMarkdown(file);
+}
