@@ -1,5 +1,5 @@
-import {composeTextElements} from "./text-decoration.js";
-import {UpdateButtonColors} from "./buttons.js"; 
+import { composeTextElements } from "./text-decoration.js";
+import { UpdateButtonColors } from "./buttons.js"; 
 import { UpdateWindowColors } from "./windows.js";
 
 
