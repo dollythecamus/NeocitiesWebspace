@@ -36,7 +36,7 @@ Object.keys(windowsConfig).forEach(id => {
 export async function spawnWindow(id) {
     const windowData = windowsConfig[id]
     const contentUrl = `/windows/${windowData.contentUrl}`
-    const scriptUrl = windowData.scriptUrl ? `/windows/scripts/${windowData.scriptUrl}` : null;
+    const scriptUrl = windowData.scriptUrl ? `/scripts/windows/${windowData.scriptUrl}` : null;
     const title = windowData.title
     // If window already exists, bring it to front
     if (openWindows[id]) {
@@ -63,7 +63,7 @@ export async function spawnWindow(id) {
 
     makeDraggable(win);
     //makeResizable(win);
-    document.body.querySelector('main').appendChild(win);
+    document.body.querySelector('section').appendChild(win);
     openWindows[id] = win;
 
     let html = await loadContent(contentUrl);

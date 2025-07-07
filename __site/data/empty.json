@@ -6,7 +6,7 @@
             "color": "lights"
         },{
             "icon": "🧩",
-            "func": "function:message:hi..",
+            "func": "function:SillyMessage:hi..",
             "color": "lights"
         },
         {

@@ -103,13 +103,17 @@ function createButton(config, is_front) {
       spawnWindowFunction(window_id); // duplicate window data, this works
     } else if (func_type == "function") {
       // don't confuse window with my floating windows...
+      const function_args = func.split(':');
       const functionName = func.split(':')[1];
       if (typeof window[functionName] === "function") {
-        window[functionName]();
+        if (function_args.length > 2) {
+          window[functionName](function_args[2]);
+        } else {
+          window[functionName]();
+        }
       }
     }
-  }
-  );
+  });
 }
 
 async function spawnWindowFunction(window_id) {
