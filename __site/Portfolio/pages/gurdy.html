@@ -4,16 +4,18 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Portfolio - Hurdy Gurdy</title>
-    <link rel="stylesheet" href="../styles/cutesy.css">
-    <link rel="stylesheet" href="../../styles/markdown.css">
+    <link rel="stylesheet" href="/Portfolio/styles/cutesy.css">
+    <link rel="stylesheet" href="/styles/markdown.css">
+    <link rel="stylesheet" href="/styles/buttons.css">
 </head>
 <body>
+    <nav></nav>
     <main>
         <section class="sidebar-left">
             <h1>Hurdy Gurdy</h1>
             <ul>
                 <li><a href="../index.html">Portfolio</a></li>
-                <li><a href="../../index.html">Home</a></li>
+                <li><a href="/index.html">Home</a></li>
             </ul>
 
             <p>does my website design suck? the sidebars are weird. complain about it!</p>
@@ -22,10 +24,10 @@
 
         <section class="content markdown">
             <script type="module">
-                import { loadMarkdown } from '../../scripts/markdown.js';
+                import { loadMarkdown } from '/scripts/markdown.js';
 
                 const contentElement = document.querySelector('.content');
-                contentElement.innerHTML = await loadMarkdown('../content/hurdygurdy.md');
+                contentElement.innerHTML = await loadMarkdown('/Portfolio/content/hurdygurdy.md');
 
             </script>
         </section>
@@ -57,6 +59,10 @@
         .
         .
      </p>
+    <script>
+        data_file = "empty.json"; // Set the data path to get the homepage buttons. it's all dynamic and cool like that (sunglasses)
+    </script>
+    <script type="module" src="/scripts/buttons.js"></script>
 
 </body>
 </html>

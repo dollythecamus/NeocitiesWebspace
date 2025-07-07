@@ -65,12 +65,3 @@
 .close-btn:hover {
     background: #ff1c1c;
 }
-    
-*{
-    margin: 0;
-}
-
-hr{
-    margin: 8px 0;
-    border-top: 3px dotted #2ddb2d;
-}

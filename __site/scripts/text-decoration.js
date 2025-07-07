@@ -1,4 +1,4 @@
-import {getSiteGeneratedColors} from "./colors.js"
+import {getSiteGeneratedColors} from "/scripts/colors.js"
 
 export function composeTextElements(){
   const textElements = document.querySelectorAll(".decorated-text"); // Select all elements with the class "wiggly-text"

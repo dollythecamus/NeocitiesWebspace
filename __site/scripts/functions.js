@@ -1,6 +1,6 @@
 // functions.js for functions that the buttons can run without needing a floating window
-import { generateRandomColors, applyColors } from "./colors.js";
-import { cyclePlanetFocus, state } from "../Space/solar-controls.js"
+import { generateRandomColors, applyColors } from "/scripts/colors.js";
+import { cyclePlanetFocus, state } from "/Space/solar-controls.js"
 
 window.randomColors = function _randomColors()
 {
@@ -29,6 +29,10 @@ window.ShowTutorial = function _showTutorial()
         
         localStorage.setItem('hasVisited', 'true');
     }
+}
+
+window.message = function _message(text) {
+
 }
 
 window.ShowTutorial();

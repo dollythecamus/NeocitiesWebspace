@@ -1,0 +1,25 @@
+{
+    "buttons": [
+        {
+            "icon": "📄",
+            "func": "window:pages-window",
+            "color": "lights"
+        },{
+            "icon": "🧩",
+            "func": "function:message:hi..",
+            "color": "lights"
+        },
+        {
+            "icon": "**",
+            "func": null,
+            "color":"lights",
+            "position": "top-left"
+        }
+    ],
+    "windows": {
+        "pages-window":{
+            "title": "Website Pages List",
+            "contentUrl": "pages-window.html"
+        }
+    }
+}

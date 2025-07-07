@@ -1,10 +1,13 @@
-import { getSiteGeneratedColors } from "./colors.js";
+import { getSiteGeneratedColors } from "/scripts/colors.js";
 
+const data_dir = '/data/'; // Directory where data files are stored
 let data = {};
 
-async function loadData(path) {
+console.log(data_file);
+
+async function loadData(file) {
     try {
-        const response = await fetch(path);
+        const response = await fetch(data_dir + file);
         if (!response.ok) {
             throw new Error(`Failed to load data: ${response.statusText}`);
         }
@@ -16,7 +19,7 @@ async function loadData(path) {
 
 // Dynamically set the data path
 // data_path must be set in the main script tag of the page. 
-await loadData(data_path);
+await loadData(data_file);
 
 const windowsConfig = data.windows;
 
@@ -32,8 +35,8 @@ Object.keys(windowsConfig).forEach(id => {
 
 export async function spawnWindow(id) {
     const windowData = windowsConfig[id]
-    const contentUrl = `../windows/${windowData.contentUrl}`
-    const scriptUrl = windowData.scriptUrl ? `../scripts/windows/${windowData.scriptUrl}` : null;
+    const contentUrl = `/windows/${windowData.contentUrl}`
+    const scriptUrl = windowData.scriptUrl ? `/windows/scripts/${windowData.scriptUrl}` : null;
     const title = windowData.title
     // If window already exists, bring it to front
     if (openWindows[id]) {

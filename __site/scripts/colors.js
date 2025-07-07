@@ -1,6 +1,6 @@
-import { composeTextElements } from "./text-decoration.js";
-import { UpdateButtonColors } from "./buttons.js"; 
-import { UpdateWindowColors } from "./windows.js";
+import { composeTextElements } from "/scripts/text-decoration.js";
+import { UpdateButtonColors } from "/scripts/buttons.js"; 
+import { UpdateWindowColors } from "/scripts/windows.js";
 
 
 function generateRandomLightColor() {

@@ -1,7 +1,7 @@
 // content.js
 // :D
 
-import { loadMarkdown } from '../markdown.js';
+import { loadMarkdown } from '/scripts/markdown.js';
 
 // can't fetch them dinamically because neocities forbids it. i suppose it's a good call on them to prevent me from trying to make a giant stupid website idk
 const mdFiles = [];

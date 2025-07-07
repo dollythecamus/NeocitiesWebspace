@@ -5,15 +5,24 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Art Portfolio</title>
 
-    <link rel="stylesheet" href="../styles/gallery.css">
+    <link rel="stylesheet" href="/Portfolio/styles/gallery.css">
+        
+    <link rel="stylesheet" href="/styles/colors.css" />
+    <link rel="stylesheet" href="/styles/buttons.css" />
+    <link rel="stylesheet" href="/styles/windows.css" />
+    <link rel="stylesheet" href="/styles/decorations.css" />
+
+    <link rel="icon" href=/assets/images/CHL.png" type="image"/>
 </head>
 <body>
+    <nav></nav>
     <header>
         <h1>Design, Art & Illustration Portfolio</h1>
         <p>Explore my collection of illustrations!</p>
         <p>February to June 2025</p>
         <a href="../index.html">Portfolio</a>
     </header>
+
     <main>
         <section class="gallery">
             <div class="gallery-item">
@@ -73,5 +82,17 @@
                 <div class="description">Girl 2</div>
         </section>
     </main>
+
+    <section id="floating-windows"></section>
+
+    <div id="decorations">
+
+    </div>
+
+    <script>
+        data_file = 'empty.json'; // Set the data path to get the homepage buttons. it's all dynamic and cool like that (sunglasses)
+    </script>
+    <script type="module" src="/scripts/buttons.js"></script>
+
 </body>
 </html>
