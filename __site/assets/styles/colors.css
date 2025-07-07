@@ -1,0 +1,38 @@
+:root{
+    /*these are edited by the script colors.js, don't worry about it*/
+    --color0:ffffff;
+    --color1:ffffff;
+    --color2:ffffff;
+    --color3:ffffff;
+    --color4:ffffff;
+    --color5:ffffff;
+    --color6:ffffff;
+}
+
+.colorful_0 {
+    color:var(--color0)
+}
+
+.colorful_1 {
+    color:var(--color1)
+}
+
+.colorful_2 {
+    color:var(--color2)
+}
+
+.colorful_3 {
+    color:var(--color3)
+}
+
+.colorful_4 {
+    color:var(--color4)
+}
+
+.colorful_5 {
+    color:var(--color5)
+}
+
+.colorful_6 {
+    color:var(--color6)
+}

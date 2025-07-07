@@ -1,6 +1,6 @@
 // don't consfuse with ../nonsense.js
 
-import {generateNonsense, puppygirl} from "/scripts/nonsense.js";
+import {generateNonsense, puppygirl} from "/assets/scripts/nonsense.js";
 
 let id = "nonsense-window";
 

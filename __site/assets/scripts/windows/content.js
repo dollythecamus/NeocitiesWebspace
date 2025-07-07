@@ -1,7 +1,7 @@
 // content.js
 // :D
 
-import { loadMarkdown } from '/scripts/markdown.js';
+import { loadMarkdown } from '/assets/scripts/markdown.js';
 
 // can't fetch them dinamically because neocities forbids it. i suppose it's a good call on them to prevent me from trying to make a giant stupid website idk
 const mdFiles = [];
@@ -12,7 +12,7 @@ let id = "content-window";
 // tool to download the markdown files into a list.md file to be loaded from the list
 async function TOOL_fetchMarkdownFiles() {
     try {
-        const response = await fetch('../content/');
+        const response = await fetch('/assets/content/');
         const data = await response.text();
         const parser = new DOMParser();
         const htmlDoc = parser.parseFromString(data, 'text/html');
@@ -32,7 +32,7 @@ async function TOOL_fetchMarkdownFiles() {
         const blob = new Blob([listContent], { type: 'text/plain' });
         const a = document.createElement('a');
         a.href = URL.createObjectURL(blob);
-        a.download = '../content/list.md';
+        a.download = '/assets/content/list.md';
         a.click();
         URL.revokeObjectURL(a.href);
     } catch (error) {
@@ -43,7 +43,7 @@ async function TOOL_fetchMarkdownFiles() {
 async function fetchMarkdownFiles()
 {
     try {
-        const response = await fetch('../content/list.md');
+        const response = await fetch('/assets/content/list.md');
         const data = await response.text();
         mdFiles.push(...data.split('\n').filter(file => file.trim().endsWith('.md')));
     } catch (error) {

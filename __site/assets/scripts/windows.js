@@ -1,6 +1,6 @@
-import { getSiteGeneratedColors } from "/scripts/colors.js";
+import { getSiteGeneratedColors } from "/assets/scripts/colors.js";
 
-const data_dir = '/data/'; // Directory where data files are stored
+const data_dir = '/assets/data/'; // Directory where data files are stored
 let data = {};
 
 console.log(data_file);
@@ -35,8 +35,8 @@ Object.keys(windowsConfig).forEach(id => {
 
 export async function spawnWindow(id) {
     const windowData = windowsConfig[id]
-    const contentUrl = `/windows/${windowData.contentUrl}`
-    const scriptUrl = windowData.scriptUrl ? `/scripts/windows/${windowData.scriptUrl}` : null;
+    const contentUrl = `/assets/windows/${windowData.contentUrl}`
+    const scriptUrl = windowData.scriptUrl ? `/assets/scripts/windows/${windowData.scriptUrl}` : null;
     const title = windowData.title
     // If window already exists, bring it to front
     if (openWindows[id]) {
@@ -63,7 +63,7 @@ export async function spawnWindow(id) {
 
     makeDraggable(win);
     //makeResizable(win);
-    document.body.querySelector('section').appendChild(win);
+    document.body.querySelector('#floating-windows').appendChild(win);
     openWindows[id] = win;
 
     let html = await loadContent(contentUrl);
@@ -101,7 +101,7 @@ export async function spawnWindow(id) {
 
         document.dispatchEvent(new CustomEvent("windowClosed", { detail: {id: id} }));
 
-        document.body.querySelector('main').removeChild(win);
+        document.body.querySelector('#floating-windows').removeChild(win);
         delete openWindows[id];
     });
 

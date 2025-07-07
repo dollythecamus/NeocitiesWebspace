@@ -1,6 +1,6 @@
-import { composeTextElements } from "/scripts/text-decoration.js";
-import { UpdateButtonColors } from "/scripts/buttons.js"; 
-import { UpdateWindowColors } from "/scripts/windows.js";
+import { composeTextElements } from "/assets/scripts/text-decoration.js";
+import { UpdateButtonColors } from "/assets/scripts/buttons.js"; 
+import { UpdateWindowColors } from "/assets/scripts/windows.js";
 
 
 function generateRandomLightColor() {
@@ -108,4 +108,9 @@ export function applyColors()
 
     document.documentElement.style.setProperty('--color0', colors.lights[0]);
     document.documentElement.style.setProperty('--color1', colors.lights[1]);
+    document.documentElement.style.setProperty('--color2', colors.lights[2]);
+    document.documentElement.style.setProperty('--color3', colors.lights[3]);
+    document.documentElement.style.setProperty('--color4', colors.lights[4]);
+    document.documentElement.style.setProperty('--color5', colors.lights[5]);
+    document.documentElement.style.setProperty('--color6', colors.lights[6]);
 }

@@ -8,6 +8,10 @@
             "icon": "🧩",
             "func": "function:SillyMessage:hi..",
             "color": "lights"
+        },{
+            "icon": "✨",
+            "func": "function:randomColors",
+            "color": "lights"
         },
         {
             "icon": "**",

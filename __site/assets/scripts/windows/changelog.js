@@ -1,5 +1,5 @@
 
-import { loadMarkdown } from '/scripts/markdown.js';
+import { loadMarkdown } from '/assets/scripts/markdown.js';
 
 let id = "changelog";
 

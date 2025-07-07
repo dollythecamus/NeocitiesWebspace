@@ -1,7 +1,7 @@
 // functions.js for functions that the buttons can run without needing a floating window
-import { generateRandomColors, applyColors } from "/scripts/colors.js";
+import { generateRandomColors, applyColors } from "/assets/scripts/colors.js";
 import { cyclePlanetFocus, state } from "/Space/solar-controls.js"
-import { composeTextElements } from "/scripts/text-decoration.js";
+import { composeTextElements } from "/assets/scripts/text-decoration.js";
 
 window.randomColors = function _randomColors()
 {

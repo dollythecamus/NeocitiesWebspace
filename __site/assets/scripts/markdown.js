@@ -23,3 +23,8 @@ export async function loadMarkdown(file) {
         console.error('Error loading markdown file:', error);
     }
 }
+
+export function parseMarkdown(markdown)
+{
+    return marked.parse(markdown);
+}

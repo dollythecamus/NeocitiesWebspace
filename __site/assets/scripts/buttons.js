@@ -1,7 +1,7 @@
-import { applyColors, oppositeColor } from '/scripts/colors.js';
-import { spawnWindow } from '/scripts/windows.js';
+import { applyColors, oppositeColor } from '/assets/scripts/colors.js';
+import { spawnWindow } from '/assets/scripts/windows.js';
 
-const data_dir = '/data/'; // Directory where data files are stored
+const data_dir = '/assets/data/'; // Directory where data files are stored
 let data = {};
 
 async function loadData(file) {

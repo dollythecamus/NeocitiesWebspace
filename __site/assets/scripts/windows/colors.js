@@ -1,7 +1,7 @@
 // /scripts/windows/colors.js
 // don't get it confused with /scripts/colors.js
 // this is for the color floating window
-import { generateRandomColors, applyColors } from "/scripts/colors.js";
+import { generateRandomColors, applyColors } from "/assets/scripts/colors.js";
 
 const id = "colors-window"
 
