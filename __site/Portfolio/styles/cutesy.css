@@ -2,6 +2,7 @@ main {
     display: flex;
     justify-content: center;
     align-items: flex-start;
+    overflow: scroll;
     margin: 20px;
 }
 
@@ -11,7 +12,7 @@ main {
     border: 2px solid #ffb3d9;
     border-radius: 15px;
     padding: 20px;
-    box-shadow: 0 4px 8px rgba(255, 182, 193, 0.5);
+    box-shadow: 0 4px 8px rgba(122, 105, 108, 0.5);
     margin-right: 20px;
 }
 

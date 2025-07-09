@@ -1,13 +1,18 @@
 {
     "buttons": [
         {
+            "icon": "📃",
+            "func": "window:pages-window",
+            "color": "lights"
+        },
+        {
             "icon": "📷",
             "func": "window:stats-window",
             "color": "darks"
         },
         {
             "icon": "🎛️",
-            "func": "window:changelog",
+            "func": "window:changelog-window",
             "color": "darks"
         },
         {
@@ -27,7 +32,7 @@
         },
         {
             "icon": "👁️",
-            "func": "window:personal-window",
+            "func": "function:gotoPage:/Personal/index.html",
             "color": "lights"
         },
         {
@@ -41,18 +46,25 @@
             "color": "lights"
         },
         {
-            "icon": "🏳️‍⚧️",
-            "func": "window:queer",
+            "icon": "🧩",
+            "func": "function:SillyMessage:UwU",
             "color": "lights"
-        },{
-            "icon": "📃",
-            "func": "window:pages-window",
+        },
+        {
+            "icon": "🤖",
+            "func": "window:nonsense-window",
+            "color": "lights"
+        },
+        {
+            "icon": "🏳️‍⚧️",
+            "func": "window:queer-window",
             "color": "lights"
         },
         {
             "icon": "**",
             "func": null,
-            "color":"lights"
+            "color":"lights",
+            "position": "center-left"
         }
     ],
     "windows": {
@@ -63,10 +75,14 @@
         },"pages-window":{
             "title": "Website Pages List",
             "contentUrl": "pages-window.html"
-        },"changelog":{
+        },"changelog-window":{
             "title": "Website Changelog",
-            "contentUrl": "changelog.html",
+            "contentUrl": "changelog-window.html",
             "scriptUrl":"changelog.js"
+        },"nonsense-window":{
+            "title": "Nonsense",
+            "contentUrl": "nonsense-window.html",
+            "scriptUrl": "nonsense.js"
         },
         "tech-window":{
             "title": "Tech",
@@ -89,9 +105,9 @@
             "title": "Inventions",
             "contentUrl": "inventions-window.html"
         },
-        "queer":{
+        "queer-window":{
             "title": "Queer",
-            "contentUrl": "queer.html"
+            "contentUrl": "queer-window.html"
         }
     }
 }

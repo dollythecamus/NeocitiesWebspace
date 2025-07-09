@@ -1,4 +1,4 @@
-import { composeTextElements } from "/assets/scripts/text-decoration.js";
+import { composeTextElements } from "/assets/scripts/decoration.js";
 import { UpdateButtonColors } from "/assets/scripts/buttons.js"; 
 import { UpdateWindowColors } from "/assets/scripts/windows.js";
 
@@ -88,21 +88,10 @@ export function oppositeColor(type)
         return 'lights'
 }
 
-export function BackgroundColors(colors){
-    const titleContainers = document.querySelectorAll(".text-container");
-
-    titleContainers.forEach( (titleContainer) => {
-
-        titleContainer.style.borderColor = colors.darks[0]; // Set border color using the first dark color
-        titleContainer.style.backgroundColor = getSimilarColor(colors.darks[0]); // Set background color using the first light color, with similarity
-    });
-}  
-
 export function applyColors()
 {
     const colors = getSiteGeneratedColors();
     composeTextElements();
-    BackgroundColors(colors);
     UpdateWindowColors(colors);
     UpdateButtonColors(colors);
 
@@ -113,4 +102,8 @@ export function applyColors()
     document.documentElement.style.setProperty('--color4', colors.lights[4]);
     document.documentElement.style.setProperty('--color5', colors.lights[5]);
     document.documentElement.style.setProperty('--color6', colors.lights[6]);
+
+    document.documentElement.style.setProperty('--colorDark0', colors.darks[0]);
+    document.documentElement.style.setProperty('--colorDark1', colors.darks[1]);
+    document.documentElement.style.setProperty('--colorDark2', colors.darks[2]);
 }

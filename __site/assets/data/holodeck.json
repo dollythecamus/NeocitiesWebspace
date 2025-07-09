@@ -7,9 +7,9 @@
         }
     ],
     "windows": {
-        "holodeck": {
+        "holodeck-window": {
             "title": "Holodeck Console",
-            "contentUrl": "holodeck.html",
+            "contentUrl": "holodeck-window.html",
             "scriptUrl": "holodeck.js",
             "start": true
         }

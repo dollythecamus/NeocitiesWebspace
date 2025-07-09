@@ -48,7 +48,7 @@
         },
         "nonsense-window":{
             "title": "Nonsense",
-            "contentUrl": "nonsense.html",
+            "contentUrl": "nonsense-window.html",
             "scriptUrl": "nonsense.js"
         },
         "stats-window":{
@@ -62,7 +62,7 @@
         },
         "solar-controls":{
             "title": "Solar System Controls",
-            "contentUrl": "solar-controls.html",
+            "contentUrl": "solar-controls-window.html",
             "scriptUrl": "solar-controls.js",
             "start": true
         }

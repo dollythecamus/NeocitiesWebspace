@@ -50,8 +50,30 @@ export function composeTextElements(){
         textElement.appendChild(wordSpan);
       });
     }
+  
   });
-
 }
 
+function initDecorations() {
+  composeTextElements();
+  imageDecorations();
 
+  // Add event listener to the window to recompose text elements on resize
+}
+
+function imageDecorations() {
+  const decorations = document.querySelectorAll(".decoration");
+
+  decorations.forEach(decoration => {
+    const randomX = Math.random() * (window.innerWidth - decoration.offsetWidth);
+    const randomY = Math.random() * (window.innerHeight - decoration.offsetHeight);
+
+    decoration.style.position = "absolute";
+    decoration.style.left = `${randomX}px`;
+    decoration.style.top = `${randomY}px`;
+  });
+}
+
+document.addEventListener("DOMContentLoaded", () => {
+  initDecorations();
+});

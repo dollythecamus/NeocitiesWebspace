@@ -28,3 +28,16 @@ export function parseMarkdown(markdown)
 {
     return marked.parse(markdown);
 }
+
+document.addEventListener('DOMContentLoaded', async () => {
+    const sections = document.querySelectorAll('[data-markdown]');
+    for (const section of sections) {
+        const file = section.getAttribute('data-markdown');
+        if (file) {
+            const html = await loadMarkdown(file);
+            if (html) {
+                section.innerHTML = html;
+            }
+        }
+    }
+});

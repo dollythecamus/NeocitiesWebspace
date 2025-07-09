@@ -1,7 +1,9 @@
 // functions.js for functions that the buttons can run without needing a floating window
 import { generateRandomColors, applyColors } from "/assets/scripts/colors.js";
 import { cyclePlanetFocus, state } from "/Space/solar-controls.js"
-import { composeTextElements } from "/assets/scripts/text-decoration.js";
+import { composeTextElements } from "/assets/scripts/decoration.js";
+
+const WEBSITE_VERSION = '0.5.02';
 
 window.randomColors = function _randomColors()
 {
@@ -33,10 +35,12 @@ window.ShowTutorial = function _showTutorial()
 }
 
 window.SillyMessage = function _message(text) {
+
     const decorationsDiv = document.getElementById('decorations');
     if (decorationsDiv) {
         const p = document.createElement('p');
         p.textContent = text;
+        p.classList.add('decoration');
         p.classList.add('decorated-text');
         p.classList.add('wiggly');
         p.classList.add('rainbow');
@@ -47,8 +51,26 @@ window.SillyMessage = function _message(text) {
 
         decorationsDiv.appendChild(p);
 
+        p.addEventListener('click', () => {
+            p.remove();
+        });
+
         composeTextElements();
     }
 }
 
+window.seeWebsiteVersion = function _seeWebsiteVersion() {
+
+    const versionElements = document.querySelectorAll(".WEBSITE_VERSION");
+    versionElements.forEach(element => {
+    element.textContent = WEBSITE_VERSION;
+    });
+    console.log(`Website version: ${WEBSITE_VERSION}`);
+}
+
+window.gotoPage = function _gotoPage(url) {
+    window.location.href = url;
+}
+
 window.ShowTutorial();
+window.seeWebsiteVersion();

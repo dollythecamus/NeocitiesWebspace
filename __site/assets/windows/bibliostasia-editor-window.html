@@ -1,0 +1,54 @@
+<style>
+
+#bibliostasia-editor-window
+{
+    width: 10cm;
+}
+
+#bibliostasia-editor-window .window-content div #content-container {
+    font-family: Arial, sans-serif;
+    padding: 3%;
+    margin: 0;
+    height: 6cm;
+    overflow: auto;
+}
+
+#bibliostasia-editor-window .window-content div button {
+    margin: 0px 10px;
+    width: 85px;
+    padding: 5px;
+}
+.biblio-attr-row {
+    display: flex;
+    align-items: center;
+    margin-bottom: 6px;
+}
+.biblio-attr-row input[type="text"] {
+    margin-right: 6px;
+    flex: 1 1 40%;
+}
+.biblio-attr-row button {
+    width: 24px;
+    padding: 0;
+    font-size: 1.1em;
+}
+</style>
+
+<link rel="stylesheet" href="/assets/styles/markdown.css">
+
+<div> 
+    <div id="content-container">
+        <form id="biblio-editor-form">
+            <label for="biblio-id">Node ID:</label>
+            <input type="text" id="biblio-id" name="biblio-id" readonly style="width: 60%" />
+            <div id="biblio-attributes-list">
+                <!-- Attribute rows will be dynamically inserted here -->
+            </div>
+            <button type="button" id="add-attribute-btn">+ Add Attribute</button>
+            <div style="margin-top: 1em;">
+                <button type="submit" id="save-biblio-btn">Save</button>
+                <button type="button" id="delete-biblio-btn" style="background: #e66; color: #fff;">Delete</button>
+            </div>
+        </form>
+    </div>
+</div>

@@ -66,5 +66,5 @@ export function puppygirl(words)
     for (let i = 0; i < words; i++) {
         phrase.push(bark(Math.floor(Math.random() * 6 + 1)));
     }
-    return phrase.join(" ");
+    return phrase.join(" ") + "-puppygirl barks";
 }

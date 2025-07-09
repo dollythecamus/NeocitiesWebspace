@@ -3,28 +3,38 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Amanita Webspace Page</title>
-  <link rel="stylesheet" href="/assets/styles/colors.css" />
+  <title>Bibliostasia</title>
   <link rel="stylesheet" href="/assets/styles/default.css" />
-  <link rel="stylesheet" href="/assets/styles/buttons.css" />
-  <link rel="stylesheet" href="/assets/styles/windows.css" />
-  <link rel="stylesheet" href="/assets/styles/decorations.css" />
   <link rel="stylesheet" href="/assets/styles/markdown.css" />
+  <link rel="stylesheet" href="/assets/styles/colors.css" />
+  <link rel="stylesheet" href="/assets/styles/windows.css" />
+  <link rel="stylesheet" href="/assets/styles/buttons.css" />
+  <link rel="stylesheet" href="/assets/styles/decorations.css" />
 
   <link rel="icon" href="/assets/images/icon/CHL.png" type="image"/>
+ 
+  <link rel="stylesheet" href="./stasia.css" />
 </head>
 <body>
   
   <div id="background"></div>
 
   <header>
+    <section>
+      <h1>Bibliostasia</h1>
+      <p>A game about language and conscious perception.</p>
+      <p>Exploring the connections between words, meanings, images, and the world around you.</p>
+    </section>
   </header>
 
   <nav></nav> <!-- here will be loaded the navigation buttons -->
 
-  <main></main> <!-- here will be loaded the floating windows -->
+  <main>
+    <section id="biblio-graph-container">
+    </section>
+  </main> 
 
-  <section id="floating-windows"></section> <!-- here will be the page's main content. i should put something here huh -->
+  <section id="floating-windows"></section><!-- here will be loaded the floating windows -->
 
   <footer> 
     <div class="colorful_0">
@@ -37,10 +47,12 @@
   <div id="decorations">
 
   </div>
-  
+
+    <script type="module" src="./bibliostasia.js"></script>
+
     <script src="/assets/scripts/define-functions.js"></script>
     <script>
-        data_file = 'empty.json'; // Set the data path to get the homepage buttons. it's all dynamic and cool like that (sunglasses)
+        data_file = 'bibliostasia.json'; // Set the data path to get the homepage buttons. it's all dynamic and cool like that (sunglasses)
     </script>
     <script type="module" src="/assets/scripts/decoration.js"></script>
     <script type="module" src="/assets/scripts/functions.js"></script>

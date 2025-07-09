@@ -1,7 +1,7 @@
 
 import { loadMarkdown } from '/assets/scripts/markdown.js';
 
-let id = "changelog";
+let id = "changelog-window";
 
 document.addEventListener("windowOpened", (event) => {
 

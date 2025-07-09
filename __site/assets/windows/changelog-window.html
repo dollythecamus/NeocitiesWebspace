@@ -1,6 +1,6 @@
 <style>
    
-    #changelog .window-content{
+    #changelog-window .window-content{
         background-image: url(../assets/images/cubism-jwst-ascii.png);
         font-family: Arial, sans-serif;
         /* color: #2ddb2d; */
@@ -9,12 +9,12 @@
         width: 12cm;
         height: 6cm;
     }
-    #changelog .window-content a {
+    #changelog-window .window-content a {
         color: #35bbd3;
         text-decoration: none;
         font-size: 1.5em;
     }
-    #changelog .window-content a:hover {
+    #changelog-window .window-content a:hover {
         color: #7a6df1;
         text-decoration: underline;
     }
@@ -30,7 +30,7 @@
     <h5>Changelog Command:</h5>
     <p>for me to remember :p</p>
 
-    <code>git log --pretty=format:"---%n### %s%nTime: %ad%n" --date=short > changelog.md</code>
+    <code>git log --pretty=format:"---%n### %s%nTime: %ad%n" --date=short > __site/changelog.md</code>
 
     <div id="changelog-container" ></div>
 </div>

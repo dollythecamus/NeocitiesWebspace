@@ -4,12 +4,18 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Portfolio - Hurdy Gurdy</title>
-    <link rel="stylesheet" href="/Portfolio/styles/cutesy.css">
-    <link rel="stylesheet" href="/assets/styles/markdown.css">
-    <link rel="stylesheet" href="/assets/styles/buttons.css">
-</head>
+    
+    <link rel="stylesheet" href="/Portfolio/styles/cutesy.css" />
+  <link rel="stylesheet" href="/assets/styles/colors.css" />
+  <link rel="stylesheet" href="/assets/styles/buttons.css" />
+  <link rel="stylesheet" href="/assets/styles/windows.css" />
+  <link rel="stylesheet" href="/assets/styles/decorations.css" />
+  <link rel="stylesheet" href="/assets/styles/markdown.css" />
 <body>
     <nav></nav>
+
+    <section id="floating-windows"></section> <!-- here will be the page's main content. i should put something here huh -->
+
     <main>
         <section class="sidebar-left">
             <h1>Hurdy Gurdy</h1>
@@ -22,14 +28,8 @@
 
         </section>
 
-        <section class="content markdown">
-            <script type="module">
-                import { loadMarkdown } from '/assets/scripts/markdown.js';
+        <section data-markdown = "/Portfolio/content/hurdygurdy.md" class="content markdown">
 
-                const contentElement = document.querySelector('.content');
-                contentElement.innerHTML = await loadMarkdown('/Portfolio/content/hurdygurdy.md');
-
-            </script>
         </section>
 
         <section class="sidebar-right">
@@ -59,10 +59,17 @@
         .
         .
      </p>
+
+    <script src="/assets/scripts/define-functions.js"></script>
     <script>
-        data_file = "empty.json"; // Set the data path to get the homepage buttons. it's all dynamic and cool like that (sunglasses)
+        data_file = 'empty.json'; // Set the data path to get the homepage buttons. it's all dynamic and cool like that (sunglasses)
     </script>
+    <script type="module" src="/assets/scripts/decoration.js"></script>
+    <script type="module" src="/assets/scripts/functions.js"></script>
+    <script type="module" src="/assets/scripts/windows.js"></script>
+    <script type="module" src="/assets/scripts/colors.js"></script>
     <script type="module" src="/assets/scripts/buttons.js"></script>
+    <script type="module" src="/assets/scripts/markdown.js"></script>
 
 </body>
 </html>
