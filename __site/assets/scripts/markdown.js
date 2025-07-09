@@ -29,6 +29,7 @@ export function parseMarkdown(markdown)
     return marked.parse(markdown);
 }
 
+// this loads markdown files into sections with the data-markdown attribute linked to a .md file when the document is loaded :)
 document.addEventListener('DOMContentLoaded', async () => {
     const sections = document.querySelectorAll('[data-markdown]');
     for (const section of sections) {
