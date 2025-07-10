@@ -2,9 +2,10 @@
 /* --- Draggable Button Style --- */
 
 .button {
+    --button-size: clamp(5vh, 7vh, 10vh);
     position: absolute;
-    width: 7vh;
-    height: 7vh;
+    width: var(--button-size);
+    height: var(--button-size);
     border-radius: 50%;
     z-index: 1000;
     display: flex;
@@ -23,4 +24,6 @@
 .button.front {
     pointer-events: auto;
     cursor: grab;
+    height: calc(var(--button-size) + 3px);
+    width: calc(var(--button-size) + 3px);
 }

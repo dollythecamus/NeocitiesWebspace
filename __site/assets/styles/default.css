@@ -1,8 +1,8 @@
-body, html, * {
+body, html {
     margin: 0;
     padding: 0;
     overflow: hidden;
-    font-family: monospace;
+    font-family: 'anything', monospace;
 }
 
 #background {
@@ -33,4 +33,21 @@ main {
 footer {
     position:absolute;
     bottom:0;
+}
+
+/* fonts */
+
+@font-face {
+    font-family: 'something';
+    src: url('/assets/fonts/woff/texgyreadventor-regular.woff') format('woff');
+}
+
+@font-face {
+    font-family: 'nothing';
+    src: url('/assets/fonts/woff/AdwaitaMono-Regular.woff') format('woff');
+}
+
+@font-face {
+    font-family: 'anything';
+    src: url('/assets/fonts/woff/unifont.woff') format('woff');
 }

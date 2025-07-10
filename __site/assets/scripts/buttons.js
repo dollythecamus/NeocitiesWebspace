@@ -39,7 +39,7 @@ let isDragging = false;
 const lastMouse = { x: startX, y: startY };
 
 const layerConfig = [2, 8, 32]; // Max buttons per layer (like electron shells)
-const layerSpacing = 85; // Distance between layers
+const layerSpacing = 105; // Distance between layers
 
 for (let i = 0; i < buttonConfig.length; i++) {
   createButton(buttonConfig[i], i === buttonConfig.length - 1)

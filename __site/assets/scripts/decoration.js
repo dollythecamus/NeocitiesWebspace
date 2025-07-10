@@ -56,19 +56,18 @@ export function composeTextElements(){
 
 function initDecorations() {
   composeTextElements();
-  imageDecorations();
+  randomPositionDecorations();
 
   // Add event listener to the window to recompose text elements on resize
 }
 
-function imageDecorations() {
-  const decorations = document.querySelectorAll(".decoration");
+function randomPositionDecorations() {
+  const decorations = document.querySelectorAll(".decoration.random-position");
 
   decorations.forEach(decoration => {
     const randomX = Math.random() * (window.innerWidth - decoration.offsetWidth);
     const randomY = Math.random() * (window.innerHeight - decoration.offsetHeight);
 
-    decoration.style.position = "absolute";
     decoration.style.left = `${randomX}px`;
     decoration.style.top = `${randomY}px`;
   });

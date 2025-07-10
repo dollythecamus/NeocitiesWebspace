@@ -1,8 +1,7 @@
-body, html, * {
+body, html {
     margin: 0;
     padding: 0;
-    overflow: hidden;
-    font-family: monospace;
+    font-family: 'nothing', monospace;
 }
 
 #background {
@@ -18,7 +17,6 @@ body, html, * {
 }
 
 header {
-    margin-top: 30px;
     width: 100%;
     text-align: center;
     display: flex;
@@ -46,6 +44,7 @@ main section.center {
 footer {
     position:absolute;
     bottom:0;
+    font-family: 'anything', monospace;
 }
 
 /* Title */
@@ -59,7 +58,9 @@ header .text-container {
     border-radius: 2vh;
 }
 
-header .text-container h1{
+/* needs * because it is a compound something... */
+header .text-container h1 *{
+    font-family: 'something', sans-serif;
     display: inline-block;
     font-size: 3vw;
 }
@@ -73,4 +74,21 @@ header .text-container h1{
 
 .tutorial {
     display: none;
+}
+
+/* fonts */
+
+@font-face {
+    font-family: 'something';
+    src: url('/assets/fonts/woff/texgyreadventor-regular.woff') format('woff');
+}
+
+@font-face {
+    font-family: 'nothing';
+    src: url('/assets/fonts/woff/AdwaitaMono-Regular.woff') format('woff');
+}
+
+@font-face {
+    font-family: 'anything';
+    src: url('/assets/fonts/woff/unifont.woff') format('woff');
 }

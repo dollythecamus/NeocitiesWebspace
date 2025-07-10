@@ -14,48 +14,47 @@
   z-index: 10; /* Ensure decorations are above other content */
 }
 
-#arrow {
-  position: fixed;
-  font-size: 30px;
-  user-select: none;
+.decoration.silly-text {
+  font-size: 2rem;
+  text-shadow: 2px 2px 4px rgba(0,0,0,0.5);
+  font-family: 'Comic Sans MS', cursive, sans-serif;
 }
 
-.float-text {
+.decoration.whacky-text {
+  font-size: 3rem;
+  text-shadow: 2px 2px 4px rgba(0,0,0,0.5);
+  font-family: 'Comic Sans MS', cursive, sans-serif;
+}
+
+.decoration.float {
   position: fixed;
   text-align: justify;
   justify-self: left;
-  font-size: 30px;
-  opacity: 0.6;
   animation: drift 10s infinite alternate ease-in-out;
 }
 
-.rotate-text {
+.decoration.rotate {
   position: fixed;
-  font-size: 30px;
-  opacity: 0.6;
   animation: rotate 10s infinite alternate ease-in-out;
 }
 
-.spinning-text {
+.decoration.spin {
   position: fixed;
-  font-size: 20px;
-  opacity: 0.6;
-  animation: spin 10s infinite alternate ease-in-out;
+  animation: spin 10s infinite linear;
 }
 
-.float-text:hover {
-    opacity: 1;
+.decoration.float:hover {
     animation-play-state: paused;
     user-select: none;
 }
-  
-.rotate-text:hover {
+
+.decoration.rotate:hover {
   opacity: 1;
   animation-play-state: paused;
   user-select: none;
 }
 
-.spinning-text:hover {
+.decoration.spin:hover {
   opacity: 1;
   animation-play-state: paused;
   user-select: none;
@@ -85,6 +84,15 @@
     }
 }
 
+@keyframes spin {
+    0% {
+      transform: translate(0px, 0px) rotate(0deg);
+    }
+    100% {
+      transform: translate(0px, 0px) rotate(360deg);
+    }
+}
+
 /* -~- wiggle -~- */
 
 @keyframes wiggle {
@@ -102,12 +110,12 @@
   }
 }
 
-.decorated-text {
-  display: inline-block;
+.decoration.wiggly {
+  display: inline;
 }
 
 .wiggly-letter {
   display: inline-block;
   animation: wiggle 2s infinite;
-  text-shadow: 2px 2px 4px rgba(0,0,0,0.5);
+  text-shadow: 3px 3px 5px var(--color4);
 }
