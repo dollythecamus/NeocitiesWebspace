@@ -10,11 +10,13 @@ body, html {
     position: fixed;
     width: 100vw;
     height: 100vh;
-    background-color: rebeccapurple;
+    background-image: url(/assets/images/backgrounds/stars3.gif);
     background-repeat: repeat;
-    /*background: repeating-linear-gradient(45deg, rgb(44, 33, 42), rgb(51, 38, 48) 20px, #751b57 20px, #751b57 40px);*/
     overflow: hidden;
 }
+
+/* header 
+    contains title of page sometimes*/
 
 header {
     width: 100%;
@@ -24,15 +26,74 @@ header {
     justify-content: center;
 }
 
+header .header-text {
+    
+    padding: 0.5vh;
+    border-style: solid;
+
+    background: linear-gradient(45deg,rgb(76, 50, 92) 0%, rgb(107, 62, 62) 50%, rgb(114, 19, 133) 100%);
+    border-color: var(--colorDark1);
+
+    border-width: 1vh;
+
+}
+
+header h1 {
+    font-family: 'something', monospace;
+    font-size: 3vw;
+    text-shadow: 2px 2px 2px var(--colorDark1);
+    color: var(--color2);
+}
+
+header p {
+    font-family: 'something', monospace;
+    font-size: 0.3vw;
+    text-shadow: 2px 2px 2px var(--colorDark1);
+    color: var(--color2);
+}
+
 main {
     width: 100%;
     height: 100%;
     overflow: hidden;
+
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: center;
 }
+
+main section {
+    background-color: aqua;
+    width: 100%;
+    height: 100%;
+}
+
+main section.right {
+    margin-right: 2vw;
+}
+
+main section.left {
+    margin-left: 2vw;
+}
+
+/* footer 
+    contains version and author */
 
 footer {
     position:absolute;
+    margin-left: 1vw;
     bottom:0;
+}
+
+footer p {
+    text-shadow: 2px 2px 2px var(--colorDark1);
+}
+
+/* weird stuff */
+
+.tutorial {
+    display: none;
 }
 
 /* fonts */

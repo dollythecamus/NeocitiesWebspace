@@ -60,10 +60,8 @@
   user-select: none;
 }
 
-#versions {
-  opacity: 0.8;
-  color: pink;
-  font-size: 2vh;
+.decoration.darkshadow {
+  text-shadow: 2px 2px 4px var(--colorDark2);
 }
 
 @keyframes drift {
@@ -117,5 +115,4 @@
 .wiggly-letter {
   display: inline-block;
   animation: wiggle 2s infinite;
-  text-shadow: 3px 3px 5px var(--color4);
 }

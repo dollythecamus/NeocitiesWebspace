@@ -1,7 +1,7 @@
 // functions.js for functions that the buttons can run without needing a floating window
 import { generateRandomColors, applyColors } from "/assets/scripts/colors.js";
 import { cyclePlanetFocus, state } from "/Space/solar-controls.js"
-import { composeTextElements } from "/assets/scripts/decoration.js";
+import { composeTextElements, ToggleDecorate } from "/assets/scripts/decoration.js";
 
 const WEBSITE_VERSION = '0.5.02';
 
@@ -70,6 +70,10 @@ window.seeWebsiteVersion = function _seeWebsiteVersion() {
 
 window.gotoPage = function _gotoPage(url) {
     window.location.href = url;
+}
+
+window.decorate = function _decorate() {
+    ToggleDecorate();
 }
 
 window.ShowTutorial();

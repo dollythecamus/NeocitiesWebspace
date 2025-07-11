@@ -3,9 +3,9 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Starry Night & Delight</title>
+  <title>Cosmic Psychedelia Experiment + Queer</title>
   <link rel="stylesheet" href="/assets/styles/decorations.css" />
-  <link rel="stylesheet" href="/assets/styles/homepage.css" />
+  <link rel="stylesheet" href="/assets/styles/default.css" />
   <link rel="stylesheet" href="/assets/styles/buttons.css" />
   <link rel="stylesheet" href="/assets/styles/windows.css" />
   <link rel="stylesheet" href="/assets/styles/colors.css" />
@@ -18,52 +18,56 @@
   <div id="background"></div>
 
   <header>
-    <div class="text-container">
-      <h1 class="decorated-text wiggly rainbow">Cosmic Psychedelia Experiment + Gay</h1>
-    </div>
+    <section class="header-text">
+      <h1 class="decorated-text wiggly rainbow">Cosmic Psychedelia Experiment + Queer</h1>
+    </section>
   </header>
 
   <nav></nav> <!-- here will be loaded the navigation buttons -->
 
   <main>
-    <section class="sidebar right">
-      sidebar right!
+
+    <section class="sidebar left">
+      sidebar left!
     </section>
 
     <section data-markdown = "/assets/content/homepage-main.md" class="markdown center">
     </section>
+
+    <section class="sidebar right">
+      sidebar right!
+    </section>
     
-    </main> <!-- here will be the main page content -->
+  </main> <!-- here will be the main page content -->
 
   <section id="floating-windows"></section> <!-- here will be loaded the floating windows. -->
 
   <footer> 
-    <div class="colorful_0">
-      <p>webspace version <span class="colorful_3 WEBSITE_VERSION"></span> | made by <a class="colorful_1" href="https://github.com/dollythecamus/NeocitiesWebspace" target="_blank">Chloe Amanita Nomad</a></p>
-    </div>
+    <p class="colorful_0">webspace version <span class="colorful_3 WEBSITE_VERSION"></span> | made by <a class="colorful_1" href="https://github.com/dollythecamus/NeocitiesWebspace" target="_blank">Chloe Amanita Nomad</a></p>
   </footer>
 
   <div id="decorations">
-
-    <div class="decoration rotate-text tutorial" style="top: 65%; left: 40%; opacity: 0.7;">
-      <p class="colorful_0">click this button</p> <br>
-      <p class="colorful_0">drag it around</p>
-    </div>
 
     <p class="decoration random-position float colorful_0 whacky-text decorated-text wiggly">welcome friends, what sweet music you may?</p>
 
     <p class="decoration random-position colorful_1 silly-text spin decorated-text">i'll see you on the moon</p>
 
+    <img src="/assets/images/gif/dancegirl1.gif" alt="Dancing Girl" class="gif decoration random-position dancegirl"/>
+    <img src="/assets/images/gif/dancegirl3.gif" alt="Dancing Girl" class="gif decoration random-position dancegirl"/>
+    <img src="/assets/images/gif/dancegirl6.gif" alt="Dancing Girl" class="gif decoration random-position dancegirl"/>
+
   </div>
   
-  <script src="/assets/scripts/define-functions.js"></script>
-  <script>
-    data_file = 'homepage.json'; // Set the data path to get the homepage buttons. it's all dynamic and cool like that (sunglasses)
-  </script>
-  <script type="module" src="/assets/scripts/buttons.js"></script>
-  <script type="module" src="/assets/scripts/decoration.js"></script>
-  <script type="module" src="/assets/scripts/functions.js"></script>
-  <script type="module" src="/assets/scripts/markdown.js"></script>
+    <script src="/assets/scripts/define-functions.js"></script>
+    <script>
+        data_file = 'homepage.json'; // Set the data path to get the homepage buttons. it's all dynamic and cool like that (sunglasses)
+    </script>
+    <script type="module" src="/assets/scripts/decoration.js"></script>
+    <script type="module" src="/assets/scripts/functions.js"></script>
+    <script type="module" src="/assets/scripts/windows.js"></script>
+    <script type="module" src="/assets/scripts/colors.js"></script>
+    <script type="module" src="/assets/scripts/buttons.js"></script>
+    <script type="module" src="/assets/scripts/markdown.js"></script>
 
 </body>
 </html>

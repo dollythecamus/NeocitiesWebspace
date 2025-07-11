@@ -71,8 +71,38 @@ function randomPositionDecorations() {
     decoration.style.left = `${randomX}px`;
     decoration.style.top = `${randomY}px`;
   });
+  console.log("aaa")
 }
 
 document.addEventListener("DOMContentLoaded", () => {
   initDecorations();
 });
+
+let decorateState = -1
+// -1 = initial state, 0 = not decorated, 1 = decorated
+
+export function ToggleDecorate() {
+  if (decorateState === -1) {
+    // Initial state, supposed to be decorated from the start
+    decorateState = 1;
+  }
+  
+  if (decorateState === 0) {
+    // Not decorated, apply decorations
+
+    document.querySelectorAll(".decoration").forEach(decoration => {
+      decoration.style.display = "block"; // Show the decorated text
+    });
+    composeTextElements();
+    randomPositionDecorations();
+    decorateState = 1; // Set to decorated state
+  }
+  else if (decorateState === 1) {
+    // Already decorated, remove decorations
+    document.querySelectorAll(".decoration").forEach(decoration => {
+      decoration.style.display = "none"; // Hide the decorated text
+    });
+    decorateState = 0; // Set back to not decorated state
+  }
+
+}

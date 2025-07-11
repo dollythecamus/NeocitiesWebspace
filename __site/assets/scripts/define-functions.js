@@ -5,3 +5,4 @@ function ShowTutorial() {};
 function message(text) {};
 function seeWebsiteVersion() {};
 function gotoPage(url) {};
+function decorate() {};
