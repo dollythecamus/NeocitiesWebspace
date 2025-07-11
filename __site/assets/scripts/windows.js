@@ -3,8 +3,6 @@ import { getSiteGeneratedColors } from "/assets/scripts/colors.js";
 const data_dir = '/assets/data/'; // Directory where data files are stored
 let data = {};
 
-console.log(data_file);
-
 async function loadData(file) {
     try {
         const response = await fetch(data_dir + file);

@@ -42,3 +42,18 @@ document.addEventListener('DOMContentLoaded', async () => {
         }
     }
 });
+
+
+// whenever a floating window is opened, it will load the markdown file specified in the data-markdown attribute within whatever window :)
+document.addEventListener('windowOpened', async () => {
+    const sections = document.querySelectorAll('.window [data-markdown]');
+    for (const section of sections) {
+        const file = section.getAttribute('data-markdown');
+        if (file) {
+            const html = await loadMarkdown(file);
+            if (html) {
+                section.innerHTML = html;
+            }
+        }
+    }
+});

@@ -3,7 +3,7 @@ import { generateRandomColors, applyColors } from "/assets/scripts/colors.js";
 import { cyclePlanetFocus, state } from "/Space/solar-controls.js"
 import { composeTextElements, ToggleDecorate } from "/assets/scripts/decoration.js";
 
-const WEBSITE_VERSION = '0.5.02';
+const WEBSITE_VERSION = '0.5.3';
 
 window.randomColors = function _randomColors()
 {

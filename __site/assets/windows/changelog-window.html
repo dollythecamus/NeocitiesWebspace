@@ -24,13 +24,10 @@
 <link rel="stylesheet" href="/assets/styles/markdown.css">
 
 <div class="markdown" >
-    <h1>Website Changelog!</h1> 
-    <p>a changelog is a thing tech-inclined people do when they want to write a diary of stuff they changed in their little projects, it's kind of cute</p>
+    <!-- will load the markdown content as the window opens -->
+    <div class="WEBSITE_VERSION"></div>
 
-    <h5>Changelog Command:</h5>
-    <p>for me to remember :p</p>
-
-    <code>git log --pretty=format:"---%n### %s%nTime: %ad%n" --date=short > __site/changelog.md</code>
+    <div data-markdown="/assets/content/changelog.md"></div>
 
     <div id="changelog-container" ></div>
 </div>

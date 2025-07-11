@@ -69,7 +69,7 @@
             "icon": "**",
             "func": null,
             "color":"lights",
-            "position": "center-left"
+            "position": "center-center"
         }
     ],
     "windows": {

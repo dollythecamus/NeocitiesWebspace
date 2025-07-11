@@ -71,7 +71,6 @@ function randomPositionDecorations() {
     decoration.style.left = `${randomX}px`;
     decoration.style.top = `${randomY}px`;
   });
-  console.log("aaa")
 }
 
 document.addEventListener("DOMContentLoaded", () => {

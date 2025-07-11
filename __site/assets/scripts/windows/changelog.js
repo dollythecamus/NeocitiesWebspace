@@ -17,6 +17,8 @@ async function onWindowOpen()
     const contentElement = document.getElementById(id).querySelector('#changelog-container');
     contentElement.innerHTML = await loadMarkdown("/changelog.md");
 
+    window.seeWebsiteVersion();
+
 }
 
 document.addEventListener("windowClosed", (event) => {
