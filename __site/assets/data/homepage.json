@@ -37,7 +37,7 @@
         },
         {
             "icon": "👁️",
-            "func": "function:gotoPage:/Personal/index.html",
+            "func": "function:gotoPage:/Personal/personal.html",
             "color": "lights"
         },
         {

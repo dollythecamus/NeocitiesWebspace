@@ -43,23 +43,6 @@
   animation: spin 10s infinite linear;
 }
 
-.decoration.float:hover {
-    animation-play-state: paused;
-    user-select: none;
-}
-
-.decoration.rotate:hover {
-  opacity: 1;
-  animation-play-state: paused;
-  user-select: none;
-}
-
-.decoration.spin:hover {
-  opacity: 1;
-  animation-play-state: paused;
-  user-select: none;
-}
-
 .decoration.darkshadow {
   text-shadow: 2px 2px 4px var(--colorDark2);
 }

@@ -1,0 +1,37 @@
+{
+    "buttons": [
+        {
+            "icon": "📃",
+            "func": "window:pages-window",
+            "color": "lights"
+        },
+        {
+            "icon": "✨",
+            "func": "function:randomColors",
+            "color": "lights"
+        },
+        {
+            "icon": "👁️",
+            "func": "function:gotoPage:/Personal/home.html",
+            "color": "lights"
+        },
+        {
+            "icon": "🧩",
+            "func": "function:SillyMessage:UwU",
+            "color": "lights"
+        },
+        {
+            "icon": "**",
+            "func": null,
+            "color":"lights",
+            "position": "center-center"
+        }
+    ],
+    "windows": {
+        
+        "pages-window":{
+            "title": "Website Pages List",
+            "contentUrl": "pages-window.html"
+        }
+    }
+}

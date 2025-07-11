@@ -52,7 +52,7 @@ header h1 {
 
 header p {
     font-family: 'something', monospace;
-    font-size: 0.3vw;
+    font-size: 0.9vw;
     text-shadow: 2px 2px 2px var(--colorDark1);
     color: var(--color2);
 }
@@ -102,6 +102,10 @@ footer p {
 }
 
 /* fonts */
+
+/* importing noto emoji font */
+@import url('https://fonts.googleapis.com/css2?family=Noto+Emoji:wght@300..700&display=swap');
+
 
 @font-face {
     font-family: 'something';

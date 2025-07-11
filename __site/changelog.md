@@ -1,4 +1,24 @@
 ---
+### better now
+Time: 2025-07-11
+
+---
+### horrifying incomplete designs
+Time: 2025-07-10
+
+---
+### awesome balls. customizing stuff
+Time: 2025-07-10
+
+---
+### i don't think i'm up to making the bibliostasia game yet, sorry
+Time: 2025-07-09
+
+---
+### bunch of additions and tweaks
+Time: 2025-07-09
+
+---
 ### changing directory structure again
 Time: 2025-07-07
 
