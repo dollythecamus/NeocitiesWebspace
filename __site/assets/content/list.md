@@ -1,5 +1,4 @@
-/assets/content/aneedtohavealifetogether.md
-/assets/content/ateenager'sbedroomisapeak%20into%20their%20damage.md
+/assets/content/bedroom.md
 /assets/content/Bibliostasia.md
 /assets/content/crazy.md
 /assets/content/cringe.md
