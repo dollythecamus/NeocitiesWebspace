@@ -45,6 +45,7 @@ window.MessageSilly = function _message_silly(text) {
         p.classList.add('wiggly');
         p.classList.add('rainbow');
         p.classList.add('random-position');
+        p.classList.add('darkshadow');
         p.classList.add('interactable');
         p.classList.add('erasable');
         p.style.position = 'absolute';

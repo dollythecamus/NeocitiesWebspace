@@ -30,7 +30,7 @@ export function parseMarkdown(markdown)
 }
 
 // this loads markdown files into sections with the data-markdown attribute linked to a .md file when the document is loaded :)
-document.addEventListener('DOMContentLoaded', async () => {
+async function loadMarkdownSections() {
     const sections = document.querySelectorAll('[data-markdown]');
     for (const section of sections) {
         const file = section.getAttribute('data-markdown');
@@ -41,8 +41,9 @@ document.addEventListener('DOMContentLoaded', async () => {
             }
         }
     }
-});
+}
 
+loadMarkdownSections();
 
 // whenever a floating window is opened, it will load the markdown file specified in the data-markdown attribute within whatever window :)
 document.addEventListener('windowOpened', async () => {

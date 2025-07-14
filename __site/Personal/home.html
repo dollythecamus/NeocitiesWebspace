@@ -3,6 +3,7 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <link rel="stylesheet" href="/assets/styles/world.css" />
   <title>Cosmic Psychedelia Experiment + Queer</title>
   <link rel="stylesheet" href="/assets/styles/decorations.css" />
   <link rel="stylesheet" href="/assets/styles/default.css" />
@@ -22,17 +23,23 @@
 
   <nav></nav> <!-- here will be loaded the navigation buttons -->
 
-  <main>
-
-    <section class="left">
-      <div data-markdown = "/assets/content/homepage-main.md" class="markdown center"></div>
-    </section>
-    
-  </main> <!-- here will be the main page content -->
+  <div id = "viewport"> <!-- wrapped around a viewport container for the Panzoom function -->
+    <div id="world">
+      
+      <main>
+        <section>
+          <p>crazy stuff happening around here.</p>
+          <p>you can totally drag this section around. crazy</p>
+        </section>
+      </main> <!-- here will be the main page content -->
+      
+    </div>
+  </div>
 
   <section id="floating-windows"></section> <!-- here will be loaded the floating windows. -->
 
   <footer> 
+    <p class="colorful_0">UNDER HEAVY REMODELING <span class="colorful_3">(JULY 14 2025)</span></p>
     <p class="colorful_0">webspace version <span class="colorful_3 WEBSITE_VERSION"></span> | made by <a class="colorful_1" href="https://github.com/dollythecamus/NeocitiesWebspace" target="_blank">Chloe Amanita Nomad</a></p>
   </footer>
 
@@ -58,6 +65,7 @@
     <script type="module" src="/assets/scripts/colors.js"></script>
     <script type="module" src="/assets/scripts/buttons.js"></script>
     <script type="module" src="/assets/scripts/markdown.js"></script>
+    <script type="module" src="/assets/scripts/world.js"></script>
 
 </body>
 </html>

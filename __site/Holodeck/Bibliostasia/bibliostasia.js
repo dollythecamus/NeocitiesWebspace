@@ -256,6 +256,4 @@ function renderGraph() {
 }
 
 // --- INIT ---
-window.addEventListener('DOMContentLoaded', () => {
-    renderGraph();
-});
+renderGraph();

@@ -54,6 +54,9 @@ export function composeTextElements(){
   });
 }
 
+let decorateState = -1
+// -1 = initial state, 0 = not decorated, 1 = decorated
+
 function initDecorations() {
   const container = document.querySelector(".decorations-container");
     if (container) {
@@ -89,13 +92,6 @@ function randomPositionDecorations() {
   });
 }
 
-document.addEventListener("DOMContentLoaded", () => {
-  initDecorations();
-});
-
-let decorateState = -1
-// -1 = initial state, 0 = not decorated, 1 = decorated
-
 export function ToggleDecorate() {
   if (decorateState === -1) {
     // Initial state, supposed to be decorated from the start
@@ -119,6 +115,8 @@ export function ToggleDecorate() {
   }
 
 }
+
+initDecorations();
 
 document.querySelectorAll(".decoration").forEach(decoration => {
 
