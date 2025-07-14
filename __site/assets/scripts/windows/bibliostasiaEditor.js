@@ -1,4 +1,4 @@
-import { selectedBiblio , selectedStasia, currentEdit, editBiblio, editStasia } from '/Bibliostasia/bibliostasia.js';
+import { selectedBiblio , selectedStasia, currentEdit, editBiblio, editStasia } from '/Holodeck/Bibliostasia/bibliostasia.js';
 
 let id = "bibliostasia-editor-window"; // Replace with the actual window ID
 

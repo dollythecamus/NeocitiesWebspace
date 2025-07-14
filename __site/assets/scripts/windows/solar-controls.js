@@ -1,4 +1,4 @@
-import {setOrbitLinesVisible, setSimulationSpeeds, updateOrbitLines} from "/Space/solar-controls.js"
+import {setOrbitLinesVisible, setSimulationSpeeds, updateOrbitLines} from "/Holodeck/Space/solar-controls.js"
 
 const id = "solar-controls" 
 

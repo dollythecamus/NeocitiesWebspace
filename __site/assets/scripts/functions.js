@@ -1,6 +1,6 @@
 // functions.js for functions that the buttons can run without needing a floating window
 import { generateRandomColors, applyColors } from "/assets/scripts/colors.js";
-import { cyclePlanetFocus, state } from "/Space/solar-controls.js"
+import { cyclePlanetFocus, state } from "/Holodeck/Space/solar-controls.js"
 import { composeTextElements, ToggleDecorate } from "/assets/scripts/decoration.js";
 
 const WEBSITE_VERSION = '0.5.31415926';
