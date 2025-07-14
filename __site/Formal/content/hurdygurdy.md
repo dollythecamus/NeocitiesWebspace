@@ -8,12 +8,12 @@
 
 It's not a hard bar to push myself over this "best invention" - it's honestly pretty mediocre. -- alright i'm just putting myself down. it's a good piece, and at the time, I loved it. But now it shows it's age, it's silly bravery of something I had no business doing but did anyway. It cost some hundreds of real. Remembering it at about eight- eight hundred real for a ffteen year old kid in Brazil with not many opportunities to engage in the type of building project I always thought I would like to do, but never encouraged, really.
 
-[picture_0](/Portfolio/images/gurdy/0.jpg)
+[picture_0](/Formal/images/gurdy/0.jpg)
 
 Oh I should tell you- the hurdy gurdy is the musical instrument pictured. it's a wheel and crank viola with a keyboard that sits in one's lap. it's a completely silly instrument, and most people who come to know it, fall in love with it.
 This one specifically is built from a kit called the Nerdy Gurdy. It took me about 3 weeks to complete, with some challenge. I'm uncertain about the time it was built - around mid 2021. i was 15 years old
 
-[picture_1](/Portfolio/images/gurdy/1.jpg)
+[picture_1](/Formal/images/gurdy/1.jpg)
 
 I'm remembering better now. there is probably a piece of printed writing inside of it-- you know how some acoustic instruments have a print saying "this was made by me, from this company" --with some names of people i would rather forget but will always stay in my mind. one day i might break it appart, finally, and see that piece of writing again.
 
@@ -23,7 +23,7 @@ everybody applauded the way you are suppose to applaud children being ridiculous
 
 and it's breaking appart now. it was breaking appart just a week after the presentation really. and with every time i tension the strings the body deforms and cracks just a little more. 
 
-[picture_2](/Portfolio/images/gurdy/2.jpg)
+[picture_2](/Formal/images/gurdy/2.jpg)
 
 ### The Lessons this whole thing taught me today, writing this:
 - be bolder with presenting something awesome
@@ -31,8 +31,8 @@ and it's breaking appart now. it was breaking appart just a week after the prese
 - stuff meant to be good and lasting is not made out of rubish materials
 	- don't build a musical instrument out of MDF wood, more specifically. it will be bad
 
-[picture_3](/Portfolio/images/gurdy/3.jpg)
-[picture_4](/Portfolio/images/gurdy/4.jpg)
+[picture_3](/Formal/images/gurdy/3.jpg)
+[picture_4](/Formal/images/gurdy/4.jpg)
 
 ### more thoughts about it:
 
@@ -45,7 +45,7 @@ the 3d printed parts are good. no complaints. i really love my 3d printer, and i
 I should have a video from me at the time playing "13" by Tally Hall on it. i'm gonna look for it.
 -- nevermind. looking for this video made me go on unhealthy thought cycles of wondering what the people i interacted with in the past would think of me today. OFF with this nonsense.
 
-[picture_5](/Portfolio/images/gurdy/5.jpg)
+[picture_5](/Formal/images/gurdy/5.jpg)
 
 ---
 
