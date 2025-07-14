@@ -16,8 +16,18 @@
             "color": "lights"
         },
         {
-            "icon": "🧩",
-            "func": "function:SillyMessage:UwU",
+            "icon": "1",
+            "func": "function:MessageSilly:these buttons hold power",
+            "color": "lights"
+        },
+        {
+            "icon": "2",
+            "func": "function:MessageSilly:buttons are way to navigate this space",
+            "color": "lights"
+        },
+        {
+            "icon": "3",
+            "func": "function:MessageSilly:now you know. have fun!",
             "color": "lights"
         },
         {

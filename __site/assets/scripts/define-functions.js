@@ -6,3 +6,5 @@ function message(text) {};
 function seeWebsiteVersion() {};
 function gotoPage(url) {};
 function decorate() {};
+function MessageSplit() {};
+function MessageSilly() {};

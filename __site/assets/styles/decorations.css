@@ -10,8 +10,17 @@
 
 .decoration {
   position: fixed;
-  pointer-events: visible; /* Allow interaction with the decoration */
+  pointer-events: none;
   z-index: 10; /* Ensure decorations are above other content */
+}
+
+.decoration.erasable {
+  /* nothing specific, just reminder it exists. handled by script*/
+}
+
+.decoration.interactable {
+  cursor: pointer;
+  pointer-events: auto; /* Allow interaction */
 }
 
 .decoration.silly-text {

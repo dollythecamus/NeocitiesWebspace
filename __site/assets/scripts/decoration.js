@@ -105,3 +105,12 @@ export function ToggleDecorate() {
   }
 
 }
+
+document.querySelectorAll(".decoration").forEach(decoration => {
+
+  decoration.addEventListener("click", (event) => {
+    if (decoration.classList.contains("erasable")) {
+      decoration.style.display = "none";
+    }
+  });
+});

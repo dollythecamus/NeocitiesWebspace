@@ -34,7 +34,7 @@ window.ShowTutorial = function _showTutorial()
     }
 }
 
-window.SillyMessage = function _message(text) {
+window.MessageSilly = function _message_silly(text) {
 
     const decorationsDiv = document.getElementById('decorations');
     if (decorationsDiv) {
@@ -44,6 +44,9 @@ window.SillyMessage = function _message(text) {
         p.classList.add('decorated-text');
         p.classList.add('wiggly');
         p.classList.add('rainbow');
+        p.classList.add('random-position');
+        p.classList.add('interactable');
+        p.classList.add('erasable');
         p.style.position = 'absolute';
         p.style.left = `${Math.random() * (window.innerWidth - 200)}px`;
         p.style.top = `${Math.random() * (window.innerHeight - 50)}px`;

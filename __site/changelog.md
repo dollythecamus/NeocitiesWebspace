@@ -1,4 +1,16 @@
 ---
+### smol edits
+Time: 2025-07-12
+
+---
+### got into acually adding original content and interesting stuff. buy drawing some guys
+Time: 2025-07-11
+
+---
+### changed to an index page to go to the homepage via navigation
+Time: 2025-07-11
+
+---
 ### better now
 Time: 2025-07-11
 
