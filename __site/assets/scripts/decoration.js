@@ -55,10 +55,26 @@ export function composeTextElements(){
 }
 
 function initDecorations() {
-  composeTextElements();
-  randomPositionDecorations();
+  const container = document.querySelector(".decorations-container");
+    if (container) {
+      if (container.classList.contains("default-off")) {
+        decorateState = 0;
+        container.style.display = "none"; // Hide the decorations container by default
 
-  // Add event listener to the window to recompose text elements on resize
+        console.log("Decorations are off by default.");
+
+        return;
+      }
+      if (container.classList.contains("default-on")) {
+        
+        decorateState = 1;
+        container.style.display = "block"; // Show the decorations container by default
+
+        composeTextElements();
+        randomPositionDecorations();
+        return;
+      }
+    }
 }
 
 function randomPositionDecorations() {
@@ -89,18 +105,16 @@ export function ToggleDecorate() {
   if (decorateState === 0) {
     // Not decorated, apply decorations
 
-    document.querySelectorAll(".decoration").forEach(decoration => {
-      decoration.style.display = "block"; // Show the decorated text
-    });
+    const container = document.querySelector(".decorations-container");
+    container.style.display = "block"; // Show the decorations container
     composeTextElements();
     randomPositionDecorations();
     decorateState = 1; // Set to decorated state
   }
   else if (decorateState === 1) {
     // Already decorated, remove decorations
-    document.querySelectorAll(".decoration").forEach(decoration => {
-      decoration.style.display = "none"; // Hide the decorated text
-    });
+    const container = document.querySelector(".decorations-container");
+    container.style.display = "none"; // Hide the decorations container
     decorateState = 0; // Set back to not decorated state
   }
 
