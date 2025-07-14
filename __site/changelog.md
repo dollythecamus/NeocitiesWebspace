@@ -1,4 +1,24 @@
 ---
+### heavy remodeling 1
+Time: 2025-07-14
+
+---
+### holodeck directory fix
+Time: 2025-07-14
+
+---
+### directory structure again
+Time: 2025-07-14
+
+---
+### fixed decoration problems
+Time: 2025-07-14
+
+---
+### index is now a decent navigation tutorial :)
+Time: 2025-07-14
+
+---
 ### smol edits
 Time: 2025-07-12
 
