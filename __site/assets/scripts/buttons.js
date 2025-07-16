@@ -13,8 +13,8 @@ let startY = window.innerHeight/2;
 
 let clickStartPos = { x: 0, y: 0 };
 let startTime = Date.now()
-let timeSinceClick = 0
-const clickTimeThreshold = 100; // milliseconds
+let timeAtClick = 0
+const clickTimeThreshold = 150; // milliseconds
 
 let isExpanded = false;
 let isDragging = false;
@@ -77,7 +77,7 @@ function createButton(config, is_front) {
     return
 
   btn.addEventListener('click', () => {
-    if (!isExpanded || (Date.now() - timeSinceClick) < 200) return;
+    if (!isExpanded) return;
 
     const func_type = func.split(':')[0]
 
@@ -112,7 +112,7 @@ frontButton.addEventListener('mousedown', (e) => {
   lastMouse.y = e.pageY;
   clickStartPos.x = e.pageX;
   clickStartPos.y = e.pageY;
-  timeSinceClick = Date.now() - startTime
+  timeAtClick = Date.now() - startTime
 });
 
 window.addEventListener('mousemove', (e) => {
@@ -127,8 +127,9 @@ frontButton.addEventListener('mouseup', (e) => {
 });
 
 frontButton.addEventListener('click', (e) => {
-  isExpanded = !isExpanded;
-  console.log('Button clicked, isExpanded:', isExpanded);
+  if ((Date.now() - startTime) - timeAtClick < clickTimeThreshold) {
+    isExpanded = !isExpanded;
+  }
 });
 
 const followSpeed = 0.2;
@@ -242,8 +243,7 @@ frontButton.addEventListener('touchstart', (e) => {
   lastMouse.y = touch.clientY;
   clickStartPos.x = touch.clientX;
   clickStartPos.y = touch.clientY;
-  timeSinceClick = Date.now() - startTime;
-  startTime = Date.now();
+  timeAtClick = Date.now() - startTime;
 });
 
 window.addEventListener('touchmove', (e) => {
