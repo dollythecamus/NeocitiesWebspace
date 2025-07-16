@@ -9,7 +9,7 @@ const gridConfig = data.grid;
 const world = document.getElementById('world');
 const panzoom = Panzoom(world, {
   maxScale: 2,
-  minScale: 0.5,
+  minScale: 0.33,
 
   filterKey: () => true
 });
@@ -26,6 +26,8 @@ function composeGrid() {
 
   // Build grid-template-areas string
   const areaTemplate = gridConfig.area_template.map(row => `"${row}"`).join(' ');
+  mainGrid.style.width = gridConfig.width;
+  mainGrid.style.height = gridConfig.height;
   mainGrid.style.display = 'grid';
   mainGrid.style.gridTemplateAreas = areaTemplate;
   mainGrid.style.gridAutoRows = 'auto'; // You can customize this
@@ -39,8 +41,10 @@ function composeGrid() {
     } else if (area.startsWith('margin')) {
       // Create margin divs if not present
       const marginDiv = document.createElement('div');
-      marginDiv.className = `grid-area area-${area}`;
+      marginDiv.className = `grid-item ${area}`;
       marginDiv.style.gridArea = area;
+      marginDiv.style.width = 'auto'; // Ensure margin divs take full width
+      marginDiv.style.height = 'auto'; // Ensure margin divs take full height
       marginDiv.style.visibility = 'hidden'; // Hide margin areas visually
       mainGrid.appendChild(marginDiv);
     }

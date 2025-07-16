@@ -1,5 +1,7 @@
 {
     "grid": {
+        "width": "1200px",
+        "height": "1200px",
         "areas":[
             "header",
             "menu",
@@ -9,18 +11,18 @@
             "footer",
             "area_a",
             "area_b",
+            "area_b2",
             "area_c",
             "area_d",
-            "area_e",
-            "marginA",
-            "marginB",
-            "marginC",
-            "marginD"
+            "area_e"
         ],
         "area_template": [
-            "marginA marginA area_a  area_a  area_a area_a",
-            "area_b  marginC marginC area_c  area_c marginD",
-            "marginB marginB area_e  area_e  area_d marginD"
+        ".       area_b  area_b   .       area_d",
+        ".       area_b  area_b   area_c  area_d",
+        "area_a  area_a  area_b2  area_c  area_d",
+        "area_a  area_a  area_b2  area_c  area_d",
+        ".       .       .        area_c  area_d",
+        ".       area_e  area_e   area_c  ."
         ]
     },
     "buttons": [

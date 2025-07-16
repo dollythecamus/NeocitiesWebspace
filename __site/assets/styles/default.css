@@ -54,6 +54,13 @@ header p {
 main {
     width: 2000px;
     height: 1200px;
+    grid-template-areas: 
+        ".       area_b  area_b   .       area_d"
+        ".       area_b  area_b   area_c  area_d"
+        "area_a  area_a  area_b2  area_c  area_d"
+        "area_a  area_a  area_b2  area_c  area_d"
+        ".       .       .        area_c  area_d"
+        ".       area_e  area_e   area_c  .";
 }
 
 main section.grid_item {
