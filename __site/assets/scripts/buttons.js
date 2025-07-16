@@ -281,10 +281,6 @@ window.addEventListener('touchmove', (e) => {
 
 frontButton.addEventListener('touchend', (e) => {
   isDragging = false;
-  let timeNow = Date.now() - startTime;
-  if ((timeNow - timeSinceClick) < clickTimeThreshold) {
-    isExpanded = !isExpanded;
-  }
 });
 
 export function UpdateButtonColors(colors) {
