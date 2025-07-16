@@ -2,7 +2,7 @@
 /* --- Draggable Button Style --- */
 
 .button {
-    --button-size: clamp(5vh, 7vh, 10vh);
+    --button-size: clamp(3.5rem, 4.5vw, 4.5rem);
     position: absolute;
     width: var(--button-size);
     height: var(--button-size);

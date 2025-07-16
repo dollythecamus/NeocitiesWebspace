@@ -95,7 +95,7 @@ function createButton(config, is_front) {
     return
 
   btn.addEventListener('click', () => {
-    if (!isExpanded) return; // Don't execute if not expanded
+    if (!isExpanded || (Date.now() - timeSinceClick) < 200) return;
 
     const func_type = func.split(':')[0]
 
@@ -142,16 +142,24 @@ window.addEventListener('mousemove', (e) => {
 
 frontButton.addEventListener('mouseup', (e) => {
   isDragging = false;
-  let timeNow = Date.now() - startTime
-  if ((timeNow - timeSinceClick) < clickTimeThreshold) {
-    isExpanded = !isExpanded;
-  }
+});
+
+frontButton.addEventListener('click', (e) => {
+  isExpanded = !isExpanded;
+  console.log('Button clicked, isExpanded:', isExpanded);
 });
 
 const followSpeed = 0.2;
 const returnSpeed = 0.2;
 
 function update() {
+  // Dynamically adjust layerSpacing for mobile
+  const mobileThreshold = 768;
+  let dynamicLayerSpacing = layerSpacing;
+  if (window.innerWidth < mobileThreshold) {
+    dynamicLayerSpacing = 60; // Reduced spacing for mobile
+  }
+
   if (isExpanded) {
     // Arrange buttons in concentric circles around the front button
     const centerX = currentPositions[buttons.length - 1].x;
@@ -159,7 +167,7 @@ function update() {
 
     let currentLayer = 0;
     let buttonsInLayer = 0;
-    let radius = layerSpacing;
+    let radius = dynamicLayerSpacing;
 
     // Calculate the number of buttons in each layer based on the layerConfig
     const layers = [];
@@ -176,7 +184,7 @@ function update() {
       if (buttonsInLayer >= layers[currentLayer]) {
         currentLayer++;
         buttonsInLayer = 0;
-        radius += layerSpacing; // Increase radius for the next layer
+        radius += dynamicLayerSpacing; // Increase radius for the next layer
       }
 
       const angle = (2 * Math.PI / layers[currentLayer]) * buttonsInLayer;
@@ -274,10 +282,7 @@ window.addEventListener('touchmove', (e) => {
 frontButton.addEventListener('touchend', (e) => {
   isDragging = false;
   let timeNow = Date.now() - startTime;
-  // Only toggle if tap (not drag)
-  const dx = Math.abs(lastMouse.x - clickStartPos.x);
-  const dy = Math.abs(lastMouse.y - clickStartPos.y);
-  if ((timeNow - timeSinceClick) < clickTimeThreshold && dx < 5 && dy < 5) {
+  if ((timeNow - timeSinceClick) < clickTimeThreshold) {
     isExpanded = !isExpanded;
   }
 });

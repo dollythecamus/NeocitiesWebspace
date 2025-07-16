@@ -1,4 +1,12 @@
 ---
+### fixing buttons on touch screens finally hopefully
+Time: 2025-07-16
+
+---
+### added a little upload script. how silly
+Time: 2025-07-14
+
+---
 ### heavy remodeling 1
 Time: 2025-07-14
 
