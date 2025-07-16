@@ -1,4 +1,25 @@
 {
+    "grid": {
+        "areas":[
+            "header",
+            "menu",
+            "main",
+            "right",
+            "left",
+            "footer",
+            "a",
+            "b",
+            "c",
+            "d",
+            "e",
+            "margin"
+        ],
+        "area_template": [
+            "header header header header header header",
+            "menu main main main main right",
+            "menu footer footer footer footer footer"
+        ]
+    },
     "buttons": [
         {
             "icon": "📃",

@@ -1,24 +1,6 @@
 import { applyColors, oppositeColor } from '/assets/scripts/colors.js';
 import { spawnWindow } from '/assets/scripts/windows.js';
-
-const data_dir = '/assets/data/'; // Directory where data files are stored
-let data = {};
-
-async function loadData(file) {
-  try {
-    const response = await fetch(data_dir + file);
-    if (!response.ok) {
-      throw new Error(`Failed to load data: ${response.statusText}`);
-    }
-    data = await response.json();
-  } catch (error) {
-    console.error('Error fetching data:', error);
-  }
-}
-
-// Dynamically set the data path
-// data_path MUST be set in the main script tag of the page. 
-await loadData(data_file);
+import { data } from '/assets/scripts/data.js';
 
 const buttonConfig = data.buttons;
 
