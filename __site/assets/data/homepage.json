@@ -7,17 +7,20 @@
             "right",
             "left",
             "footer",
-            "a",
-            "b",
-            "c",
-            "d",
-            "e",
-            "margin"
+            "area_a",
+            "area_b",
+            "area_c",
+            "area_d",
+            "area_e",
+            "marginA",
+            "marginB",
+            "marginC",
+            "marginD"
         ],
         "area_template": [
-            "header header header header header header",
-            "menu main main main main right",
-            "menu footer footer footer footer footer"
+            "marginA marginA area_a  area_a  area_a area_a",
+            "area_b  marginC marginC area_c  area_c marginD",
+            "marginB marginB area_e  area_e  area_d marginD"
         ]
     },
     "buttons": [

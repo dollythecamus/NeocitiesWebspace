@@ -54,39 +54,14 @@ header p {
 main {
     width: 2000px;
     height: 1200px;
-    display: grid;
-    grid-template-areas:
-    'm m a a a a'
-    'b c c c c d'
-    'b e e e e e';
 }
 
-.grid_A {
-    grid-area: a;
-}
-.grid_B {
-    grid-area: b;
-}
-.grid_C {
-    grid-area: c;
-}
-.grid_D {
-    grid-area: d;
-}
-.grid_E {
-    grid-area: e;
-}
-.grid_M {
-    grid-area: m;
-}
-
-main section.grid {
+main section.grid_item {
     background-color: var(--color1);
     border: 1px solid var(--colorDark1);
     width: auto;
     height: auto;
     padding: 1rem;
-    
 }
 
 .grid_M {
