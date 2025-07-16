@@ -52,7 +52,7 @@
         },
         {
             "icon": "🧩",
-            "func": "function:SillyMessage:UwU",
+            "func": "function:MessageSilly:UwU",
             "color": "lights"
         },
         {

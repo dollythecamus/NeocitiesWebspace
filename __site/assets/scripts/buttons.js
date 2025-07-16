@@ -95,6 +95,7 @@ function createButton(config, is_front) {
     return
 
   btn.addEventListener('click', () => {
+    if (!isExpanded) return; // Don't execute if not expanded
 
     const func_type = func.split(':')[0]
 
@@ -244,28 +245,39 @@ function update() {
 }
 
 frontButton.addEventListener('touchstart', (e) => {
+  if (e.touches.length !== 1) return; // Only single touch
   isDragging = true;
-  let touch = e.touches[0]
-  lastMouse.x = touch.screenX;
-  lastMouse.y = touch.screenY;
-  clickStartPos.x = touch.screenX;
-  clickStartPos.y = touch.screenY;
-  timeSinceClick = Date.now() - startTime
+  let touch = e.touches[0];
+  lastMouse.x = touch.clientX;
+  lastMouse.y = touch.clientY;
+  clickStartPos.x = touch.clientX;
+  clickStartPos.y = touch.clientY;
+  timeSinceClick = Date.now() - startTime;
+  startTime = Date.now();
 });
 
 window.addEventListener('touchmove', (e) => {
-  if (!isDragging) return; 
-  e.preventDefault(); // Prevent scroll
-  if (isExpanded) isExpanded = false;
+  if (!isDragging) return;
+  if (e.touches.length !== 1) return;
   let touch = e.touches[0];
-  lastMouse.x = touch.screenX;
-  lastMouse.y = touch.screenY;
+  // Only prevent scroll if movement is detected
+  const dx = Math.abs(touch.clientX - clickStartPos.x);
+  const dy = Math.abs(touch.clientY - clickStartPos.y);
+  if (dx > 5 || dy > 5) {
+    e.preventDefault();
+    isExpanded = false;
+  }
+  lastMouse.x = touch.clientX;
+  lastMouse.y = touch.clientY;
 });
 
 frontButton.addEventListener('touchend', (e) => {
   isDragging = false;
-  let timeNow = Date.now() - startTime
-  if ((timeNow - timeSinceClick) < clickTimeThreshold) {
+  let timeNow = Date.now() - startTime;
+  // Only toggle if tap (not drag)
+  const dx = Math.abs(lastMouse.x - clickStartPos.x);
+  const dy = Math.abs(lastMouse.y - clickStartPos.y);
+  if ((timeNow - timeSinceClick) < clickTimeThreshold && dx < 5 && dy < 5) {
     isExpanded = !isExpanded;
   }
 });
