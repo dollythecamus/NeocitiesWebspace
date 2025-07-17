@@ -10,6 +10,7 @@
   <link rel="stylesheet" href="/assets/styles/windows.css" />
   <link rel="stylesheet" href="/assets/styles/decorations.css" />
   <link rel="stylesheet" href="/assets/styles/markdown.css" />
+  <link rel="stylesheet" href="/assets/styles/world.css" />
 
   <link rel="icon" href="/assets/images/icon/CHL.png" type="image"/>
 </head>
@@ -22,8 +23,25 @@
 
   <nav></nav> <!-- here will be loaded the navigation buttons -->
 
-  <main></main> <!-- here will be loaded the floating windows -->
+  <div id = "viewport"> <!-- wrapped around a viewport container for the Panzoom function -->
+    <div id="world">
 
+      <main id="main_grid">
+        
+        <section class="grid_item area_a">
+          section A.
+        </section>
+        <section class="grid_item area_b">
+          section B.
+        </section>
+        <section class="grid_item area_c">
+          section c.
+        </section>>
+
+      </main> <!-- here will be loaded the floating windows -->
+  
+    </div>
+  </div>
   <section id="floating-windows"></section> <!-- here will be the page's main content. i should put something here huh -->
 
   <footer> 

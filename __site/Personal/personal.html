@@ -9,6 +9,8 @@
   <link rel="stylesheet" href="/assets/styles/buttons.css" />
   <link rel="stylesheet" href="/assets/styles/windows.css" />
   <link rel="stylesheet" href="/assets/styles/decorations.css" />
+  <link rel="stylesheet" href="/assets/styles/markdown.css" />
+  <link rel="stylesheet" href="/assets/styles/world.css" />
 
   <link rel="icon" href="/assets/images/icon/CHL.png" type="image"/>
 </head>
@@ -16,20 +18,31 @@
   
   <div id="background"></div>
 
-  <header>
-
-    <section class="header-text">
-      <h1 class="decorated-text wiggly rainbow">under construction</h1>
-      <p>everything is in a constant state of change forever and ever</p>
-    </section>
-    
-  </header>
+  <header></header>
 
   <nav></nav> <!-- here will be loaded the navigation buttons -->
 
-  <main></main> <!-- here will be loaded the floating windows -->
+  <div id = "viewport"> <!-- wrapped around a viewport container for the Panzoom function -->
+    <div id="world">
 
-  <section id="floating-windows"></section> <!-- here will be the page's main content. i should put something here huh -->
+      <main id="main_grid">
+        
+        <section class="grid_item area_a">
+          section A.
+        </section>
+        <section class="grid_item area_b">
+          section B.
+        </section>
+        <section class="grid_item area_c">
+          section c.
+        </section>
+
+      </main> <!-- here will be the page's main content. --> 
+  
+    </div>
+  </div>
+
+  <section id="floating-windows"></section> <!-- here will be loaded the floating windows -->
 
   <footer> 
     <p class="colorful_0">webspace version <span class="colorful_3 WEBSITE_VERSION"></span> | made by <a class="colorful_1" href="https://github.com/dollythecamus/NeocitiesWebspace" target="_blank">Chloe Amanita Nomad</a></p>
@@ -55,6 +68,8 @@
     <script type="module" src="/assets/scripts/windows.js"></script>
     <script type="module" src="/assets/scripts/colors.js"></script>
     <script type="module" src="/assets/scripts/buttons.js"></script>
+    <script type="module" src="/assets/scripts/markdown.js"></script>
+    <script type="module" src="/assets/scripts/world.js"></script>
 
 </body>
 </html>
