@@ -13,42 +13,23 @@
     --colorDark2:000000;
 }
 
-.colorful_0 {
-    color:var(--color0)
-}
 
-.colorful_1 {
-    color:var(--color1)
-}
+.colorful_0 { color:var(--color0) }
 
-.colorful_2 {
-    color:var(--color2)
-}
+.colorful_1 { color:var(--color1) }
 
-.colorful_3 {
-    color:var(--color3)
-}
+.colorful_2 { color:var(--color2) }
 
-.colorful_4 {
-    color:var(--color4)
-}
+.colorful_3 { color:var(--color3) }
 
-.colorful_5 {
-    color:var(--color5)
-}
+.colorful_4 { color:var(--color4) }
 
-.colorful_6 {
-    color:var(--color6)
-}
+.colorful_5 { color:var(--color5) }
 
-.colorfulDark_0 {
-    color:var(--colorDark0)
-}
+.colorful_6 { color:var(--color6) }
 
-.colorfulDark_1 {
-    color:var(--colorDark1)
-}
+.colorfulDark_0 { color:var(--colorDark0) }
 
-.colorfulDark_2 {
-    color:var(--colorDark2)
-}
+.colorfulDark_1 { color:var(--colorDark1) }
+
+.colorfulDark_2 { color:var(--colorDark2) }
