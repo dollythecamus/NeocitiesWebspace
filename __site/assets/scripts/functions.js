@@ -3,7 +3,7 @@ import { generateRandomColors, applyColors } from "/assets/scripts/colors.js";
 import { cyclePlanetFocus, state } from "/Holodeck/Space/solar-controls.js"
 import { composeTextElements, ToggleDecorate } from "/assets/scripts/decoration.js";
 
-const WEBSITE_VERSION = '0.5.31415926';
+const WEBSITE_VERSION = '0.6.18';
 
 window.randomColors = function _randomColors()
 {
@@ -49,8 +49,8 @@ window.MessageSilly = function _message_silly(text) {
         p.classList.add('interactable');
         p.classList.add('erasable');
         p.style.position = 'absolute';
-        p.style.left = `${Math.random() * (window.innerWidth - 200)}px`;
-        p.style.top = `${Math.random() * (window.innerHeight - 50)}px`;
+        p.style.left = `${Math.random() * (window.innerWidth - window.innerWidth/4)}px`;
+        p.style.top = `${Math.random() * (window.innerHeight - window.innerHeight/4)}px`;
         p.style.fontSize = '4em';
 
         decorationsDiv.appendChild(p);

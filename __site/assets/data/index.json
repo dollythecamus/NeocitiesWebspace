@@ -1,4 +1,18 @@
 {
+    "grid": {
+        "width": "512px",
+        "height": "512px",
+        "areas":[
+            "main",
+            "other"
+        ],
+        "area_template": [
+        ". . . . ",
+        ". main main other ",
+        ". main main . ",
+        ". . . . "
+        ]
+    },
     "buttons": [
         {
             "icon": "📃",
@@ -31,7 +45,7 @@
             "color": "lights"
         },
         {
-            "icon": "**",
+            "icon": "0",
             "func": null,
             "color":"lights",
             "position": "center-center"

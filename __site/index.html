@@ -10,6 +10,7 @@
   <link rel="stylesheet" href="/assets/styles/windows.css" />
   <link rel="stylesheet" href="/assets/styles/colors.css" />
   <link rel="stylesheet" href="/assets/styles/markdown.css" />
+  <link rel="stylesheet" href="/assets/styles/world.css" />
 
   <link rel="icon" href="/assets/images/icon/CHL.png" type="image"/>
 </head>
@@ -22,10 +23,29 @@
 
   <nav></nav> <!-- here will be loaded the navigation buttons -->
 
-  <main>
+  <div id = "viewport"> <!-- wrapped around a viewport container for the Panzoom function -->
+    <div id="world">
+      <main id="main_grid">
+        <section class="grid_item main">
+          <h1>intro tutorial page</h1>
+          <p>i think you need it:</p>
+          <p>you can zoom and pan these sections</p>
+          <p>the button in the center can be dragged around.
+            <p>click the button to show other buttons</p>
+          </p>
+          <p>buttons have functions, sometimes they open floating windows</p>
+          <p>works best on desktop</p>
+        </section>
+        <section class="grid_item other">
 
-  </main> <!-- here will be the main page content -->
-
+          <p>bye</p>
+          <p>have fun</p>
+          
+        </section>
+      </main> <!-- here will be the main page content -->
+    </div>
+  </div>
+  
   <section id="floating-windows"></section> <!-- here will be loaded the floating windows. -->
 
   <footer> 
@@ -54,6 +74,7 @@
     <script type="module" src="/assets/scripts/colors.js"></script>
     <script type="module" src="/assets/scripts/buttons.js"></script>
     <script type="module" src="/assets/scripts/markdown.js"></script>
+    <script type="module" src="/assets/scripts/world.js"></script>
 
 </body>
 </html>

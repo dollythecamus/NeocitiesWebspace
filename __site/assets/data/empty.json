@@ -8,7 +8,7 @@
             "area_c"
         ],
         "area_template": [
-        ". area_a . . . area_b . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . area_c"
+        ". area_a . . . area_b . . . . . . . . . . . . . . area_c"
         ]
     },
     "buttons": [
@@ -26,7 +26,7 @@
             "color": "lights"
         },
         {
-            "icon": "**",
+            "icon": "0",
             "func": null,
             "color":"lights",
             "position": "top-left"

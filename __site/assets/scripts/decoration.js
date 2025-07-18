@@ -84,8 +84,8 @@ function randomPositionDecorations() {
   const decorations = document.querySelectorAll(".decoration.random-position");
 
   decorations.forEach(decoration => {
-    const randomX = Math.random() * (window.innerWidth - decoration.offsetWidth);
-    const randomY = Math.random() * (window.innerHeight - decoration.offsetHeight);
+    const randomX = Math.random() * (window.innerWidth - window.innerWidth / 4);
+    const randomY = Math.random() * (window.innerHeight - window.innerHeight / 4);
 
     decoration.style.left = `${randomX}px`;
     decoration.style.top = `${randomY}px`;

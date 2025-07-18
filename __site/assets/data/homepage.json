@@ -1,7 +1,7 @@
 {
     "grid": {
-        "width": "1200px",
-        "height": "1200px",
+        "width": "1600px",
+        "height": "1000px",
         "areas":[
             "header",
             "menu",
@@ -92,7 +92,7 @@
             "color": "lights"
         },
         {
-            "icon": "**",
+            "icon": "~",
             "func": null,
             "color":"lights",
             "position": "center-center"

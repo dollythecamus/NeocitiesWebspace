@@ -1,4 +1,32 @@
 ---
+### tessting more grid patterns
+Time: 2025-07-16
+
+---
+### fixing buttons again
+Time: 2025-07-16
+
+---
+### cool with the grids
+Time: 2025-07-16
+
+---
+### composing the main grids of content :)
+Time: 2025-07-16
+
+---
+### added data.js so to not be loading data many times
+Time: 2025-07-16
+
+---
+### alright yea that fixed the buttons
+Time: 2025-07-16
+
+---
+### experiments to fix buttons on mobile
+Time: 2025-07-16
+
+---
 ### fixing buttons on touch screens finally hopefully
 Time: 2025-07-16
 
