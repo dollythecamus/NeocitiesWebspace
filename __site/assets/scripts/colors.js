@@ -2,15 +2,61 @@ import { composeTextElements } from "/assets/scripts/decoration.js";
 import { UpdateButtonColors } from "/assets/scripts/buttons.js"; 
 import { UpdateWindowColors } from "/assets/scripts/windows.js";
 
+export let lightColorhslRange = {
+    hue: [0, 360], // full color wheel
+    saturation: [70, 100], // 70-100%
+    lightness: [75, 85] // 75-95%
+};
+
+export let darkColorhslRange = {
+    hue: [0, 360], // full color wheel
+    saturation: [30, 60], // 30-60%
+    lightness: [10, 30] // 10-30%
+};
+
+export let similarColorhslRange = {
+    hue: 15, // +/- 15 degrees
+    saturation: 10, // +/- 10%
+    lightness: 10 // +/- 10%
+};
+
+function saveColorRangesToLocalStorage() {
+    localStorage.setItem('siteColorRanges', JSON.stringify({
+        light: lightColorhslRange,
+        dark: darkColorhslRange,
+        similar: similarColorhslRange
+    }));
+}
+
+function loadColorRangesFromLocalStorage() {
+    const stored = localStorage.getItem('siteColorRanges');
+    if (stored) {
+        const ranges = JSON.parse(stored);
+        if (ranges.light) Object.assign(lightColorhslRange, ranges.light);
+        if (ranges.dark) Object.assign(darkColorhslRange, ranges.dark);
+        if (ranges.similar) Object.assign(similarColorhslRange, ranges.similar);
+    }
+}
+
+export function updateColorRangesAndStore() {
+    saveColorRangesToLocalStorage();
+}
 
 function generateRandomLightColor() {
-    const hue = Math.floor(Math.random() * 360); // full color wheel
-    const saturation = Math.floor(Math.random() * 30) + 70; // 70-100%
-    const lightness = Math.floor(Math.random() * 20) + 65; // 75-95%
+    const hue = Math.floor(Math.random() * (lightColorhslRange.hue[1] - lightColorhslRange.hue[0] + 1)) + lightColorhslRange.hue[0];
+    const saturation = Math.floor(Math.random() * (lightColorhslRange.saturation[1] - lightColorhslRange.saturation[0] + 1)) + lightColorhslRange.saturation[0];
+    const lightness = Math.floor(Math.random() * (lightColorhslRange.lightness[1] - lightColorhslRange.lightness[0] + 1)) + lightColorhslRange.lightness[0];
     return `hsl(${hue}, ${saturation}%, ${lightness}%)`;
 }
 
-export function getSimilarColor(hslString, hueRange = 15, satRange = 10, lightRange = 10) {
+function generateRandomDarkColor() {
+    const hue = Math.floor(Math.random() * (darkColorhslRange.hue[1] - darkColorhslRange.hue[0] + 1)) + darkColorhslRange.hue[0];
+    const saturation = Math.floor(Math.random() * (darkColorhslRange.saturation[1] - darkColorhslRange.saturation[0] + 1)) + darkColorhslRange.saturation[0];
+    const lightness = Math.floor(Math.random() * (darkColorhslRange.lightness[1] - darkColorhslRange.lightness[0] + 1)) + darkColorhslRange.lightness[0];
+    return `hsl(${hue}, ${saturation}%, ${lightness}%)`;
+}
+
+export function getSimilarColor(hslString, hueRange = similarColorhslRange.hue, satRange = similarColorhslRange.saturation, lightRange = similarColorhslRange.lightness) {
     // Extract H, S, and L using a regular expression
     const match = hslString.match(/hsl\((\d+),\s*(\d+)%?,\s*(\d+)%?\)/);
     if (!match) throw new Error("Invalid HSL format");
@@ -27,7 +73,7 @@ export function getSimilarColor(hslString, hueRange = 15, satRange = 10, lightRa
     return `hsl(${h}, ${s}%, ${l}%)`;
   }
   
-  // Helper to get a random offset within ±range
+  // Helper to get a random offset within range
   function getRandomOffset(range) {
     return Math.floor(Math.random() * (2 * range + 1)) - range;
   }
@@ -37,12 +83,6 @@ function clamp(value, min, max) {
     return Math.max(min, Math.min(max, value));
   }
   
-function generateRandomDarkColor() {
-    const hue = Math.floor(Math.random() * 360);
-    const saturation = Math.floor(Math.random() * 30) + 30; // vivid
-    const lightness = Math.floor(Math.random() * 20) + 10; // 10-30%
-    return `hsl(${hue}, ${saturation}%, ${lightness}%)`;
-}
 
 export function generateRandomColors(count) {
     let generatedSiteColors = {'lights': [], 'darks': []};
@@ -52,7 +92,7 @@ export function generateRandomColors(count) {
         lights.push(generateRandomLightColor())
         darks.push(generateRandomDarkColor());
     }
-    // Store the generated colors in the global array, to make use later (TODO)
+    // Store the generated colors in the global array, to make use later
     generatedSiteColors.lights = lights;
     generatedSiteColors.darks = darks;
 
@@ -64,6 +104,9 @@ export function generateRandomColors(count) {
   
 
 export function getSiteGeneratedColors(count = 16) {
+    // Load color ranges from localStorage if present
+    loadColorRangesFromLocalStorage();
+
     const storedColors = localStorage.getItem('siteColors');
     let generatedSiteColors = {'lights': [], 'darks': []};
     if (storedColors) {
@@ -107,3 +150,5 @@ export function applyColors()
     document.documentElement.style.setProperty('--colorDark1', colors.darks[1]);
     document.documentElement.style.setProperty('--colorDark2', colors.darks[2]);
 }
+
+applyColors();

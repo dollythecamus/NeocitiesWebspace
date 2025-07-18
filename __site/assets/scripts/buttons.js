@@ -1,4 +1,4 @@
-import { applyColors, oppositeColor } from '/assets/scripts/colors.js';
+import { oppositeColor } from '/assets/scripts/colors.js';
 import { spawnWindow } from '/assets/scripts/windows.js';
 import { data } from '/assets/scripts/data.js';
 
@@ -236,7 +236,7 @@ function update() {
 }
 
 frontButton.addEventListener('touchstart', (e) => {
-  if (e.touches.length !== 1) return; // Only single touch
+  if (e.touches.length !== 1) return;
   isDragging = true;
   let touch = e.touches[0];
   lastMouse.x = touch.clientX;
@@ -278,4 +278,3 @@ export function UpdateButtonColors(colors) {
 }
 
 update();
-applyColors();

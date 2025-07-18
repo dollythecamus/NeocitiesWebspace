@@ -6,7 +6,6 @@ const windowsConfig = data.windows;
 let z = 1001;
 const openWindows = {};
 
-// open windows at the start marked with start = true
 Object.keys(windowsConfig).forEach(id => {
     if (windowsConfig[id].start) {
         spawnWindow(id);
@@ -125,7 +124,6 @@ function makeDraggable(el) {
     });
 
     /// touch events
-
     document.addEventListener('touchend', (e) => {
         isDragging = false;
     });

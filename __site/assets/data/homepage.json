@@ -3,18 +3,13 @@
         "width": "1600px",
         "height": "1000px",
         "areas":[
-            "header",
-            "menu",
-            "main",
-            "right",
-            "left",
-            "footer",
             "area_a",
             "area_b",
             "area_b2",
             "area_c",
             "area_d",
-            "area_e"
+            "area_e",
+            "footer"
         ],
         "area_template": [
         ".       area_b  area_b   .       area_d",
@@ -22,7 +17,9 @@
         "area_a  area_a  area_b2  area_c  area_d",
         "area_a  area_a  area_b2  area_c  area_d",
         ".       .       .        area_c  area_d",
-        ".       area_e  area_e   area_c  ."
+        ".       area_e  area_e   area_c  .",
+        ". . . . .",
+        ". . footer footer ."
         ]
     },
     "buttons": [

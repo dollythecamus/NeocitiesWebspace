@@ -62,7 +62,7 @@ function initDecorations() {
     if (container) {
       if (container.classList.contains("default-off")) {
         decorateState = 0;
-        container.style.display = "none"; // Hide the decorations container by default
+        container.style.display = "none"; // Hide the decorations container by default, if specified
 
         console.log("Decorations are off by default.");
 
@@ -71,7 +71,7 @@ function initDecorations() {
       if (container.classList.contains("default-on")) {
         
         decorateState = 1;
-        container.style.display = "block"; // Show the decorations container by default
+        container.style.display = "block"; // Show the decorations container by default, if specified
 
         composeTextElements();
         randomPositionDecorations();
@@ -93,32 +93,27 @@ function randomPositionDecorations() {
 }
 
 export function ToggleDecorate() {
-  if (decorateState === -1) {
-    // Initial state, supposed to be decorated from the start
-    decorateState = 1;
-  }
-  
   if (decorateState === 0) {
     // Not decorated, apply decorations
 
     const container = document.querySelector(".decorations-container");
-    container.style.display = "block"; // Show the decorations container
+    container.style.display = "block";
     composeTextElements();
     randomPositionDecorations();
-    decorateState = 1; // Set to decorated state
+    decorateState = 1; 
   }
   else if (decorateState === 1) {
     // Already decorated, remove decorations
     const container = document.querySelector(".decorations-container");
-    container.style.display = "none"; // Hide the decorations container
-    decorateState = 0; // Set back to not decorated state
+    container.style.display = "none"; 
+    decorateState = 0; 
   }
 
 }
 
 initDecorations();
 
-document.querySelectorAll(".decoration").forEach(decoration => {
+document.querySelectorAll(".decoration.interactable").forEach(decoration => {
 
   decoration.addEventListener("click", (event) => {
     if (decoration.classList.contains("erasable")) {

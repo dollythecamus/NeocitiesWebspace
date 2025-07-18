@@ -6,8 +6,8 @@
         /* color: #2ddb2d; */
         text-align: center;
         margin: 0;
-        width: 12cm;
-        height: 6cm;
+        width: 20cm;
+        height: 9cm;
     }
     #colors-window .window-content a {
         color: #35bbd3;
@@ -17,6 +17,52 @@
     #colors-window .window-content a:hover {
         color: #7a6df1;
         text-decoration: underline;
+    }
+    
+    #colors-window .ranges-container {
+        margin: 0;
+        display: grid;
+        width: 100%;
+        grid-template-columns: repeat(2, .5fr);
+    }
+
+    #colors-window .ranges {
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+        padding: 8px;
+        margin: 0;
+    }
+
+    #colors-window .range {
+        width: 4.5cm;
+        margin: 0;
+        text-align: center;
+    }
+
+    #colors-window .range * {
+        margin: auto;
+        display: block;
+    }
+
+    #colors-window .ranges.light{
+        padding: 8px;
+        background-color: var(--color3);
+        color: var(--colorDark0);
+    }
+
+    #colors-window .ranges.dark{
+        padding: 8px;
+        background-color: var(--colorDark2);
+        color: var(--color0);
+    }
+
+
+    #colors-window .ranges.minimum{
+        padding: 8px;
+        background-color: var(--colorDark2);
+        color: var(--color0);
     }
 
 </style>
@@ -31,6 +77,124 @@
     <p>...</p>
     <p>so I'm here to make terrible choices.</p>
     <p>click the button to generate random colors!</p>
+
+    <div class="ranges-container">
+
+        <div class="ranges light">
+            <div class="minimum"> Minimum Light color range:
+                <div class="range">
+                    <label for="hue-range">Hue: <span id="hue-value">0</span></label>
+                    <input type="range" id="hue-range" min="0" max="360" value="0">
+                    
+                </div>
+                
+                <div class="range">
+                    <label for="saturation-range">Saturation: <span id="saturation-value">70</span></label>
+                    <input type="range" id="saturation-range" min="0" max="100" value="70">
+                    
+                </div>
+                    
+                <div class="range">
+                    <label for="lightness-range">Lightness: <span id="lightness-value">75</span></label>
+                    <input type="range" id="lightness-range" min="0" max="100" value="75">
+                    
+                </div>
+
+            </div>
+
+            <div class="maximum"> Maximum Light color range:
+                <div class="range">
+                    <label for="hue-range">Hue: <span id="hue-value">360</span></label>
+                    <input type="range" id="hue-range" min="0" max="360" value="360">
+                    
+                </div>
+                
+                <div class="range">
+                    <label for="saturation-range">Saturation: <span id="saturation-value">100</span></label>
+                    <input type="range" id="saturation-range" min="0" max="100" value="100">
+                    
+                </div>
+                    
+                <div class="range">
+                    <label for="lightness-range">Lightness: <span id="lightness-value">85</span></label>
+                    <input type="range" id="lightness-range" min="0" max="100" value="85">
+                    
+                </div>
+
+            </div>
+
+        
+        </div>
+
+        <div class="ranges dark">
+            
+            <div class="minimum"> Minimum Dark color range:
+                <div class="range">
+                    <label for="hue-range">Hue: <span id="hue-value">0</span> </label> 
+                    <input type="range" id="hue-range" min="0" max="360" value="0">
+                    
+                </div>
+                
+                <div class="range">
+                    <label for="saturation-range">Saturation: <span id="saturation-value">30</span></label>
+                    <input type="range" id="saturation-range" min="0" max="100" value="30">
+                    
+                </div>
+                    
+                <div class="range">
+                    <label for="lightness-range">Lightness: <span id="lightness-value">10</span></label>
+                    <input type="range" id="lightness-range" min="0" max="100" value="10">
+                    
+                </div>
+
+            </div>
+
+            <div class="maximum"> Maximum Dark color range:
+                <div class="range">
+                    <label for="hue-range">Hue: <span id="hue-value">360</span></label>
+                    <input type="range" id="hue-range" min="0" max="360" value="360">
+                    
+                </div>
+                
+                <div class="range">
+                    <label for="saturation-range">Saturation: <span id="saturation-value">60</span></label>
+                    <input type="range" id="saturation-range" min="0" max="100" value="60">
+                    
+                </div>
+                    
+                <div class="range">
+                    <label for="lightness-range">Lightness: <span id="lightness-value">30</span></label>
+                    <input type="range" id="lightness-range" min="0" max="100" value="30">
+                    
+                </div>
+
+            </div>
+        
+        </div>
+    
+    </div>
+
+    <div class="ranges"> Similar colors:
+        <div class="range">
+            <label for="hue-range">Hue:</label>
+            <input type="range" id="hue-range" min="0" max="360" value="15">
+            <span id="hue-value">15</span>
+        </div>
+        
+        <div class="range">
+            <label for="saturation-range">Saturation:</label>
+            <input type="range" id="saturation-range" min="0" max="100" value="10">
+            <span id="saturation-value">10</span>
+        </div>
+            
+        <div class="range">
+            <label for="lightness-range">Lightness:</label>
+            <input type="range" id="lightness-range" min="0" max="100" value="10">
+            <span id="lightness-value">10</span>
+        </div>
+
+    </div>
+
     <button id="generate-color">Switch colors</button>
 
 </div>

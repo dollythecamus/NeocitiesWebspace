@@ -10,12 +10,12 @@ export async function loadMarkdown(file) {
         // Parse markdown to HTML
         let htmlContent = marked.parse(data);
 
-        // Ensure image links are converted to <img> tags
+        // image links are converted to <img> tags
         htmlContent = htmlContent.replace(/<a href="([^"]+)">([^<]+)<\/a>/g, (match, url, altText) => {
             if (url.match(/\.(jpg|jpeg|png|gif)$/i)) {
                 return `<img src="${url}" alt="${altText}" />`;
             }
-            return match; // Keep other links unchanged
+            return match;
         });
 
         return htmlContent;

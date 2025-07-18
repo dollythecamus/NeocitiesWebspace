@@ -13,23 +13,17 @@ document.addEventListener("windowOpened", (event) => {
 function onWindowOpen()
 {
     window.addEventListener("biblioSelected", (event) => {
-        // Handle the node selection event here
         const biblio = event.detail.biblio;
-        // You can update the editor UI or perform other actions with the selected node
         console.log("Node selected:", biblio);
     });
     
     window.addEventListener("stasiaSelected", (event) => {
-        // Handle the edge selection event here
         const stasia = event.detail.stasia;
-        // You can update the editor UI or perform other actions with the selected edge
         console.log("Edge selected:", stasia);
     });
 
     window.addEventListener("stoppedSelecting", (event) => {
-        // Handle the event when selection is stopped
         console.log("Selection stopped");
-        // You can clear the editor UI or perform other actions
     });
 }
 
