@@ -15,18 +15,20 @@
 
 
 .colorful_0 { color:var(--color0) }
-
 .colorful_1 { color:var(--color1) }
-
 .colorful_2 { color:var(--color2) }
-
 .colorful_3 { color:var(--color3) }
-
 .colorful_4 { color:var(--color4) }
-
 .colorful_5 { color:var(--color5) }
-
 .colorful_6 { color:var(--color6) }
+
+.bgcolorful_0 { background-color:var(--color0) }
+.bgcolorful_1 { background-color:var(--color1) }
+.bgcolorful_2 { background-color:var(--color2) }
+.bgcolorful_3 { background-color:var(--color3) }
+.bgcolorful_4 { background-color:var(--color4) }
+.bgcolorful_5 { background-color:var(--color5) }
+.bgcolorful_6 { background-color:var(--color6) }
 
 .colorfulDark_0 { color:var(--colorDark0) }
 

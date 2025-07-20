@@ -24,6 +24,20 @@ export async function loadMarkdown(file) {
     }
 }
 
+// load but don't parse
+export async function loadMarkdownFile(file) {
+    try {
+        const response = await fetch(file);
+        const data = await response.text();
+
+        return data;
+        
+    } catch (error) {
+        console.error('Error loading markdown file:', error);
+    }
+}
+
+
 export function parseMarkdown(markdown)
 {
     return marked.parse(markdown);

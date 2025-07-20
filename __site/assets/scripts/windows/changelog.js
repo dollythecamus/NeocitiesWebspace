@@ -15,7 +15,7 @@ async function onWindowOpen()
 {
     // load the changelog file and show
     const contentElement = document.getElementById(id).querySelector('#changelog-container');
-    contentElement.innerHTML = await loadMarkdown("/changelog.md");
+    contentElement.innerHTML = await loadMarkdown("/changelog-pretty.md");
 
     window.seeWebsiteVersion();
 

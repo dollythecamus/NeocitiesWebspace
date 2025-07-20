@@ -4,7 +4,8 @@
 
 # Updating changelog
 echo "Updating Changelog. "
-git log --pretty=format:"---%n### %s%nTime: %ad%n" --date=short > __site/changelog.md
+git log --pretty=format:"---%n### %s%nTime: %ad%n" --date=short > __site/changelog-pretty.md
+git log --pretty=format:"%ad %s %n" --date=short > __site/changelog.md
 
 # Upload to Neocities
 echo "Uploading to Neocities..."

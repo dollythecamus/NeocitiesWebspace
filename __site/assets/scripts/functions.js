@@ -2,6 +2,7 @@
 import { generateRandomColors, applyColors } from "/assets/scripts/colors.js";
 import { cyclePlanetFocus, state } from "/Holodeck/Space/solar-controls.js"
 import { composeTextElements, ToggleDecorate } from "/assets/scripts/decoration.js";
+import { loadMarkdownFile, parseMarkdown  } from "/assets/scripts/markdown.js"
 
 const WEBSITE_VERSION = '0.6.18';
 
@@ -72,6 +73,18 @@ window.seeWebsiteVersion = function _seeWebsiteVersion() {
     console.log(`Website version: ${WEBSITE_VERSION}`);
 }
 
+window.seeLatestChanges = async function _seeLatestChanges() {
+    const elements = document.querySelectorAll(".LATEST_CHANGES");
+
+    const all_changes_text = await loadMarkdownFile("/changelog.md");
+    const latest_changes = all_changes_text.split("\n").slice(0, 6).join('\n');
+
+    elements.forEach(element => {
+        element.innerHTML = parseMarkdown(latest_changes);
+    });
+}
+
+
 window.gotoPage = function _gotoPage(url) {
     window.location.href = url;
 }
@@ -82,3 +95,4 @@ window.decorate = function _decorate() {
 
 window.ShowTutorial();
 window.seeWebsiteVersion();
+window.seeLatestChanges();
