@@ -1,14 +1,14 @@
 {
     "grid": {
-        "width": "8000px",
-        "height": "250px",
+        "width": "4000px",
+        "height": "400px",
         "areas":[
             "area_a",
             "area_b",
             "area_c"
         ],
         "area_template": [
-        ". area_a . . . area_b . . . . . . . . . . . . . . area_c"
+        ". area_a . . . area_b  . . . area_c"
         ]
     },
     "buttons": [

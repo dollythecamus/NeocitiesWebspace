@@ -10,7 +10,10 @@ website version is completely arbitrary btw. I just add some numbers to it when 
 > for me to remember :p
 
 > Pretty
-```git log --pretty=format:"---%n### %s%nTime: %ad%n" --date=short > __site/changelog-pretty.md```
+
+> ```git log --pretty=format:"---%n### %s%nTime: %ad%n" --date=short > __site/changelog-pretty.md```
+
 > Less pretty
-```git log --pretty=format:"%ad %s %n" --date=short > __site/changelog.md```
+
+> ```git log --pretty=format:"%ad %s %n" --date=short > __site/changelog.md```
 

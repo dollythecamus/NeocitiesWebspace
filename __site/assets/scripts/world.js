@@ -11,7 +11,7 @@ const panzoom = Panzoom(world, {
   filterKey: () => true
 });
 
-world.parentElement.addEventListener('wheel', panzoom.zoomWithWheel);
+// world.parentElement.addEventListener('wheel', panzoom.zoomWithWheel);
 
 function composeGrid() {
   if (!gridConfig || !gridConfig.areas || !gridConfig.area_template) return;
@@ -24,8 +24,8 @@ function composeGrid() {
   mainGrid.style.height = gridConfig.height;
   mainGrid.style.display = 'grid';
   mainGrid.style.gridTemplateAreas = areaTemplate;
-  mainGrid.style.gridAutoRows = 'auto'; 
-  mainGrid.style.gridAutoColumns = 'auto'; 
+  mainGrid.style.gridAutoRows = '1fr'; 
+  mainGrid.style.gridAutoColumns = '1fr'; 
 
   gridConfig.areas.forEach(area => {
     const section = mainGrid.querySelector(`.${area}`);

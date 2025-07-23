@@ -50,22 +50,19 @@ header p {
     color: var(--color2);
 }
 
-/*
-main {
 
+main {
+    justify-items: stretch;
 }
-*/
+
 
 main section.grid_item {
     background-color: var(--color1);
     border: 1px solid var(--colorDark1);
+    padding: 1rem;
     width: auto;
     height: auto;
-    padding: 1rem;
-}
-
-.grid_M {
-    grid-area: m;
+    overflow: auto;
 }
 
 /* footer 
