@@ -11,7 +11,7 @@ const panzoom = Panzoom(world, {
   filterKey: () => true
 });
 
-// world.parentElement.addEventListener('wheel', panzoom.zoomWithWheel);
+world.parentElement.addEventListener('wheel', panzoom.zoomWithWheel);
 
 function composeGrid() {
   if (!gridConfig || !gridConfig.areas || !gridConfig.area_template) return;
