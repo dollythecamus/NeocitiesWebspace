@@ -1,26 +1,29 @@
 {
-    "grid": {
-        "width": "1600px",
-        "height": "1000px",
-        "areas":[
-            "area_a",
-            "area_b",
-            "area_b2",
-            "area_c",
-            "area_d",
-            "area_e",
-            "footer"
-        ],
-        "area_template": [
-        ".       area_b  area_b   .       area_d",
-        ".       area_b  area_b   area_c  area_d",
-        "area_a  area_a  area_b2  area_c  area_d",
-        "area_a  area_a  area_b2  area_c  area_d",
-        ".       .       .        area_c  area_d",
-        ".       area_e  area_e   area_c  .",
-        ". . . . .",
-        ". . footer footer ."
-        ]
+    "grids": {
+        "_main": "main_grid",
+        "main_grid":{
+            "position": ["600", "400"],
+            "size": ["1600px", "1000px"],
+            "areas":[
+                "area_a",
+                "area_b",
+                "area_b2",
+                "area_c",
+                "area_d",
+                "area_e",
+                "footer"
+            ],
+            "area_template": [
+            ".       area_b  area_b   .       area_d",
+            ".       area_b  area_b   area_c  area_d",
+            "area_a  area_a  area_b2  area_c  area_d",
+            "area_a  area_a  area_b2  area_c  area_d",
+            ".       .       .        area_c  area_d",
+            ".       area_e  area_e   area_c  .",
+            ". . . . .",
+            ". . footer footer ."
+            ]
+        }
     },
     "buttons": [
         {

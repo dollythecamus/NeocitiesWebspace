@@ -1,0 +1,67 @@
+{
+    "grid": {
+        "width": "4000px",
+        "height": "800px",
+        "areas":[
+            "a",
+            "b",
+            "c",
+            "d",
+            "e",
+            "f",
+            "g",
+            "h",
+            "i",
+            "j",
+            "k",
+            "l",
+            "m",
+            "o",
+            "p",
+            "q",
+            "r",
+            "t",
+            "u"
+        ],
+        "area_template": [
+        ". . . . . a a a a a a a . f f f . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . .",
+        "b b b b . a a a a a a a . . . g g g g g g g . . . . . . . . r r r r . . . . . . . . . . . . . . . . .",
+        "b b b b . a a a a a a a . . h h h h h . . . . . . . . . . . r r r r . t t t t . . . . . . . . . . . .",
+        "b b b b . . . . . . . . . . h h h h h . k k k l l l o o o o r r r r . t t t t . . . . . . . . . . . .",
+        "b b b b . d d d e e e . . . . . . . . . k k k l l l o o o o r r r r . t t t t . . . . . . . . . . . .",
+        ". . . . . d d d e e e . i i i j j j . . k k k l l l . . . . r r r r . t t t t . . . . . . . . . . . .",
+        "c c c c . d d d e e e . i i i j j j . . k k k . . . . . . . . . . . . t t t t . . . . . . . . . . . .",
+        "c c c c . d d d e e e . i i i j j j . . k k k m m m . p p p q q q . . t t t t . . . . . . . . . . . .",
+        "c c c c . d d d e e e . i i i j j j . . k k k m m m . p p p q q q . . t t t t . . . . . . u u u u u  .",
+        "c c c c . d d d e e e . i i i j j j . . k k k m m m . p p p q q q . . t t t t . . . . . . u u u u u  .",
+        "c c c c . d d d e e e . i i i j j j . . k k k m m m . p p p q q q . . . . . . . . . . . . . . . . . ."
+        ]
+    },
+    "buttons": [
+        {
+            "icon": "📄",
+            "func": "window:pages-window",
+            "color": "lights"
+        },{
+            "icon": "🧩",
+            "func": "function:SillyMessage:hi..",
+            "color": "lights"
+        },{
+            "icon": "✨",
+            "func": "function:randomColors",
+            "color": "lights"
+        },
+        {
+            "icon": ":p",
+            "func": null,
+            "color":"lights",
+            "position": "top-left"
+        }
+    ],
+    "windows": {
+        "pages-window":{
+            "title": "Website Pages List",
+            "contentUrl": "pages-window.html"
+        }
+    }
+}

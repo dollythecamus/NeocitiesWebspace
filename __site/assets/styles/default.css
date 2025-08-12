@@ -51,18 +51,15 @@ header p {
 }
 
 
-main {
+.grid_container {
     justify-items: stretch;
 }
 
 
-main section.grid_item {
+.grid_container section.grid_item {
     background-color: var(--color1);
     border: 1px solid var(--colorDark1);
     padding: 1rem;
-    width: auto;
-    height: auto;
-    overflow: auto;
 }
 
 /* footer 

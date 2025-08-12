@@ -23,12 +23,13 @@
 
   <nav></nav> <!-- here will be loaded the navigation buttons -->
 
+  <div style="position:fixed; width: 100%; height: 100%;"> <!-- another damn container because of weird behaviours, let's see if it fixes-->
+
   <div id = "viewport"> <!-- wrapped around a viewport container for the Panzoom function -->
     <div id="world">
       <div id="background-image"></div>
-      <main id = "main_grid">
+      <main id = "main_grid" class="grid_container">
         <section class = "grid_item area_a">
-          <script type='text/javascript' src='https://www.freevisitorcounters.com/auth.php?id=bc441c32af525eff28279e7fab2467eea4f867cd'></script>
           <script type="text/javascript" src="https://www.freevisitorcounters.com/en/home/counter/1362053/t/13"></script>
           <p>visitor count ^ </p> 
         </section>
@@ -45,7 +46,7 @@
           section D.
         </section>
         <section class = "grid_item area_e">
-          <a href="/Holodeck/holodeck.html"></a>
+          <a href="/Holodeck/holodeck.html">Holodeck</a>
         </section>
         <section class = "grid_item footer">
           <p class="colorfulDark_0">| webspace version <span class="colorfulDark_2 WEBSITE_VERSION"></span> <br>
@@ -60,6 +61,8 @@
       </div>
     
     </div>
+  </div>
+
   </div>
 
   <section id="floating-windows"></section> <!-- here will be loaded the floating windows. -->

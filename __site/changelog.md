@@ -1,3 +1,9 @@
+2025-07-25 fixed a stupid thing 
+
+2025-07-23 we are all supposed to change 
+
+2025-07-19 tweaked changelog options. i need to write actual content 
+
 2025-07-18 i don't remember what i changed but i'm commiting :) 
 
 2025-07-18 tweaks for colors 

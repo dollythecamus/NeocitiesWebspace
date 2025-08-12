@@ -1,4 +1,42 @@
 {
+    "grids": {
+        "main_grid":
+        {
+            "position": ["1500", "800"],
+            "size": ["1000px", "800px"],
+            "areas":[
+                "a",
+                "b",
+                "c",
+                "d"
+            ],
+            "area_template": [
+            " . . . c c c c . .",
+            " a a a c c c c . .",
+            " . . . c c c c . d",
+            " . b b c c c c . d",
+            " . . . c c c c . d",
+            " . . . c c c c . d",
+            " . . . c c c c . d",
+            " . . . c c c c . ."
+            ]
+        },
+        "island_test":{
+            "position": ["500", "800"],
+            "size": ["600px", "400px"],
+            "areas":[
+                "a",
+                "b",
+                "c"
+            ],
+            "area_template": [
+                "a a a",
+                "b b .",
+                ". c c"
+                
+            ]
+        }
+    },
     "buttons": [
         {
             "icon": "📃",

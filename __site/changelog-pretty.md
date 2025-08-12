@@ -1,4 +1,28 @@
 ---
+### fixed a stupid thing
+Time: 2025-07-25
+
+---
+### we are all supposed to change
+Time: 2025-07-23
+
+---
+### tweaked changelog options. i need to write actual content
+Time: 2025-07-19
+
+---
+### i don't remember what i changed but i'm commiting :)
+Time: 2025-07-18
+
+---
+### tweaks for colors
+Time: 2025-07-18
+
+---
+### yeah
+Time: 2025-07-17
+
+---
 ### tessting more grid patterns
 Time: 2025-07-16
 

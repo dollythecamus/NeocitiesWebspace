@@ -23,9 +23,13 @@
 
   <nav></nav> <!-- here will be loaded the navigation buttons -->
 
+  <div style="position:fixed; width: 100%; height: 100%;"> <!-- another damn container because of weird behaviours, let's see if it fixes-->
+
   <div id = "viewport"> <!-- wrapped around a viewport container for the Panzoom function -->
     <div id="world">
-      <main id="main_grid">
+
+      <main id="main_grid" class="grid_container">
+      
         <section class="grid_item main">
           <h1>intro tutorial page</h1>
           <p>i think you need it:</p>
@@ -45,6 +49,8 @@
       </main> <!-- here will be the main page content -->
     </div>
   </div>
+
+  </div> <!-- closing that weird container-->
   
   <section id="floating-windows"></section> <!-- here will be loaded the floating windows. -->
 
