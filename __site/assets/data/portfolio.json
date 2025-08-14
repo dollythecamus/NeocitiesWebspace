@@ -1,9 +1,10 @@
 {
     "grids": {
+        "_main":"main_grid",
         "main_grid":
         {
             "position": ["1500", "800"],
-            "size": ["1000px", "800px"],
+            "size": ["1000px", "900px"],
             "areas":[
                 "a",
                 "b",
@@ -13,11 +14,11 @@
             "area_template": [
             " . . . c c c c . .",
             " a a a c c c c . .",
-            " . . . c c c c . d",
-            " . b b c c c c . d",
-            " . . . c c c c . d",
-            " . . . c c c c . d",
-            " . . . c c c c . d",
+            " . . . c c c c d d",
+            " . b b c c c c d d",
+            " . . . c c c c d d",
+            " . . . c c c c d d",
+            " . . . c c c c d d",
             " . . . c c c c . ."
             ]
         },

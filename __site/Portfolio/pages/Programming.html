@@ -1,0 +1,150 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Chloe's Portfolio</title>
+  <link rel="stylesheet" href="/assets/styles/colors.css" />
+  <link rel="stylesheet" href="/assets/styles/default.css" />
+  <link rel="stylesheet" href="/assets/styles/buttons.css" />
+  <link rel="stylesheet" href="/assets/styles/windows.css" />
+  <link rel="stylesheet" href="/assets/styles/decorations.css" />
+  <link rel="stylesheet" href="/assets/styles/markdown.css" />
+  <link rel="stylesheet" href="/assets/styles/world.css" />
+
+  <link rel="icon" href="/assets/images/icon/CHL.png" type="image"/>
+</head>
+<body>
+  
+  <div id="background"></div>
+
+  <header>
+  </header>
+
+  <nav></nav> <!-- here will be loaded the navigation buttons -->
+
+  <div style="position:fixed; width: 100%; height: 100%;"> <!-- another damn container because of weird behaviours, let's see if it fixes-->
+
+  <div id="viewport"> <!-- wrapped around a viewport container for the Panzoom function -->
+    <div id="world">
+
+      <main id="main_grid" class="grid_container">
+        
+        <section class="grid_item a">
+          Hi there! This is the portfolio for my programming projects.
+        </section>
+        <section class="grid_item b">
+          Hope you like it :)
+        </section>
+        <section class="grid_item c">
+          <div class="pagination">
+            <div class="pagesbuttonbox"><button class="prevbutton"><<</button> <button class="nextbutton">>></button></div>
+            <p>page 1</p>
+            <div class="pages markdown">
+                <div class="">
+                    <h3>Gatos e Bombas (2025)</h3>
+                    <ul>
+                        <li>Godot, GDScript</li>
+                        <li>Digital Card Game</li>
+                    </ul>
+                    <p>Tasked with making a digital card game at university, my team and I worked on this, and I was the main programmer, working on the mechanics of card movement; game rules and card effects; the bot that the player is playing against; and the visual feedbacks that make the game easier to play.</p>
+                    <br>
+                    <p>It's turn based and quick, the cats play the cards they pulled at the start, if they pull a bomb card and fail to take it off their hands, they lose.</p>
+                    <img src="/Portfolio/images/games/bombscats.png" alt="Screenshot of Game: Gatos e Bombas">
+                    <p>Fun project, <a href="https://dollycamus.itch.io/gatosebombas">here's the link</a></p>
+                </div>
+                <div class="">
+                    <h3>This here Webspace (2025)</h3>
+                    <ul>
+                        <li>Webkit</li>
+                        <li>Solo Indie</li>
+                        <li>Personal Website</li>
+                    </ul>
+                    <p>Given the internet's horrible enshitification, some people wish to return to their 2011's internet. Neocities is an interesting part of the <i>indie-web ecosystem</i></p>
+                    <p>So I made this website, this website you are currently visiting... look around...</p>
+                    <p>I think it's nice out here. and I programmed all of it by myself!!!</p>
+                    <p>there are these tons of features, like the fun button you can drag around.. floating windows, decorations, the panzoom section, I'm even working on making some games in here!</p>
+
+                    <img src="/Portfolio/images/website.png" alt="Screenshot of the index page of the website">
+
+                    <a href="/index.html">Look around if you want</a>
+                    <br>
+                    <a href="https://github.com/dollythecamus/NeocitiesWebspace">Github</a>
+                </div>
+                <div class="">
+                    <h3>Combogó (2025)</h3>
+                    <ul>
+                        <li>Unity C#</li>
+                        <li>Porting</li>
+                        <li>WIP</li>
+                    </ul>
+                    <p>Combogó is the voluntary extension project for the digital games course at my university, UNICAP, where I am currently working on porting a game developed in web from an european studio to Unity using C#. </p>
+                    <p>Still in development!</p>
+                </div>
+                <div class="">
+                    <h3>Programming Experiments</h3>
+                    <p>Smaller projects, some that I didn't exactly finish, but I think that show a variety of skills I want to improve on.</p>
+                    <ul>
+                        <li><a href="https://github.com/dollythecamus/world-of-cards">world-of-cards</a> - (godot) Prototype of game before Gatos e Bombas</li>
+                        <li><a href="https://github.com/dollythecamus/rt-learning-ai">rt-learning-AI</a> - (python) Interested in AI, experiment on real time learning</li>
+                        <li><a href="https://github.com/dollythecamus/musicmanager">music-manager</a>  - (webkit) Music manager web software</li>
+                        <li><a href="/Holodeck/Space/index.html">web-space-sim</a>  - (webkit) Space Simulator</li>
+                    </ul>
+                </div>
+            </div>
+          </div>
+        </section>
+        <section class="grid_item d">
+          updates:
+          <ul>
+            <li><p>First version:</p><p>added recent projects</p></li>
+          </ul>
+          version 0.1
+          2025.2
+        </section>
+
+      </main> <!-- here is the main content of the page -->
+  
+      <section id="island_test" class="island grid_container" style="transform: translate(1000px, 800px);">
+        <section class="grid_item a">
+          something
+        </section>
+        <section class="grid_item b">
+          something else
+        </section>
+        <section class="grid_item c">
+          other thing
+        </section>
+      </section>
+
+      <div class="decorations-container"></div>
+
+    </div>
+  </div>
+
+  </div>
+  <section id="floating-windows"></section> <!-- here will be the page's main content. i should put something here huh -->
+
+  <footer> 
+      <p>webspace version <span class="colorful_3 WEBSITE_VERSION"></span> | made by <a class="colorful_1" href="https://github.com/dollythecamus/NeocitiesWebspace" target="_blank">Chloe</a></p>
+  </footer>
+
+  <div id="decorations" class="decorations-container default-off">
+
+  </div>
+  
+    <script src="/assets/scripts/define-functions.js"></script>
+    <script>
+        data_file = 'portfolio.json'; // Set the data path to get the page's buttons, floating windows and grid. it's all dynamic and cool like that (sunglasses)
+    </script>
+    <script type="module" src="/assets/scripts/data.js"></script>
+    <script type="module" src="/assets/scripts/decoration.js"></script>
+    <script type="module" src="/assets/scripts/functions.js"></script>
+    <script type="module" src="/assets/scripts/windows.js"></script>
+    <script type="module" src="/assets/scripts/colors.js"></script>
+    <script type="module" src="/assets/scripts/buttons.js"></script>
+    <script type="module" src="/assets/scripts/markdown.js"></script>
+    <script type="module" src="/assets/scripts/world.js"></script>
+
+</body>
+</html>

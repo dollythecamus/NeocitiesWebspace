@@ -31,7 +31,8 @@ function composeGrids() {
 
     if (grid.id == gridConfig._main) { 
       const pos = [parseInt(this_gridConfig.position[0]), parseInt(this_gridConfig.position[1])]
-      setTimeout(() => panzoom.pan(pos[0], pos[1]))
+
+      setTimeout(() => panzoom.pan(-pos[0]/1.2, -pos[1]/1.2))
     }
 
   });
@@ -60,11 +61,17 @@ function composePagination() {
     const next_button = pages_button_box.querySelector(".nextbutton")
     const prev_button = pages_button_box.querySelector(".prevbutton")
 
+    const page_i = book.querySelector("p")
+
+    page_i.textContent = "Page " + parseInt(i)
+
     next_button.addEventListener("click", () => {
       pages_container.children[book.dataset.pageIndex].style.display = "none"
       i = wrap(i+1, 0, pages_container.childElementCount -1)
       book.dataset.pageIndex = i;
       pages_container.children[book.dataset.pageIndex].style.display = "block"
+
+      page_i.textContent = "Page " + parseInt(i)
     })
 
     prev_button.addEventListener("click", () => {
@@ -72,6 +79,8 @@ function composePagination() {
       i = wrap(i-1, 0, pages_container.childElementCount -1)
       book.dataset.pageIndex = i;
       pages_container.children[book.dataset.pageIndex].style.display = "block"
+
+      page_i.textContent = "Page " + parseInt(i)
     })
 
   });
