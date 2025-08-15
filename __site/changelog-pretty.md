@@ -1,4 +1,16 @@
 ---
+### portfolio waow
+Time: 2025-08-14
+
+---
+### fixing data and pages from old to new format
+Time: 2025-08-12
+
+---
+### portfolio template and grid tweaks
+Time: 2025-08-12
+
+---
 ### fixed a stupid thing
 Time: 2025-07-25
 

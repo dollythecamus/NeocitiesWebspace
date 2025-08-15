@@ -1,3 +1,9 @@
+2025-08-14 portfolio waow 
+
+2025-08-12 fixing data and pages from old to new format 
+
+2025-08-12 portfolio template and grid tweaks 
+
 2025-07-25 fixed a stupid thing 
 
 2025-07-23 we are all supposed to change 

@@ -63,7 +63,7 @@ function composePagination() {
 
     const page_i = book.querySelector("p")
 
-    page_i.textContent = "Page " + parseInt(i)
+    page_i.textContent = "Page " + parseInt(i+1)
 
     next_button.addEventListener("click", () => {
       pages_container.children[book.dataset.pageIndex].style.display = "none"
@@ -71,7 +71,7 @@ function composePagination() {
       book.dataset.pageIndex = i;
       pages_container.children[book.dataset.pageIndex].style.display = "block"
 
-      page_i.textContent = "Page " + parseInt(i)
+      page_i.textContent = "Page " + parseInt(i+1)
     })
 
     prev_button.addEventListener("click", () => {
@@ -80,7 +80,7 @@ function composePagination() {
       book.dataset.pageIndex = i;
       pages_container.children[book.dataset.pageIndex].style.display = "block"
 
-      page_i.textContent = "Page " + parseInt(i)
+      page_i.textContent = "Page " + parseInt(i+1)
     })
 
   });

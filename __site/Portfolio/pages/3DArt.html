@@ -1,0 +1,111 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Chloe's Portfolio</title>
+  <link rel="stylesheet" href="/assets/styles/colors.css" />
+  <link rel="stylesheet" href="/assets/styles/default.css" />
+  <link rel="stylesheet" href="/assets/styles/buttons.css" />
+  <link rel="stylesheet" href="/assets/styles/windows.css" />
+  <link rel="stylesheet" href="/assets/styles/decorations.css" />
+  <link rel="stylesheet" href="/assets/styles/markdown.css" />
+  <link rel="stylesheet" href="/assets/styles/world.css" />
+
+  <link rel="icon" href="/assets/images/icon/CHL.png" type="image"/>
+</head>
+<body>
+  
+  <div id="background"></div>
+
+  <header>
+  </header>
+
+  <nav></nav> <!-- here will be loaded the navigation buttons -->
+
+  <div style="position:fixed; width: 100%; height: 100%;"> <!-- another damn container because of weird behaviours, let's see if it fixes-->
+
+  <div id="viewport"> <!-- wrapped around a viewport container for the Panzoom function -->
+    <div id="world">
+
+      <main id="main_grid" class="grid_container">
+        
+        <section class="grid_item a">
+          Hi! this is my portfolio for 3D Art. 
+        </section>
+        <section class="grid_item b">
+          Includes 3D modeling, 3D animation, renders
+        </section>
+        <section class="grid_item c">
+          <div class="pagination">
+            <div class="pages">
+              <div class="3collum_grid">
+                page1
+                <img src="" alt="image of portfolio item">
+                <img src="" alt="image of portfolio item">
+              </div>
+
+              <div class="3collum_grid">
+                page2aaaaaaaaaaaa
+                <img src="" alt="image of portfolio item">
+                <img src="" alt="image of portfolio item">
+              </div>
+            </div>
+            <div class="pagesbuttonbox"><button class="prevbutton">prev</button> <button class="nextbutton">next</button></div>
+          </div>
+        </section>
+        <section class="grid_item d">
+          updates:
+          <ul>
+            <li>blah</li>
+            <li>blah</li>
+          </ul>
+          version 0.1
+          2025.2
+        </section>
+
+      </main> <!-- here is the main content of the page -->
+  
+      <section id="island_test" class="island grid_container" style="transform: translate(1000px, 800px);">
+        <section class="grid_item a">
+          something
+        </section>
+        <section class="grid_item b">
+          something else
+        </section>
+        <section class="grid_item c">
+          other thing
+        </section>
+      </section>
+
+      <div class="decorations-container"></div>
+
+    </div>
+  </div>
+
+  </div>
+  <section id="floating-windows"></section> <!-- here will be the page's main content. i should put something here huh -->
+
+  <footer> 
+      <p>webspace version <span class="colorful_3 WEBSITE_VERSION"></span> | made by <a class="colorful_1" href="https://github.com/dollythecamus/NeocitiesWebspace" target="_blank">Chloe</a></p>
+  </footer>
+
+  <div id="decorations" class="decorations-container default-off">
+
+  </div>
+  
+    <script src="/assets/scripts/define-functions.js"></script>
+    <script>
+        data_file = 'portfolio.json'; // Set the data path to get the page's buttons, floating windows and grid. it's all dynamic and cool like that (sunglasses)
+    </script>
+    <script type="module" src="/assets/scripts/data.js"></script>
+    <script type="module" src="/assets/scripts/decoration.js"></script>
+    <script type="module" src="/assets/scripts/functions.js"></script>
+    <script type="module" src="/assets/scripts/windows.js"></script>
+    <script type="module" src="/assets/scripts/colors.js"></script>
+    <script type="module" src="/assets/scripts/buttons.js"></script>
+    <script type="module" src="/assets/scripts/markdown.js"></script>
+    <script type="module" src="/assets/scripts/world.js"></script>
+
+</body>
+</html>
