@@ -1,3 +1,5 @@
+2025-08-15 smol tweak 
+
 2025-08-14 portfolio waow 
 
 2025-08-12 fixing data and pages from old to new format 

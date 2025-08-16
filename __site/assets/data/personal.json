@@ -1,7 +1,7 @@
 {
     "grids": {
         "_main":"main_grid",
-            "main_grid": {
+        "main_grid": {
             "position":["0", "0"],
             "size": ["4000px", "800px"],
             "areas":[
