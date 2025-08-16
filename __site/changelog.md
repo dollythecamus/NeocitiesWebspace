@@ -1,3 +1,5 @@
+2025-08-16 fixed broken portfolio 
+
 2025-08-15 smol tweak 
 
 2025-08-14 portfolio waow 

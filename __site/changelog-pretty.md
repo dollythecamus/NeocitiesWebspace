@@ -1,4 +1,8 @@
 ---
+### fixed broken portfolio
+Time: 2025-08-16
+
+---
 ### smol tweak
 Time: 2025-08-15
 
