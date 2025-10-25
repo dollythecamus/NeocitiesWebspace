@@ -1,3 +1,11 @@
+2025-10-19 remove_later: slide presentation for a game jam 
+
+2025-08-18 stupid emojis 
+
+2025-08-18 synchronizing from obsidian vault to add personal content! 
+
+2025-08-16 fixing bc i broke it trying to fix it 
+
 2025-08-16 fixed broken portfolio 
 
 2025-08-15 smol tweak 

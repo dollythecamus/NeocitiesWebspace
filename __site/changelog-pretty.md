@@ -1,4 +1,20 @@
 ---
+### remove_later: slide presentation for a game jam
+Time: 2025-10-19
+
+---
+### stupid emojis
+Time: 2025-08-18
+
+---
+### synchronizing from obsidian vault to add personal content!
+Time: 2025-08-18
+
+---
+### fixing bc i broke it trying to fix it
+Time: 2025-08-16
+
+---
 ### fixed broken portfolio
 Time: 2025-08-16
 
