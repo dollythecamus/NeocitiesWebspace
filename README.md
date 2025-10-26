@@ -11,6 +11,7 @@ get in there! navigate the silly buttons. have fun or something
 
 ## How I upload the files to neocities easily:
 > annotated so i don't mess this up later
+> in my NixOS machine
 
 there is a `shell.nix` file, enter it with `$ nix-shell` - this will give access to the neocities cli tool
 

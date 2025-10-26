@@ -1,6 +1,6 @@
 #!/usr/bin/env bash
 # This script is used to upload my files to Neocities
-# Usage: ./upload.sh
+# Usage: sh ./upload.sh
 
 # Updating changelog
 echo "Updating Changelog. "
