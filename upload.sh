@@ -11,4 +11,4 @@ git log --pretty=format:"%ad %s %n" --date=short > __site/changelog.md
 echo "Uploading to Neocities..."
 neocities push __site
 
-echo "Upload complete. Your site is now live!"
+echo "Upload complete. site is now live!"
