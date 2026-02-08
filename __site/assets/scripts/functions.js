@@ -4,7 +4,7 @@ import { cyclePlanetFocus, state } from "/Holodeck/Space/solar-controls.js"
 import { composeTextElements, ToggleDecorate } from "/assets/scripts/decoration.js";
 import { loadMarkdownFile, parseMarkdown  } from "/assets/scripts/markdown.js"
 
-const WEBSITE_VERSION = '0.6.18';
+const WEBSITE_VERSION = '0.6.18.1';
 
 window.randomColors = function _randomColors()
 {
@@ -84,6 +84,19 @@ window.seeLatestChanges = async function _seeLatestChanges() {
     });
 }
 
+window.seeFooter = async function _seeFooter() {
+    const footerElement = document.querySelector('footer');
+    if (footerElement) {
+        let footerContent = "";
+        let footer_dir = "/footer.html"
+        try { const response = await fetch(footer_dir);
+            if (!response.ok) { throw new Error(`Failed to load data: ${response.statusText}`); }
+            footerContent = await response.text();
+        } catch (error) { console.error('Error fetching data:', error); }
+        
+        footerElement.innerHTML = footerContent;
+    }
+}
 
 window.gotoPage = function _gotoPage(url) {
     window.location.href = url;
@@ -94,5 +107,7 @@ window.decorate = function _decorate() {
 }
 
 window.ShowTutorial();
+
+window.seeFooter();
 window.seeWebsiteVersion();
 window.seeLatestChanges();

@@ -2,17 +2,21 @@ import "https://unpkg.com/@panzoom/panzoom@4.6.0/dist/panzoom.min.js";
 import { data } from '/assets/scripts/data.js';
 
 const gridConfig = data.grids;
-
 const world = document.getElementById('world');
-const panzoom = Panzoom(world, {
-  maxScale: 2,
-  minScale: 0.33,
-});
+const panZoom = null;
 
-world.parentElement.addEventListener('wheel', panzoom.zoomWithWheel);
+function composePanzoom()
+{
+  if (!world) return;
+  panZoom = Panzoom(world, {
+    maxScale: 2,
+    minScale: 0.33,
+  });
+  world.parentElement.addEventListener('wheel', panZoom.zoomWithWheel);
+}
 
 function composeGrids() {
-  const grids = world.querySelectorAll('.grid_container');
+  const grids = document.querySelectorAll('.grid_container');
   grids.forEach(grid => {
     const this_gridConfig = gridConfig[grid.id];
     const areaTemplate = this_gridConfig.area_template.map(row => `"${row}"`).join(' ');
@@ -29,12 +33,13 @@ function composeGrids() {
       if (section) section.style.gridArea = area;
     });
 
-    if (grid.id == gridConfig._main) { 
-      const pos = [parseInt(this_gridConfig.position[0]), parseInt(this_gridConfig.position[1])]
-
-      setTimeout(() => panzoom.pan(-pos[0]/1.2, -pos[1]/1.2))
+    if (panZoom != null) {
+      if (grid.id == gridConfig._main) { 
+        const pos = [parseInt(this_gridConfig.position[0]), parseInt(this_gridConfig.position[1])]
+        setTimeout(() => panZoom.pan(-pos[0]/1.2, -pos[1]/1.2))
+      }
     }
-
+    
   });
 }
 
@@ -47,7 +52,7 @@ function wrap(value, min, max) {
 }
 
 function composePagination() {
-  const pagination = world.querySelectorAll('.pagination');
+  const pagination = document.querySelectorAll('.pagination');
   pagination.forEach(book => {
     const pages_button_box = book.querySelector(".pagesbuttonbox")
     const pages_container = book.querySelector(".pages")
@@ -86,5 +91,6 @@ function composePagination() {
   });
 }
 
+composePanzoom();
 composePagination();
 composeGrids();

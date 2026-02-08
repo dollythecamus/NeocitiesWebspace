@@ -24,6 +24,8 @@
 .button.front {
     pointer-events: auto;
     cursor: grab;
+    border: 4px solid white;
+    box-shadow: 5px 5px 6px rgba(0, 0, 0, 0.3);
     height: calc(var(--button-size) + 3px);
     width: calc(var(--button-size) + 3px);
 }

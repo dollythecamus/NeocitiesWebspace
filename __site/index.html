@@ -3,7 +3,7 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>welcome.hello-friend</title>
+  <title>not the eternal</title>
   <link rel="stylesheet" href="/assets/styles/decorations.css" />
   <link rel="stylesheet" href="/assets/styles/default.css" />
   <link rel="stylesheet" href="/assets/styles/buttons.css" />
@@ -22,41 +22,29 @@
   </header>
 
   <nav></nav> <!-- here will be loaded the navigation buttons -->
+  
+  <main id="main_grid" class="grid_container">
+  
+    <section class="grid_item main">
+      <h3>website to do list</h3>
+      <ul>
+        <li>remake everything. i didn't like how i changed it</li>
+        <li></li>
+      </ul>
 
-  <div style="position:fixed; width: 100%; height: 100%;"> <!-- another damn container because of weird behaviours, let's see if it fixes-->
+    </section>
+    <section class="grid_item other">
+      <h3>hiii :) this is chloe's website</h3>
+      <p>portfolio, linktree, games, design experiments :3 </p>
+      <br>
+      <p>press that damn button</p>
 
-  <div id = "viewport"> <!-- wrapped around a viewport container for the Panzoom function -->
-    <div id="world">
-
-      <main id="main_grid" class="grid_container">
-      
-        <section class="grid_item main">
-          <h1>intro tutorial page</h1>
-          <p>i think you need it:</p>
-          <p>you can zoom and pan these sections</p>
-          <p>the button in the center can be dragged around.
-            <p>click the button to show other buttons</p>
-          </p>
-          <p>buttons have functions, sometimes they open floating windows</p>
-          <p>works best on desktop</p>
-        </section>
-        <section class="grid_item other">
-
-          <p>bye</p>
-          <p>have fun</p>
-          
-        </section>
-      </main> <!-- here will be the main page content -->
-    </div>
-  </div>
-
-  </div> <!-- closing that weird container-->
+    </section>
+  </main> <!-- here will be the main page content -->
   
   <section id="floating-windows"></section> <!-- here will be loaded the floating windows. -->
 
-  <footer> 
-    <p class="colorful_0">webspace version <span class="colorful_3 WEBSITE_VERSION"></span> | made by <a class="colorful_1" href="https://github.com/dollythecamus/NeocitiesWebspace" target="_blank">Chloe Amanita Nomad</a></p>
-  </footer>
+  <footer></footer>
 
   <div id="decorations" class="decorations-container default-on">
 
@@ -67,19 +55,20 @@
     <p class="decoration random-position colorful_2 silly-text spin decorated-text">:3</p>
 
   </div>
+
+  <script src="/assets/scripts/define-functions.js"></script>
+  <!-- data_file specifies the path of this page's functions, windows and layout. 
+      because I make it needlessly complicated for myself :p -->
+  <script> data_file = 'index.json'; </script>
   
-    <script src="/assets/scripts/define-functions.js"></script>
-    <script>
-        data_file = 'index.json'; // Set the data path to get the homepage buttons. it's all dynamic and cool like that (sunglasses)
-    </script>
-    <script type="module" src="/assets/scripts/data.js"></script>
-    <script type="module" src="/assets/scripts/decoration.js"></script>
-    <script type="module" src="/assets/scripts/functions.js"></script>
-    <script type="module" src="/assets/scripts/windows.js"></script>
-    <script type="module" src="/assets/scripts/colors.js"></script>
-    <script type="module" src="/assets/scripts/buttons.js"></script>
-    <script type="module" src="/assets/scripts/markdown.js"></script>
-    <script type="module" src="/assets/scripts/world.js"></script>
+  <script type="module" src="/assets/scripts/data.js"></script>
+  <script type="module" src="/assets/scripts/decoration.js"></script>
+  <script type="module" src="/assets/scripts/functions.js"></script>
+  <script type="module" src="/assets/scripts/windows.js"></script>
+  <script type="module" src="/assets/scripts/colors.js"></script>
+  <script type="module" src="/assets/scripts/buttons.js"></script>
+  <script type="module" src="/assets/scripts/markdown.js"></script>
+  <script type="module" src="/assets/scripts/world.js"></script>
 
 </body>
 </html>
