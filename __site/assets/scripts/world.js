@@ -26,7 +26,20 @@ function composeGrids() {
     grid.style.display = 'grid';
     grid.style.gridTemplateAreas = areaTemplate;
     grid.style.gridAutoRows = '1fr'; 
-    grid.style.gridAutoColumns = '1fr'; 
+    grid.style.gridAutoColumns = '1fr';
+    
+    console.log(grid)
+
+    if (grid.getAttribute('grid_width') != null)
+    {
+      grid.style.width = grid.getAttribute('grid_width');
+      console.log("Setting grid width to:", grid.getAttribute('grid_width'));
+    }
+    if (grid.getAttribute('grid_height') != null)
+    {
+      grid.style.height = grid.getAttribute('grid_height');
+      console.log("Setting grid height to:", grid.getAttribute('grid_height'));
+    }
 
     this_gridConfig.areas.forEach(area => {
       const section = grid.querySelector(`.${area}`);

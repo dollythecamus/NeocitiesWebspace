@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title> Outerwilds Notes!!!</title>
+  <link rel="stylesheet" href="/assets/styles/colors.css" />
+  <link rel="stylesheet" href="/assets/styles/default.css" />
+  <link rel="stylesheet" href="/assets/styles/buttons.css" />
+  <link rel="stylesheet" href="/assets/styles/windows.css" />
+  <link rel="stylesheet" href="/assets/styles/decorations.css" />
+  <link rel="stylesheet" href="/assets/styles/markdown.css" />
+  <link rel="stylesheet" href="/assets/styles/world.css" />
+
+  <link rel="icon" href="/assets/images/icon/CHL.png" type="image"/>
+</head>
+<body>
+  
+  <div id="background"></div>
+
+  <header></header>
+
+  <nav></nav> <!-- here will be loaded the navigation buttons -->
+
+  <main id="main_grid" class="grid_container" grid_width="1200px" grid_height="auto" style="margin:3rem">
+
+    <section class="grid_item main" style="padding:2rem">
+        <div data-markdown="/assets/content/outerwilds/objective.md"></div>
+        <div data-markdown="/assets/content/outerwilds/quantumrules.md"></div>
+        <div data-markdown="/assets/content/outerwilds/time.md"></div>
+        <div data-markdown="/assets/content/outerwilds/vessel.md"></div>
+        <div data-markdown="/assets/content/outerwilds/scout.md"></div>
+        <div data-markdown="/assets/content/outerwilds/hourglass.md"></div>
+        <div data-markdown="/assets/content/outerwilds/giantsdeep.md"></div>
+        <div data-markdown="/assets/content/outerwilds/brittlehollow.md"></div>
+        <div data-markdown="/assets/content/outerwilds/ghostmatter.md"></div>
+        <div data-markdown="/assets/content/outerwilds/anglerfish.md"></div>
+
+    </section>
+    <section class="grid_item other">I'm playing Outer Wilds, right- aiming to finish it. these are my notes, in the event that- even if I stop playing before finishing cause busy whatever- i can still have information and continue where i left off</section>
+
+  </main> <!-- here will be the page's main content. --> 
+
+  <section id="floating-windows"></section> <!-- here will be loaded the floating windows -->
+
+  <footer> 
+    <p class="colorful_0">webspace version <span class="colorful_3 WEBSITE_VERSION"></span> | made by <a class="colorful_1" href="https://github.com/dollythecamus/NeocitiesWebspace" target="_blank">Chloe Amanita Nomad</a></p>
+  </footer>
+
+  <div id="decorations"  class="decorations-container default-off">
+  </div>
+  
+    <script src="/assets/scripts/define-functions.js"></script>
+    <script>
+        data_file = 'empty.json'; // Set the data path to get the homepage buttons. it's all dynamic and cool like that (sunglasses)
+    </script>
+    <script type="module" src="/assets/scripts/data.js"></script>
+    <script type="module" src="/assets/scripts/decoration.js"></script>
+    <script type="module" src="/assets/scripts/functions.js"></script>
+    <script type="module" src="/assets/scripts/windows.js"></script>
+    <script type="module" src="/assets/scripts/colors.js"></script>
+    <script type="module" src="/assets/scripts/buttons.js"></script>
+    <script type="module" src="/assets/scripts/markdown.js"></script>
+    <script type="module" src="/assets/scripts/world.js"></script>
+
+</body>
+</html>

@@ -108,6 +108,6 @@ window.decorate = function _decorate() {
 
 window.ShowTutorial();
 
-window.seeFooter();
-window.seeWebsiteVersion();
+await window.seeFooter();
 window.seeLatestChanges();
+window.seeWebsiteVersion();

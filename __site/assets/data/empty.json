@@ -9,10 +9,8 @@
                 "other"
             ],
             "area_template": [
-            ". . . . ",
-            ". main main other ",
-            ". main main . ",
-            ". . . . "
+            "main main other ",
+            "main main ."
             ]
         }
     },

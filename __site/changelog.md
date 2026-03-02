@@ -1,8 +1,12 @@
-2025-10-19 remove_later: slide presentation for a game jam 
+2026-02-07 getting the groove of making the website again,, bwa 
 
-2025-08-18 stupid emojis 
+2026-02-07 codin 
 
-2025-08-18 synchronizing from obsidian vault to add personal content! 
+2026-02-07 adjusting upload.sh 
+
+2025-10-26 getting back into website 
+
+2025-10-25 reverted stupid changes 
 
 2025-08-16 fixing bc i broke it trying to fix it 
 

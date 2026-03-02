@@ -20,7 +20,7 @@ let isExpanded = false;
 let isDragging = false;
 const lastMouse = { x: startX, y: startY };
 
-const layerConfig = [2, 8, 32]; // Max buttons per layer (like electron shells)
+const layerConfig = [2, 8, 18]; // Max buttons per layer (like electron shells)
 const layerSpacing = 105; // Distance between layers
 
 for (let i = 0; i < buttonConfig.length; i++) {
