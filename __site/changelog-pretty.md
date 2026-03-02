@@ -1,4 +1,8 @@
 ---
+### outerwilds notes! to share!
+Time: 2026-03-01
+
+---
 ### getting the groove of making the website again,, bwa
 Time: 2026-02-07
 
