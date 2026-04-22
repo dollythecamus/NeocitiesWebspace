@@ -1,5 +1,5 @@
-import * as THREE from 'https://cdn.skypack.dev/three@0.134.0';
-import { OrbitControls } from 'https://cdn.skypack.dev/three@0.134.0/examples/jsm/controls/OrbitControls.js';
+import * as THREE from 'https://cdn.skypack.dev/three';
+import { OrbitControls } from 'https://cdn.skypack.dev/three/examples/jsm/controls/OrbitControls.js';
 
 const LOW_RES_WIDTH = 1920 / 2
 const LOW_RES_HEIGHT = 1080 / 2

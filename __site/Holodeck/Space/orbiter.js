@@ -1,4 +1,4 @@
-import * as THREE from 'https://cdn.skypack.dev/three@0.134.0';
+import * as THREE from 'https://cdn.skypack.dev/three';
 // functions to add newtonian orbits to the objects
 
 // use this example to create the newtonian orbits
