@@ -1,4 +1,4 @@
-import * as THREE from 'https://cdn.skypack.dev/three';
+import * as THREE from 'https://esm.sh/three@0.180.0';
 import { updateOrbitPosition, orbitalToNewtonian, computeOrbitPointsForward} from './orbiter.js';
 
 export const planetsData = {

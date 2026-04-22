@@ -1,6 +1,6 @@
 import { createRenderer, renderLoop } from './Renderer.js';
 import { planetsData, createPlanet, updatePlanet, enablePlanetRaycast, createOrbitLine, setPlanetOrbits } from './Planet.js';
-import { state, simSpeed, updateOrbitLines } from './solar-controls.js'
+import { state, simSpeed, updateOrbitLines, cyclePlanetFocus} from './solar-controls.js'
 import { inventionsData, updateInventionOrbits, enableInventionRaycast, CreateInvention } from './Invention.js';
 
 // Init renderer
@@ -34,8 +34,9 @@ state.inventions = inventionsData.map((invention) => {
 
 window.addEventListener('keydown', (e) => {
     if (e.key === 'Tab') {
-      e.preventDefault(); // stop browser from switching elements
+      console.log("Tab pressed")
       cyclePlanetFocus()
+      e.preventDefault(); // stop browser from switching elements
     }
 });
 
