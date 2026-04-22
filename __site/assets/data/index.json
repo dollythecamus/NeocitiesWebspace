@@ -29,7 +29,7 @@
         },
         {
             "icon": "👁️",
-            "func": "function:gotoPage:/Personal/home.html",
+            "func": "function:gotoPage:/Personal/personal.html",
             "color": "lights"
         },
         {

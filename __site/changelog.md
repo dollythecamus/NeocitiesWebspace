@@ -1,3 +1,5 @@
+2026-03-01 adjusting ow 
+
 2026-03-01 outerwilds notes! to share! 
 
 2026-02-07 getting the groove of making the website again,, bwa 
